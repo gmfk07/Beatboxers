@@ -14,7 +14,7 @@ public class BeatBarController : MonoBehaviour
 
     private int beatIndex;
     private float timer;
-    private float[] beatTimes = new float[] { 2, 2.5f, 3, 3.5f, 4 };
+    private float[] beatTimes = new float[] { 1.176f, 1.764f, .588f*4, .588f*5, .588f*6 };
     private Transform Mark;
     private Transform SpawnPoint;
     private Transform DespawnPoint;
@@ -63,8 +63,9 @@ public class BeatBarController : MonoBehaviour
         //Now remove the beats in a separate enumeration
         foreach (GameObject beat in beatsToRemove)
             beats.Remove(beat);
+
         if (punish)
-            manaCount = Mathf.Max(manaCount - 1, manaMax);
+            manaCount = Mathf.Max(manaCount - 1, 0);
        
         beatsToRemove.Clear();
     }
