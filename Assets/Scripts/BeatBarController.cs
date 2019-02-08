@@ -11,10 +11,14 @@ public class BeatBarController : MonoBehaviour
     public int manaCount = 0;
     public int manaMax = 10;
     public Text manaCounter;
+    public Enemy target;
+
+    //Just here for testing, please remove later
+    public Attack testUpAttack;
 
     private int beatIndex;
     private float timer;
-    private float[] beatTimes = new float[] { 1.176f, 1.764f, .588f*4, .588f*5, .588f*6 };
+    private float[] beatTimes = new float[] { 1.176f, 1.764f, .588f*4, .588f*5, .588f*6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
     private Transform Mark;
     private Transform SpawnPoint;
     private Transform DespawnPoint;
@@ -23,6 +27,7 @@ public class BeatBarController : MonoBehaviour
 
     void Start()
     {
+        PlayerStats.upAttack = testUpAttack;
         Mark = transform.Find("Mark");
         SpawnPoint = transform.Find("SpawnPoint");
         DespawnPoint = transform.Find("DespawnPoint");
@@ -41,9 +46,11 @@ public class BeatBarController : MonoBehaviour
             beatIndex++;
         }
 
-        //Did the player press space and miss?
         bool punish = false;
-        if (Input.GetKeyDown(KeyCode.Space))
+        bool buttonJustPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)
+            || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow);
+        //Did the player press a key and miss?
+        if (buttonJustPressed)
             punish = true;
         foreach (GameObject beat in beats)
         {
@@ -52,12 +59,27 @@ public class BeatBarController : MonoBehaviour
                 beatsToRemove.Add(beat);
                 Destroy(beat);
             }
-            if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(beat.transform.position.x - Mark.transform.position.x) <= beatMargin)
+            if (buttonJustPressed && Mathf.Abs(beat.transform.position.x - Mark.transform.position.x) <= beatMargin)
             {
-                punish = false;
-                beatsToRemove.Add(beat);
-                manaCount = Mathf.Min(manaCount + 1, manaMax);
-                Destroy(beat);
+                //This beat is in range and something was pressed
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    punish = false;
+                    manaCount = Mathf.Min(manaCount + 1, manaMax);
+                }
+                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.upAttack);
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.downAttack);
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.leftAttack);
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.rightAttack);
+                if (!punish)
+                {
+                    beatsToRemove.Add(beat);
+                    Destroy(beat);
+                }
             }
         }
         //Now remove the beats in a separate enumeration
@@ -68,5 +90,15 @@ public class BeatBarController : MonoBehaviour
             manaCount = Mathf.Max(manaCount - 1, 0);
        
         beatsToRemove.Clear();
+    }
+
+    //Returns false if manaAmount is less than the provided amount's cost, otherwise reduces manaAmount by the cost, attacks, and returns true
+    bool ResolveAttack(ref int manaAmount, Attack attack)
+    {
+        if (manaAmount < attack.manaCost)
+            return false;
+        manaAmount -= attack.manaCost;
+        target.Hit(attack);
+        return true;
     }
 }
