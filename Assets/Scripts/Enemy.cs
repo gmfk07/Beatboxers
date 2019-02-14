@@ -9,11 +9,11 @@ public class Enemy : MonoBehaviour {
     public double attackMinimum;
 
     //The keys and values that'll go into attackDict
-    public List<double> attackDictKeys = new List<double>();
+    public List<float> attackDictKeys = new List<float>();
     public List<EnemyAttack> attackDictValues = new List<EnemyAttack>();
 
     //Round beat potential down to the nearest key, the corresponding EnemyAttack is the EnemyAttack that will be executed
-    public Dictionary<double, EnemyAttack> attackDict = new Dictionary<double, EnemyAttack>();
+    public Dictionary<float, EnemyAttack> attackDict = new Dictionary<float, EnemyAttack>();
 
     public void Start()
     {
@@ -34,21 +34,15 @@ public class Enemy : MonoBehaviour {
     }
 
     //Get the attack associated with a given attackPotential, given that the attackPotential is greater than attackMinimum
-    public EnemyAttack GetAttack(double attackPotential)
+    public EnemyAttack GetAttack(float attackPotential)
     {
-        double targetKey = -1;
-        foreach (double d in attackDict.Keys)
+        float targetKey = -1;
+        foreach (float a in attackDict.Keys)
         {
             //Do we have a key below the potential but above the targetKey?
-            if (d <= attackPotential && d > targetKey)
-                targetKey = d;
+            if (a <= attackPotential && a > targetKey)
+                targetKey = a;
         }
         return attackDict[targetKey];
-    }
-
-    //Attack the player with a given EnemyAttack
-    public void AttackPlayer(EnemyAttack attack)
-    {
-        PlayerStats.Damage(attack.damage);
     }
 }

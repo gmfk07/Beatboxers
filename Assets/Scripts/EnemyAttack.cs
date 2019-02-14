@@ -6,4 +6,5 @@ using UnityEngine;
 public class EnemyAttack : ScriptableObject
 {
     public int damage;
+    public float danger;
 }

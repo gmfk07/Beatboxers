@@ -93,3 +93,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distancePerSecond: 0
+  isAttackBeat: 0
+  attack: {fileID: 0}

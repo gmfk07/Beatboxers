@@ -18,7 +18,8 @@ public class BeatBarController : MonoBehaviour
 
     private int beatIndex;
     private float timer;
-    private float[] beatTimes = new float[] { 1.176f, 1.764f, .588f*4, .588f*5, .588f*6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
+    private float[] beatTimes = new float[] { 1.176f, 1.764f, .588f * 4, .588f * 5, .588f * 6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
+    private float[] beatPotential = new float[] {0, 0, 0, 1, .5f, 0, 0, 0, 1, .5f};
     private Transform Mark;
     private Transform SpawnPoint;
     private Transform DespawnPoint;
@@ -37,12 +38,22 @@ public class BeatBarController : MonoBehaviour
     void Update()
     {
         timer = Time.time;
-        manaCounter.text = manaCount + " Mana";
+        manaCounter.text = manaCount + " Mana\nHealth: " + PlayerStats.health;
         if (beatIndex < beatTimes.Length && timer >= beatTimes[beatIndex] - beatWaitTime)
         {
             GameObject obj = Instantiate(Beat, SpawnPoint);
+            Beat bt = obj.GetComponent<Beat>();
+
             beats.Add(obj);
-            obj.GetComponent<Beat>().distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x)/beatWaitTime;
+            bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x)/beatWaitTime;
+
+            if (beatPotential[beatIndex] >= target.attackMinimum)
+            {
+                bt.isAttackBeat = true;
+                bt.attack = target.GetAttack(beatPotential[beatIndex]);
+            } else
+                bt.isAttackBeat = false;
+
             beatIndex++;
         }
 
