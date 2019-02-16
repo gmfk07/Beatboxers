@@ -616,6 +616,7 @@ MonoBehaviour:
   manaCounter: {fileID: 1115249155}
   target: {fileID: 2106407241}
   testUpAttack: {fileID: 11400000, guid: d384218f66e43574792b2bdce693789e, type: 2}
+  testUpDefense: {fileID: 11400000, guid: 25e70ebde4d4acd4387a6398b805bda8, type: 2}
 --- !u!212 &1834629366
 SpriteRenderer:
   m_ObjectHideFlags: 0

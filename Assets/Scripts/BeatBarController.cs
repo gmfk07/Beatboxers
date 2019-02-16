@@ -15,6 +15,7 @@ public class BeatBarController : MonoBehaviour
 
     //Just here for testing, please remove later
     public Attack testUpAttack;
+    public Defense testUpDefense;
 
     private int beatIndex;
     private float timer;
@@ -29,6 +30,7 @@ public class BeatBarController : MonoBehaviour
     void Start()
     {
         PlayerStats.upAttack = testUpAttack;
+        PlayerStats.upDefense = testUpDefense;
         Mark = transform.Find("Mark");
         SpawnPoint = transform.Find("SpawnPoint");
         DespawnPoint = transform.Find("DespawnPoint");
@@ -59,7 +61,8 @@ public class BeatBarController : MonoBehaviour
 
         bool punish = false;
         bool buttonJustPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)
-            || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow);
+            || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
+            Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
         //Did the player press a key and miss?
         if (buttonJustPressed)
             punish = true;
@@ -86,6 +89,15 @@ public class BeatBarController : MonoBehaviour
                     punish = !ResolveAttack(ref manaCount, PlayerStats.leftAttack);
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                     punish = !ResolveAttack(ref manaCount, PlayerStats.rightAttack);
+                else if (Input.GetKeyDown(KeyCode.W))
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.upDefense);
+                else if (Input.GetKeyDown(KeyCode.S))
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.downDefense);
+                else if (Input.GetKeyDown(KeyCode.A))
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.leftDefense);
+                else if (Input.GetKeyDown(KeyCode.D))
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.rightDefense);
+
                 if (!punish)
                 {
                     beatsToRemove.Add(beat);
@@ -110,6 +122,16 @@ public class BeatBarController : MonoBehaviour
             return false;
         manaAmount -= attack.manaCost;
         target.Hit(attack);
+        return true;
+    }
+
+    //Returns false if manaAmount is less than the provided amount's cost, otherwise reduces manaAmount by the cost, defends, and returns true
+    bool ResolveDefense(ref int manaAmount, Defense defense)
+    {
+        if (manaAmount < defense.manaCost)
+            return false;
+        manaAmount -= defense.manaCost;
+        PlayerStats.Defend(defense);
         return true;
     }
 }
