@@ -20,6 +20,7 @@ public class BeatBarController : MonoBehaviour
     private int beatIndex;
     private float timer;
     private float[] beatTimes = new float[] { 1.176f, 1.764f, .588f * 4, .588f * 5, .588f * 6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
+    private string beatShapes = "stdccdtsdt";
     private float[] beatPotential = new float[] {0, 0, 0, 1, .5f, 0, 0, 0, 1, .5f};
     private Transform Mark;
     private Transform SpawnPoint;
@@ -45,6 +46,21 @@ public class BeatBarController : MonoBehaviour
         {
             GameObject obj = Instantiate(Beat, SpawnPoint);
             Beat bt = obj.GetComponent<Beat>();
+            switch (beatShapes[beatIndex])
+            {
+                case 's':
+                    bt.shape = GlobalStats.Shape.SQUARE;
+                    break;
+                case 't':
+                    bt.shape = GlobalStats.Shape.TRIANGLE;
+                    break;
+                case 'd':
+                    bt.shape = GlobalStats.Shape.DIAMOND;
+                    break;
+                case 'c':
+                    bt.shape = GlobalStats.Shape.CIRCLE;
+                    break;
+            }
 
             beats.Add(obj);
             bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x)/beatWaitTime;

@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Beat : MonoBehaviour
 {
-    public enum Shape { CIRCLE, SQUARE };
-
     public float distancePerSecond = 0;
     public bool isAttackBeat;
     public EnemyAttack attack;
-    public Shape shape;
+    public GlobalStats.Shape shape;
 
     private void Start()
     {
@@ -19,12 +17,20 @@ public class Beat : MonoBehaviour
             sr.color = new Color(1, 1 - attack.danger, 1 - attack.danger, 1);
         switch (shape)
         {
-            case Shape.CIRCLE:
+            case GlobalStats.Shape.CIRCLE:
                 sr.sprite = GlobalStats.circleBeat;
                 break;
 
-            case Shape.SQUARE:
+            case GlobalStats.Shape.SQUARE:
                 sr.sprite = GlobalStats.squareBeat;
+                break;
+
+            case GlobalStats.Shape.TRIANGLE:
+                sr.sprite = GlobalStats.triangleBeat;
+                break;
+
+            case GlobalStats.Shape.DIAMOND:
+                sr.sprite = GlobalStats.diamondBeat;
                 break;
         }
     }
