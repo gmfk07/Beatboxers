@@ -19,9 +19,9 @@ public class BeatBarController : MonoBehaviour
 
     private int beatIndex;
     private float timer;
-    private float[] beatTimes = new float[] { 1.176f, 1.764f, .588f * 4, .588f * 5, .588f * 6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
-    private string beatShapes = "stdccdtsdt";
-    private float[] beatPotential = new float[] {0, 0, 0, 1, .5f, 0, 0, 0, 1, .5f};
+    private float[] beatTimes = new float[] { 1.764f, .588f * 4, .588f * 5, .588f * 6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
+    private string beatShapes = "tdccdtsdt";
+    private float[] beatPotential = new float[] {0, 0, 1, .5f, 0, 0, 0, 1, .5f};
     private Transform Mark;
     private Transform SpawnPoint;
     private Transform DespawnPoint;
