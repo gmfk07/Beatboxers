@@ -11,7 +11,7 @@ public class BeatBarController : MonoBehaviour
     public int manaCount = 0;
     public int manaMax = 10;
     public Text manaCounter;
-    public Enemy target;
+    public EnemyController target;
 
     //Just here for testing, please remove later
     public Attack testUpAttack;
