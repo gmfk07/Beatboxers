@@ -16,11 +16,14 @@ public class OverworldManager : Singleton<OverworldManager>
             OverworldEnemy oe = go.GetComponent<OverworldEnemy>();
             Vector3 pos = go.transform.position;
             save.names.Add(oe.enemy._name);
-            save.xPos.Add(pos.x);
-            save.yPos.Add(pos.y);
-            save.zPos.Add(pos.z);
+            save.enemyXPos.Add(pos.x);
+            save.enemyYPos.Add(pos.y);
+            save.enemyZPos.Add(pos.z);
         }
-
+        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        save.playerXPos = playerPos.x;
+        save.playerYPos = playerPos.y;
+        save.playerZPos = playerPos.z;
         return save;
     }
 
@@ -69,11 +72,13 @@ public class OverworldManager : Singleton<OverworldManager>
             for (int i=0; i < save.names.Count; i++)
             {
                 GameObject go = OverworldEnemyDatabase.Instance.enemyDict[save.names[i]];
-                float xPos = save.xPos[i];
-                float yPos = save.yPos[i];
-                float zPos = save.zPos[i];
+                float xPos = save.enemyXPos[i];
+                float yPos = save.enemyYPos[i];
+                float zPos = save.enemyZPos[i];
                 Instantiate(go, new Vector3(xPos, yPos, zPos), Quaternion.identity);
             }
+            Vector3 newPos = new Vector3(save.playerXPos, save.playerYPos, save.playerZPos);
+            GameObject.FindGameObjectWithTag("Player").transform.position = newPos;
 
             Debug.Log("Game Loaded");
             File.Delete(Application.persistentDataPath + "/overworld.save");
