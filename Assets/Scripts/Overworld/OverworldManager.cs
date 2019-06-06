@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class OverworldManager : Singleton<OverworldManager>
 {
@@ -35,10 +36,27 @@ public class OverworldManager : Singleton<OverworldManager>
             LoadGame();
     }
 
-    private void OnApplicationQuit()
+    private void OnEnable()
     {
-        if (File.Exists(Application.persistentDataPath + "/overworld.save"))
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (SaveExists())
             File.Delete(Application.persistentDataPath + "/overworld.save");
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (scene.name != "Battle" && SaveExists())
+            LoadGame();
+    }
+
+    private static bool SaveExists()
+    {
+        return File.Exists(Application.persistentDataPath + "/overworld.save");
     }
 
     public void SaveGame()
@@ -55,7 +73,7 @@ public class OverworldManager : Singleton<OverworldManager>
 
     public void LoadGame()
     {
-        if (File.Exists(Application.persistentDataPath + "/overworld.save"))
+        if (SaveExists())
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/overworld.save", FileMode.Open);
