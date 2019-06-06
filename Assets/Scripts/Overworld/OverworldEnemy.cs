@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class OverworldEnemy : MonoBehaviour
 {
-    [SerializeField] private Enemy enemy;
+    public Enemy enemy;
 
     private void OnCollisionEnter(Collision collision)
     {
-        EnemyStats.currentEnemy = enemy;
-        //TODO: Save game
-        SceneManager.LoadScene("Battle");
+        if (collision.rigidbody.tag == "Player")
+        {
+            EnemyStats.currentEnemy = enemy;
+            Destroy(this);
+            OverworldManager.Instance.SaveGame();
+            SceneManager.LoadScene("Battle");
+        }
     }
 }

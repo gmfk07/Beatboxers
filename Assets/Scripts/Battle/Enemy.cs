@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Enemy", order = 1)]
 public class Enemy : ScriptableObject
 {
+    public string _name;
     public int health;
 
     //The enemy will attack on all potential attack beats with potential values above or equal to attackMinimum

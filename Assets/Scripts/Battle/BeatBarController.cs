@@ -18,6 +18,7 @@ public class BeatBarController : MonoBehaviour
     public Defense testUpDefense;
 
     private int beatIndex;
+    private float startTimer;
     private float timer;
     private float[] beatTimes = new float[] { 1.764f, .588f * 4, .588f * 5, .588f * 6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
     private string beatShapes = "tdccdtsdt";
@@ -36,45 +37,30 @@ public class BeatBarController : MonoBehaviour
         SpawnPoint = transform.Find("SpawnPoint");
         DespawnPoint = transform.Find("DespawnPoint");
         beatIndex = 0;
+        startTimer = Time.time;
     }
 
     void Update()
     {
-        timer = Time.time;
+        timer = GetTimer();
         manaCounter.text = manaCount + " Mana\nHealth: " + PlayerStats.health;
-        if (beatIndex < beatTimes.Length && timer >= beatTimes[beatIndex] - beatWaitTime)
-        {
-            GameObject obj = Instantiate(Beat, SpawnPoint);
-            Beat bt = obj.GetComponent<Beat>();
-            switch (beatShapes[beatIndex])
-            {
-                case 's':
-                    bt.shape = GlobalStats.Shape.SQUARE;
-                    break;
-                case 't':
-                    bt.shape = GlobalStats.Shape.TRIANGLE;
-                    break;
-                case 'd':
-                    bt.shape = GlobalStats.Shape.DIAMOND;
-                    break;
-                case 'c':
-                    bt.shape = GlobalStats.Shape.CIRCLE;
-                    break;
-            }
 
-            beats.Add(obj);
-            bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x)/beatWaitTime;
+        BeatSpawn();
+        bool punish = BeatDespawn();
 
-            if (beatPotential[beatIndex] >= target.attackMinimum)
-            {
-                bt.isAttackBeat = true;
-                bt.attack = target.GetAttack(beatPotential[beatIndex]);
-            } else
-                bt.isAttackBeat = false;
+        //Remove the beats in a separate enumeration
+        foreach (GameObject beat in beatsToRemove)
+            beats.Remove(beat);
 
-            beatIndex++;
-        }
+        if (punish)
+            manaCount = Mathf.Max(manaCount - 1, 0);
 
+        beatsToRemove.Clear();
+    }
+    
+    //Handles beat despawning if applicable, returning true if the player should be punished for a missed beat and false otherwise.
+    private bool BeatDespawn()
+    {
         bool punish = false;
         bool buttonJustPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)
             || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
@@ -121,14 +107,46 @@ public class BeatBarController : MonoBehaviour
                 }
             }
         }
-        //Now remove the beats in a separate enumeration
-        foreach (GameObject beat in beatsToRemove)
-            beats.Remove(beat);
 
-        if (punish)
-            manaCount = Mathf.Max(manaCount - 1, 0);
-       
-        beatsToRemove.Clear();
+        return punish;
+    }
+
+    //Checks if a beat should be spawned, and if so, spawns it with the appropriate characteristics.
+    private void BeatSpawn()
+    {
+        if (beatIndex < beatTimes.Length && timer >= beatTimes[beatIndex] - beatWaitTime)
+        {
+            GameObject obj = Instantiate(Beat, SpawnPoint);
+            Beat bt = obj.GetComponent<Beat>();
+            switch (beatShapes[beatIndex])
+            {
+                case 's':
+                    bt.shape = GlobalStats.Shape.SQUARE;
+                    break;
+                case 't':
+                    bt.shape = GlobalStats.Shape.TRIANGLE;
+                    break;
+                case 'd':
+                    bt.shape = GlobalStats.Shape.DIAMOND;
+                    break;
+                case 'c':
+                    bt.shape = GlobalStats.Shape.CIRCLE;
+                    break;
+            }
+
+            beats.Add(obj);
+            bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x) / beatWaitTime;
+
+            if (beatPotential[beatIndex] >= target.attackMinimum)
+            {
+                bt.isAttackBeat = true;
+                bt.attack = target.GetAttack(beatPotential[beatIndex]);
+            }
+            else
+                bt.isAttackBeat = false;
+
+            beatIndex++;
+        }
     }
 
     //Returns false if manaAmount is less than the provided amount's cost, otherwise reduces manaAmount by the cost, attacks, and returns true
@@ -149,5 +167,11 @@ public class BeatBarController : MonoBehaviour
         manaAmount -= defense.manaCost;
         PlayerStats.Defend(defense);
         return true;
+    }
+
+    //Returns the amount of seconds that have passed since the battle started
+    float GetTimer()
+    {
+        return Time.time - startTimer;
     }
 }
