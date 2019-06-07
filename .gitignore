@@ -35,3 +35,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Wwise
+/Beatboxers_WwiseProject/Originals/SFX/*.akd
+/Beatboxers_WwiseProject/.cache/
