@@ -1,6 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{94E0608C-30CA-4499-BE28-241228D017D6}" SchemaVersion="94">
 	<InteractiveMusic>
-		<WorkUnit Name="Default Work Unit" ID="{94E0608C-30CA-4499-BE28-241228D017D6}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{94E0608C-30CA-4499-BE28-241228D017D6}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicPlaylistContainer Name="Music Playlist Container" ID="{C0C55D75-D261-47B8-AE25-178A9E29D348}" ShortID="923528130">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C2C68934-9F14-43EC-A316-7D9A2C07D922}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3D336673-D0AF-4D9C-ADE1-E88A180C725C}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="JumpBeginning" ID="{37646FFE-D40F-4B54-91BF-1BE0DFAB9AF5}" ShortID="723032058">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="141682.811791383"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C2C68934-9F14-43EC-A316-7D9A2C07D922}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3D336673-D0AF-4D9C-ADE1-E88A180C725C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="JumpBeginning" ID="{D9B81A24-38F4-4AAA-BF16-AC5376561C62}" ShortID="342934641">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3D336673-D0AF-4D9C-ADE1-E88A180C725C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="JumpBeginning" ID="{54FC0550-9815-44EC-B65A-188139D039FB}" ShortID="241283809">
+											<Language>SFX</Language>
+											<AudioFile>JumpBeginning.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{A92DBA54-B52E-45B4-B3C5-16301243F087}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{111107E9-648B-49DB-9C4E-39321F04723A}">
+											<ClipList>
+												<MusicClip Name="JumpBeginning" ID="{A9381887-AF89-4A03-BDB9-33CA58E51EB5}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="141682.811791383"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="JumpBeginning" ID="{54FC0550-9815-44EC-B65A-188139D039FB}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{E05D2D2C-784B-45F5-B1B8-B2B8E2A72F55}"/>
+								<MusicCue Name="Exit Cue" ID="{29161EEB-821F-466D-AE4C-FA8C17437911}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="141682.811791383"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+						<MusicSegment Name="JumpLoop" ID="{78D1AC3C-C534-47A2-A4FF-53434737F1AD}" ShortID="250380721">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="9437.68707482993"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C2C68934-9F14-43EC-A316-7D9A2C07D922}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3D336673-D0AF-4D9C-ADE1-E88A180C725C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="JumpLoop" ID="{ECE2DE35-AACF-439F-B0E2-EF166FE75FCE}" ShortID="1002180994">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3D336673-D0AF-4D9C-ADE1-E88A180C725C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="JumpLoop" ID="{60626700-00A4-480B-A7AF-90418164D080}" ShortID="1050425523">
+											<Language>SFX</Language>
+											<AudioFile>JumpLoop.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{56E1A542-6FF7-423C-A548-28E2F28D24B9}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{E3E2A3A2-9A34-4CD7-AB3B-088DFB4B5BFE}">
+											<ClipList>
+												<MusicClip Name="JumpLoop" ID="{6AE6433D-632D-4D1E-A184-3270C5FF9A32}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="9437.68707482993"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="JumpLoop" ID="{60626700-00A4-480B-A7AF-90418164D080}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{E268FD48-E9EB-4399-AF85-179AF82F9C70}"/>
+								<MusicCue Name="Exit Cue" ID="{39D68971-20C9-4A03-BCBA-DAB320A751AC}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="9437.68707482993"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{0EE0BF44-BDC8-455A-97AD-2D05A58081E8}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{5330E43C-38DF-4B9A-8109-EBA516217832}">
+									<TransitionInfo/>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<Playlist>
+						<MusicPlaylistItem Name="" ID="{C53AF0E6-1D47-4A7B-8CA9-8BCB1ED6BCCA}" ShortID="260124373">
+							<PropertyList>
+								<Property Name="LoopCount" Type="int16" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicPlaylistItem Name="" ID="{00BDAFA3-ADD1-4B2E-B3EB-4E302E62DC45}" ShortID="200139319">
+									<PropertyList>
+										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+									</PropertyList>
+									<SegmentRef Name="JumpBeginning" ID="{37646FFE-D40F-4B54-91BF-1BE0DFAB9AF5}"/>
+								</MusicPlaylistItem>
+								<MusicPlaylistItem Name="" ID="{099DCDE2-1AE8-40E8-B551-F21200A21389}" ShortID="721924106">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+									</PropertyList>
+									<SegmentRef Name="JumpLoop" ID="{78D1AC3C-C534-47A2-A4FF-53434737F1AD}"/>
+								</MusicPlaylistItem>
+							</ChildrenList>
+						</MusicPlaylistItem>
+					</Playlist>
+				</MusicPlaylistContainer>
+			</ChildrenList>
+		</WorkUnit>
 	</InteractiveMusic>
 </WwiseDocument>
