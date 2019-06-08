@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{C49774D1-9936-476E-97BC-99D97243C4CC}" SchemaVersion="94">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{C49774D1-9936-476E-97BC-99D97243C4CC}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{C49774D1-9936-476E-97BC-99D97243C4CC}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="New_SoundBank" ID="{DC5598D9-3370-4388-BB65-BFA64553BCBD}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Start_Jump" ID="{CF2EF10B-B1F3-44E1-8D42-9D66F4FAB80F}" WorkUnitID="{7ED3F1D9-60AB-49F3-B377-A976C363B29E}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="JumpLoop" ID="{78D1AC3C-C534-47A2-A4FF-53434737F1AD}" WorkUnitID="{94E0608C-30CA-4499-BE28-241228D017D6}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Music Playlist Container" ID="{C0C55D75-D261-47B8-AE25-178A9E29D348}" WorkUnitID="{94E0608C-30CA-4499-BE28-241228D017D6}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="JumpBeginning" ID="{37646FFE-D40F-4B54-91BF-1BE0DFAB9AF5}" WorkUnitID="{94E0608C-30CA-4499-BE28-241228D017D6}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>

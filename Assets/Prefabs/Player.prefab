@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  distanceToGround: 0.5
+  distanceToGround: 0.6
   jumpVelocity: 5

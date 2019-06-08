@@ -1,0 +1,7 @@
+Event	ID	Name			Wwise Object Path	Notes
+	556213890	Start_Jump			\Default Work Unit\Start_Jump	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	241283809	JumpBeginning	C:\Users\gmfk07\Documents\Unity Stuff\Beatboxers\Beatboxers_WwiseProject\.cache\Mac\SFX\JumpBeginning_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music Playlist Container\JumpBeginning\JumpBeginning		24992912
+	1050425523	JumpLoop	C:\Users\gmfk07\Documents\Unity Stuff\Beatboxers\Beatboxers_WwiseProject\.cache\Mac\SFX\JumpLoop_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music Playlist Container\JumpLoop\JumpLoop		1664872
+

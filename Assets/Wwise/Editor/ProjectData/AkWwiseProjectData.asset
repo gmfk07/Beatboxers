@@ -31,15 +31,36 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: d17497c436996e4797bc99d97243c4cc
     GuidInternal: 
-    m_lastTime: -8586417464938699958
-    List: []
+    m_lastTime: -8586416442135728627
+    List:
+    - name: New_SoundBank
+      guid: d99855dc70338843bb65bfa64553bcbd
+      id: 4072029455
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: New_SoundBank
+        ObjectType: 7
+      Path: Default Work Unit\New_SoundBank
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: d9f1d37eab60f349b377a976c363b29e
     GuidInternal: 
-    m_lastTime: -8586417464939278426
-    List: []
+    m_lastTime: -8586416481981763966
+    List:
+    - name: Start_Jump
+      guid: 0bf12ecff3b1e1448d429d66f4fab80f
+      id: 556213890
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Start_Jump
+        ObjectType: 3
+      Path: Default Work Unit\Start_Jump
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -70,5 +91,9 @@ MonoBehaviour:
     List: []
   ExpandedItems:
   - /Beatboxers_WwiseProject
+  - /Beatboxers_WwiseProject/Events
+  - /Beatboxers_WwiseProject/Events/Default Work Unit
+  - /Beatboxers_WwiseProject/SoundBanks
+  - /Beatboxers_WwiseProject/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

@@ -629,6 +629,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: isEnvironmentAware
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4106305582142984908, guid: 2a8812120d34e484d88ef882e8d7127c,
         type: 3}
       propertyPath: m_Name
@@ -698,6 +702,22 @@ PrefabInstance:
         type: 3}
       propertyPath: zDistFromPlayer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106305582142984896, guid: 2a8812120d34e484d88ef882e8d7127c,
+        type: 3}
+      propertyPath: MyEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 23f9ade5e917c8940b32d53e9c9db55f,
+        type: 2}
+    - target: {fileID: 4188461787229196701, guid: 2a8812120d34e484d88ef882e8d7127c,
+        type: 3}
+      propertyPath: enableActionOnEvent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165672982920122425, guid: 2a8812120d34e484d88ef882e8d7127c,
+        type: 3}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4106305582142984909, guid: 2a8812120d34e484d88ef882e8d7127c, type: 3}
