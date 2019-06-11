@@ -619,6 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatWaitTime: 1.5
   beatMargin: 1
+  gracePeriod: 1.5
   Beat: {fileID: 6858820538123302504, guid: 6c313ac3cd5ed934e99f5ddb904cb6d7, type: 3}
   manaCount: 0
   manaMax: 10

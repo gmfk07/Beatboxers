@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 1681347487}
   - component: {fileID: 1681347488}
   - component: {fileID: 1681347489}
+  - component: {fileID: 1681347490}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -380,6 +381,38 @@ MonoBehaviour:
   - Trashman
   prefabValues:
   - {fileID: 3111149738922897838, guid: 6c2ffd1714399fc46a9433246b899ee7, type: 3}
+--- !u!114 &1681347490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681347486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ce060cc113e1243bc5edf1a8ed4068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToSpawn: {fileID: 3963970221957502336, guid: 808675e8410f8bf4b9b62fc258afc1c7, type: 3}
+--- !u!1 &1702492193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4106305582142984908, guid: 2a8812120d34e484d88ef882e8d7127c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4106305582336143992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1702492194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702492193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1 &1783484628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6704770348445045195, guid: a007b0bf8cb61a04e85202b88e7220ba,
@@ -635,11 +668,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1783484628}
-    - target: {fileID: 4106305582142984896, guid: 2a8812120d34e484d88ef882e8d7127c,
-        type: 3}
-      propertyPath: zDistFromPlayer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a8812120d34e484d88ef882e8d7127c, type: 3}
 --- !u!1001 &6704770348013732127

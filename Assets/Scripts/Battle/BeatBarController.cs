@@ -7,6 +7,7 @@ public class BeatBarController : MonoBehaviour
 {
     public float beatWaitTime;
     public float beatMargin;
+    public float gracePeriod;
     public GameObject Beat;
     public int manaCount = 0;
     public int manaMax = 10;
@@ -36,8 +37,21 @@ public class BeatBarController : MonoBehaviour
         Mark = transform.Find("Mark");
         SpawnPoint = transform.Find("SpawnPoint");
         DespawnPoint = transform.Find("DespawnPoint");
-        beatIndex = 0;
-        startTimer = Time.time;
+        beatIndex = GetInitialBeatIndex();
+    }
+    
+    //Returns what the initial beat index should be, using the current time in the song and grace period length to only include beats
+    //that should reasonably be spawned.
+    private int GetInitialBeatIndex()
+    {
+        int result = 0;
+        float songTime = GetTimer();
+        foreach (float beatTime in beatTimes)
+        {
+            if (songTime + gracePeriod > beatTime)
+                result++;
+        }
+        return result;
     }
 
     void Update()
@@ -172,6 +186,6 @@ public class BeatBarController : MonoBehaviour
     //Returns the amount of seconds that have passed since the battle started
     float GetTimer()
     {
-        return Time.time - startTimer;
+        return MusicMaster.Instance.GetPlaybackTime();
     }
 }
