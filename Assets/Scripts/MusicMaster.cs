@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MusicMaster : Singleton<MusicMaster>
 {
+    public float SecondsPerBeat { get; private set; }
     private FMOD.Studio.EventInstance musicEvent;
 
     void Start()
     {
+        SecondsPerBeat = .5882353f;
         musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Jump");
         musicEvent.start();
         DontDestroyOnLoad(this.gameObject);
