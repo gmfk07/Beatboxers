@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
     public float speed;
     public float distanceToGround;
     public float jumpVelocity;
+
     private Rigidbody rb;
+    private bool frozen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +17,27 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Movement
+    // Move and jump, if not frozen
     void FixedUpdate()
+    {
+        if (!frozen)
+        {
+            CheckMovement();
+            CheckJump();
+        }
+    }
+
+    // Checks if jump conditions are met, and if so, initiates jump.
+    private void CheckJump()
+    {
+        if (IsGrounded(rb.position, distanceToGround) && Input.GetButton("Jump"))
+        {
+            rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
+        }
+    }
+
+    // Checks if movement conditions are met, and if so, moves.
+    private void CheckMovement()
     {
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
@@ -35,11 +56,6 @@ public class Player : MonoBehaviour
         else if (zMovementIsGrounded)
         {
             rb.MovePosition(rb.position + new Vector3(0, 0, speed * verticalAxis) * Time.deltaTime);
-        }
-
-        if (IsGrounded(rb.position, distanceToGround) && Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
         }
     }
 
