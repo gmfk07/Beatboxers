@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
     public float speed;
     public float distanceToGround;
     public float jumpVelocity;
+    [HideInInspector] public bool frozen = false;
 
     private Rigidbody rb;
-    private bool frozen = false;
 
     // Start is called before the first frame update
     void Start()

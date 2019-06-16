@@ -379,10 +379,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 23
     m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
+    m_BestFit: 0
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -390,9 +390,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "S\xED, sabes que ya llevo un rato mir\xE1ndote \rtengo que bailar contigo
-    hoy (DY) \rVi que tu mirada ya estaba llam\xE1ndome \rMu\xE9strame el camino que
-    yo voy (Oh)\r"
+  m_Text: Despacito, vamos a hacerlo en una playa en Puerto Rico, hasta que las olas
+    digen "ay bendito!" Para que mi sello se quede contigo!!!! Pasito a pasito,
 --- !u!222 &768254116
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -607,6 +606,7 @@ GameObject:
   - component: {fileID: 1681347488}
   - component: {fileID: 1681347489}
   - component: {fileID: 1681347490}
+  - component: {fileID: 1681347491}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -669,6 +669,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToSpawn: {fileID: 3963970221957502336, guid: 808675e8410f8bf4b9b62fc258afc1c7, type: 3}
+--- !u!114 &1681347491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681347486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c460dc231a6035f4db359adee566dae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogPanel: {fileID: 1482365272}
+  DialogText: {fileID: 768254115}
+  TimeBetweenCharacters: 0.1
+  player: {fileID: 0}
 --- !u!1 &1702492193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4106305582142984908, guid: 2a8812120d34e484d88ef882e8d7127c,
@@ -880,6 +896,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 9143528901910066875, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 9143528901910066869, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -934,6 +955,52 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: dialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: dialog.Array.data[0]
+      value: Pasito a pasito, suave suavecito, nos vamos pegando...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: dialog.Array.data[1]
+      value: Do you like classic banger Despacito? It's all I listen to. Well, that
+        and obviously Kris Kross's Jump.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: dialog.Array.data[2]
+      value: Welp, see you later, stranger!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: Oh, hello there! Sorry about my ramblings earlier.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: I hope you're adjusting well to life here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: Dialog.Array.data[2]
+      value: What's that? You're looking for the laundromat?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: Dialog.Array.data[3]
+      value: Should be further west.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224bfbec7a463614a99532d4244333cb, type: 3}
