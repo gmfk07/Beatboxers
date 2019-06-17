@@ -9,4 +9,5 @@ public class Defense : ScriptableObject
     public int constantProtection;
     //relative protection is a decimal fraction
     public float relativeProtection;
+    public Sprite itemSprite;
 }

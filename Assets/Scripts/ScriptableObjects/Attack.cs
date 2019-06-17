@@ -7,4 +7,5 @@ public class Attack : ScriptableObject
 {
     public int manaCost;
     public int damage;
+    public Sprite itemSprite;
 }
