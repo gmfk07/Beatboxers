@@ -5,6 +5,15 @@ using UnityEngine;
 public class InventoryController : Singleton<InventoryController>
 {
     public GameObject InventoryPanel;
+    public GameObject InventorySlotPrefab;
+    public GameObject InventorySlotParent;
+
+    public int InventorySlotRows;
+    public int InventorySlotColumns;
+    public float MinInventorySlotX;
+    public float MaxInventorySlotX;
+    public float MinInventorySlotY;
+    public float MaxInventorySlotY;
 
     private Player player;
     private bool displayingInventory = false;
@@ -12,6 +21,7 @@ public class InventoryController : Singleton<InventoryController>
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        CreateInventorySlots();
         CloseInventory();
     }
 
@@ -26,6 +36,22 @@ public class InventoryController : Singleton<InventoryController>
             else
             {
                 OpenInventory();
+            }
+        }
+    }
+
+    //Create the inventory slot GameObjects.
+    private void CreateInventorySlots()
+    {
+        for (int i = 0; i < InventorySlotColumns; i++)
+        {
+            for (int j = 0; j < InventorySlotRows; j++)
+            {
+                float xPerColumn = (MaxInventorySlotX - MinInventorySlotX) / (InventorySlotColumns - 1) * i;
+                float yPerRow = (MaxInventorySlotY - MinInventorySlotY) / (InventorySlotRows - 1) * j;
+                float newX = MinInventorySlotX + xPerColumn;
+                float newY = MinInventorySlotY + yPerRow;
+                Instantiate(InventorySlotPrefab, new Vector3(newX, newY, 0), Quaternion.identity, InventorySlotParent.transform);
             }
         }
     }
