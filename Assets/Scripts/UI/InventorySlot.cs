@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySpot : MonoBehaviour, IEventSystemHandler
+public class InventorySlot : MonoBehaviour, IEventSystemHandler
 {
     public Image SlotImage;
     public Image ItemImage;
