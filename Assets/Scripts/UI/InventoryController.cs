@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class InventoryController : Singleton<InventoryController>
 {
-    public GameObject InventoryPanel;
-    public GameObject InventorySlotPrefab;
-    public GameObject InventorySlotParent;
+    public List<Item> Inventory = new List<Item>();
 
-    public int InventorySlotRows;
-    public int InventorySlotColumns;
-    public float MinInventorySlotX;
-    public float MaxInventorySlotX;
-    public float MinInventorySlotY;
-    public float MaxInventorySlotY;
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject inventorySlotPrefab;
+    [SerializeField] private GameObject inventorySlotParent;
 
-    private Dictionary<Vector2Int, GameObject> slotDict = new Dictionary<Vector2Int, GameObject>();
-    private Vector2Int selected = new Vector2Int(0, 0); //The top-right corner
+    [SerializeField] private int inventorySlotRows;
+    [SerializeField] private int inventorySlotColumns;
+    [SerializeField] private float minInventorySlotX;
+    [SerializeField] private float maxInventorySlotX;
+    [SerializeField] private float minInventorySlotY;
+    [SerializeField] private float maxInventorySlotY;
+
+    private Dictionary<Vector2Int, InventorySlot> slotDict = new Dictionary<Vector2Int, InventorySlot>();
+    private Vector2Int selected;
     private Player player;
     private bool displayingInventory = false;
+    private bool equipping = false;
+    private Item itemBeingEquipped;
+
+    [SerializeField] private InventorySlot attackSlotUp;
+    [SerializeField] private InventorySlot attackSlotLeft;
+    [SerializeField] private InventorySlot attackSlotDown;
+    [SerializeField] private InventorySlot attackSlotRight;
+
+    [SerializeField] private InventorySlot defenseSlotUp;
+    [SerializeField] private InventorySlot defenseSlotLeft;
+    [SerializeField] private InventorySlot defenseSlotDown;
+    [SerializeField] private InventorySlot defenseSlotRight;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        int topRow = inventorySlotRows - 1;
+        selected = new Vector2Int(0, topRow);
         CreateInventorySlots();
         CloseInventory();
     }
@@ -32,12 +48,62 @@ public class InventoryController : Singleton<InventoryController>
         HandleInventoryToggle();
         if (displayingInventory)
         {
-            HandleSelection();
+            if (!equipping)
+            {
+                HandleChangeSelected();
+                if (Input.GetButtonDown("Interact"))
+                {
+                    equipping = true;
+                    itemBeingEquipped = slotDict[selected].CurrentItem;
+                    SelectEquipmentSlots();
+                }
+            }
+            else
+            {
+                if (Input.GetButtonDown("Interact"))
+                {
+                    equipping = false;
+                    DeselectEquipmentSlots();
+                }
+            }
+        }
+    }
+    
+    //Triggers the select effect on Attack or Defense equipment slots, based on itemBeingEquipped.
+    private void SelectEquipmentSlots()
+    {
+        bool isAttack = itemBeingEquipped as Attack != null;
+        bool isDefense = itemBeingEquipped as Defense != null;
+        if (isAttack)
+        {
+            foreach (InventorySlot slot in new InventorySlot[4] { attackSlotUp, attackSlotDown, attackSlotLeft, attackSlotRight })
+            {
+                slot.Select();
+            }
+        }
+        if (isDefense)
+        {
+            foreach (InventorySlot slot in new InventorySlot[4] { defenseSlotUp, defenseSlotDown, defenseSlotLeft, defenseSlotRight })
+            {
+                slot.Select();
+            }
+        }
+    }
+
+    //Triggers the deselect effect on all equipment slots.
+    private void DeselectEquipmentSlots()
+    {
+        InventorySlot[] equipmentSlots = new InventorySlot[8] {attackSlotUp, attackSlotDown, attackSlotLeft, attackSlotRight,
+            defenseSlotUp, defenseSlotDown, defenseSlotLeft, defenseSlotRight};
+
+        foreach (InventorySlot slot in equipmentSlots)
+        {
+            slot.Deselect();
         }
     }
 
     //Listen to changes in horizontal and vertical axes to change the selected inventory slot
-    private void HandleSelection()
+    private void HandleChangeSelected()
     {
         if (Input.GetButtonDown("Left"))
         {
@@ -60,8 +126,8 @@ public class InventoryController : Singleton<InventoryController>
     //Calls Select and Deselect on the relevant spots and moves selected to the new x and y, wrapping x and y around
     private void MoveSelection(int newX, int newY)
     {
-        int lastColumn = InventorySlotColumns - 1;
-        int lastRow = InventorySlotRows - 1;
+        int lastColumn = inventorySlotColumns - 1;
+        int lastRow = inventorySlotRows - 1;
 
         if (newX < 0)
             newX = lastColumn;
@@ -95,36 +161,51 @@ public class InventoryController : Singleton<InventoryController>
         }
     }
 
-    //Create the inventory slot GameObjects.
+    //Create the inventory slot GameObjects and initialize using the inventory list.
     private void CreateInventorySlots()
     {
-        for (int i = 0; i < InventorySlotColumns; i++)
+        for (int i = 0; i < inventorySlotColumns; i++)
         {
-            for (int j = 0; j < InventorySlotRows; j++)
+            for (int j = 0; j < inventorySlotRows; j++)
             {
-                float xPerColumn = (MaxInventorySlotX - MinInventorySlotX) / (InventorySlotColumns - 1) * i;
-                float yPerRow = (MaxInventorySlotY - MinInventorySlotY) / (InventorySlotRows - 1) * j;
-                float newX = MinInventorySlotX + xPerColumn;
-                float newY = MinInventorySlotY + yPerRow;
-                GameObject created = Instantiate(InventorySlotPrefab, new Vector3(newX, newY, 0), Quaternion.identity, InventorySlotParent.transform);
-                slotDict[new Vector2Int(i, j)] = created;
+                float xPerColumn = (maxInventorySlotX - minInventorySlotX) / (inventorySlotColumns - 1) * i;
+                float yPerRow = (maxInventorySlotY - minInventorySlotY) / (inventorySlotRows - 1) * j;
+                float newX = minInventorySlotX + xPerColumn;
+                float newY = minInventorySlotY + yPerRow;
+                GameObject created = Instantiate(inventorySlotPrefab, new Vector3(newX, newY, 0), Quaternion.identity, inventorySlotParent.transform);
+                slotDict[new Vector2Int(i, j)] = created.GetComponent<InventorySlot>();
             }
+        }
+        SelectSlot(selected);
+        UpdateSlotItems();
+    }
+
+    //Using the inventory list, adds all items in order into the appropriate slots
+    private void UpdateSlotItems()
+    {
+        for (int i = 0; i < Inventory.Count; i++)
+        {
+            int xPos = i % (inventorySlotColumns - 1);
+            int yPos = inventorySlotRows - 1 - Mathf.FloorToInt(i / inventorySlotColumns);
+            InventorySlot slot = slotDict[new Vector2Int(xPos, yPos)];
+            slot.SetItem(Inventory[i]);
         }
     }
 
     //Turn on the inventory panel, select the right slot, and freeze the player
     void OpenInventory()
     {
-        InventoryPanel.SetActive(true);
+        inventoryPanel.SetActive(true);
         displayingInventory = true;
         player.frozen = true;
-        SelectSlot(selected);
     }
 
     //Turn off the inventory panel and reenable movement
     void CloseInventory()
     {
-        InventoryPanel.SetActive(false);
+        equipping = false;
+        DeselectEquipmentSlots();
+        inventoryPanel.SetActive(false);
         displayingInventory = false;
         player.frozen = false;
     }
@@ -132,12 +213,12 @@ public class InventoryController : Singleton<InventoryController>
     //Trigger the select method of a given slot to make it look selected
     private void SelectSlot(Vector2Int toSelect)
     {
-        slotDict[toSelect].GetComponent<InventorySlot>().Select();
+        slotDict[toSelect].Select();
     }
 
     //Trigger the deselect method of a given slot to make it look deselected
     private void DeselectSlot(Vector2Int toDeselect)
     {
-        slotDict[toDeselect].GetComponent<InventorySlot>().Deselect();
+        slotDict[toDeselect].Deselect();
     }
 }

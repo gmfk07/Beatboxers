@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Wooden Shield
   m_EditorClassIdentifier: 
   manaCost: 1
+  itemName: Wooden Shield
+  itemSprite: {fileID: 0}
   constantProtection: 1
   relativeProtection: 0

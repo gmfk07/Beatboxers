@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Whack
   m_EditorClassIdentifier: 
   manaCost: 2
+  itemName: Whack
+  itemSprite: {fileID: 0}
   damage: 2
