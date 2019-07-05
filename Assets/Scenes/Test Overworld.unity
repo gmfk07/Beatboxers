@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory:
-  - {fileID: 11400000, guid: d384218f66e43574792b2bdce693789e, type: 2}
+  - {fileID: 11400000, guid: 25e70ebde4d4acd4387a6398b805bda8, type: 2}
   inventoryPanel: {fileID: 858529013}
   inventorySlotPrefab: {fileID: 8363618747102028951, guid: ee217482a038b58449dc6d8d7a524dec,
     type: 3}

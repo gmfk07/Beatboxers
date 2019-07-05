@@ -51,7 +51,8 @@ public class InventoryController : Singleton<InventoryController>
             if (!equipping)
             {
                 HandleChangeSelected();
-                if (Input.GetButtonDown("Interact"))
+                bool slotHasItem = slotDict[selected].CurrentItem != null;
+                if (Input.GetButtonDown("Interact") && slotHasItem)
                 {
                     equipping = true;
                     itemBeingEquipped = slotDict[selected].CurrentItem;
@@ -60,8 +61,54 @@ public class InventoryController : Singleton<InventoryController>
             }
             else
             {
-                if (Input.GetButtonDown("Interact"))
+                bool interactPressed = Input.GetButtonDown("Interact");
+                bool leftPressed = Input.GetButtonDown("Left");
+                bool rightPressed = Input.GetButtonDown("Right");
+                bool upPressed = Input.GetButtonDown("Up");
+                bool downPressed = Input.GetButtonDown("Down");
+                bool anythingPressed = interactPressed || leftPressed || rightPressed || upPressed || downPressed;
+                if (anythingPressed)
                 {
+                    bool selectedItemIsAttack = slotDict[selected].CurrentItem as Attack != null;
+                    bool selectedItemIsDefense = !selectedItemIsAttack;
+                    if (selectedItemIsAttack)
+                    {
+                        if (leftPressed)
+                        {
+                            attackSlotLeft.SetItem(itemBeingEquipped);
+                        }
+                        if (rightPressed)
+                        {
+                            attackSlotRight.SetItem(itemBeingEquipped);
+                        }
+                        if (upPressed)
+                        {
+                            attackSlotUp.SetItem(itemBeingEquipped);
+                        }
+                        if (downPressed)
+                        {
+                            attackSlotDown.SetItem(itemBeingEquipped);
+                        }
+                    }
+                    else if (selectedItemIsDefense)
+                    {
+                        if (leftPressed)
+                        {
+                            defenseSlotLeft.SetItem(itemBeingEquipped);
+                        }
+                        if (rightPressed)
+                        {
+                            defenseSlotRight.SetItem(itemBeingEquipped);
+                        }
+                        if (upPressed)
+                        {
+                            defenseSlotUp.SetItem(itemBeingEquipped);
+                        }
+                        if (downPressed)
+                        {
+                            defenseSlotDown.SetItem(itemBeingEquipped);
+                        }
+                    }
                     equipping = false;
                     DeselectEquipmentSlots();
                 }
