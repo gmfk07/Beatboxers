@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryController : Singleton<InventoryController>
+public class InventoryUIController : Singleton<InventoryUIController>
 {
-    public List<Item> Inventory = new List<Item>();
-
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject inventorySlotPrefab;
     [SerializeField] private GameObject inventorySlotParent;
@@ -34,8 +32,11 @@ public class InventoryController : Singleton<InventoryController>
     [SerializeField] private InventorySlot defenseSlotDown;
     [SerializeField] private InventorySlot defenseSlotRight;
 
+    public List<Item> tempInventory = new List<Item>(); //DELETE LATER!
+
     private void Start()
     {
+        PlayerStats.Inventory = tempInventory;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         int topRow = inventorySlotRows - 1;
         selected = new Vector2Int(0, topRow);
@@ -73,40 +74,50 @@ public class InventoryController : Singleton<InventoryController>
                     bool selectedItemIsDefense = !selectedItemIsAttack;
                     if (selectedItemIsAttack)
                     {
+                        Attack attackEquipped = itemBeingEquipped as Attack;
                         if (leftPressed)
                         {
                             attackSlotLeft.SetItem(itemBeingEquipped);
+                            PlayerStats.leftAttack = attackEquipped;
                         }
                         if (rightPressed)
                         {
                             attackSlotRight.SetItem(itemBeingEquipped);
+                            PlayerStats.rightAttack = attackEquipped;
                         }
                         if (upPressed)
                         {
                             attackSlotUp.SetItem(itemBeingEquipped);
+                            PlayerStats.upAttack = attackEquipped;
                         }
                         if (downPressed)
                         {
                             attackSlotDown.SetItem(itemBeingEquipped);
+                            PlayerStats.leftAttack = attackEquipped;
                         }
                     }
                     else if (selectedItemIsDefense)
                     {
+                        Defense defenseEquipped = itemBeingEquipped as Defense;
                         if (leftPressed)
                         {
                             defenseSlotLeft.SetItem(itemBeingEquipped);
+                            PlayerStats.leftDefense = defenseEquipped;
                         }
                         if (rightPressed)
                         {
                             defenseSlotRight.SetItem(itemBeingEquipped);
+                            PlayerStats.rightDefense = defenseEquipped;
                         }
                         if (upPressed)
                         {
                             defenseSlotUp.SetItem(itemBeingEquipped);
+                            PlayerStats.upDefense = defenseEquipped;
                         }
                         if (downPressed)
                         {
                             defenseSlotDown.SetItem(itemBeingEquipped);
+                            PlayerStats.downDefense = defenseEquipped;
                         }
                     }
                     equipping = false;
@@ -201,7 +212,7 @@ public class InventoryController : Singleton<InventoryController>
             {
                 CloseInventory();
             }
-            else
+            else if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().frozen)
             {
                 OpenInventory();
             }
@@ -230,12 +241,12 @@ public class InventoryController : Singleton<InventoryController>
     //Using the inventory list, adds all items in order into the appropriate slots
     private void UpdateSlotItems()
     {
-        for (int i = 0; i < Inventory.Count; i++)
+        for (int i = 0; i < PlayerStats.Inventory.Count; i++)
         {
             int xPos = i % (inventorySlotColumns - 1);
             int yPos = inventorySlotRows - 1 - Mathf.FloorToInt(i / inventorySlotColumns);
             InventorySlot slot = slotDict[new Vector2Int(xPos, yPos)];
-            slot.SetItem(Inventory[i]);
+            slot.SetItem(PlayerStats.Inventory[i]);
         }
     }
 

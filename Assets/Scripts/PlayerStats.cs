@@ -10,6 +10,8 @@ public static class PlayerStats
     private static bool isDefending = false;
     private static Defense currentDefense;
 
+    public static List<Item> Inventory = new List<Item>();
+
     public static void Damage(int dmg)
     {
         if (isDefending)
