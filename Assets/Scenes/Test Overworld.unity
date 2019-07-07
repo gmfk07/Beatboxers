@@ -1111,7 +1111,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -172}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &570907351
 MonoBehaviour:
@@ -2441,6 +2441,7 @@ MonoBehaviour:
   inventorySlotPrefab: {fileID: 8363618747102028951, guid: ee217482a038b58449dc6d8d7a524dec,
     type: 3}
   inventorySlotParent: {fileID: 1924484839}
+  itemDescriptionText: {fileID: 570907351}
   inventorySlotRows: 3
   inventorySlotColumns: 8
   minInventorySlotX: 75

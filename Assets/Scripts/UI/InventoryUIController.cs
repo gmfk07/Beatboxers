@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUIController : Singleton<InventoryUIController>
 {
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject inventorySlotPrefab;
     [SerializeField] private GameObject inventorySlotParent;
+    [SerializeField] private Text itemDescriptionText;
 
     [SerializeField] private int inventorySlotRows;
     [SerializeField] private int inventorySlotColumns;
@@ -40,6 +42,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         int topRow = inventorySlotRows - 1;
         selected = new Vector2Int(0, topRow);
+
         CreateInventorySlots();
         CloseInventory();
     }
@@ -126,7 +129,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
             }
         }
     }
-    
+
     //Triggers the select effect on Attack or Defense equipment slots, based on itemBeingEquipped.
     private void SelectEquipmentSlots()
     {
@@ -181,7 +184,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
         }
     }
 
-    //Calls Select and Deselect on the relevant spots and moves selected to the new x and y, wrapping x and y around
+    //Calls Select and Deselect on the relevant spots and moves selected to the new x and y, wrapping x and y around, and finally updates the description
     private void MoveSelection(int newX, int newY)
     {
         int lastColumn = inventorySlotColumns - 1;
@@ -201,9 +204,11 @@ public class InventoryUIController : Singleton<InventoryUIController>
         DeselectSlot(selected);
         SelectSlot(newSelected);
         selected = newSelected;
+
+        UpdateDescription();
     }
 
-    //Listen for the inventory button being pressed and toggle the inventory.
+    //Listen for the inventory button being pressed and toggle the inventory, updating the description if the inventory is being opened.
     private void HandleInventoryToggle()
     {
         if (Input.GetButtonDown("Inventory"))
@@ -215,6 +220,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
             else if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().frozen)
             {
                 OpenInventory();
+                UpdateDescription();
             }
         }
     }
@@ -247,6 +253,19 @@ public class InventoryUIController : Singleton<InventoryUIController>
             int yPos = inventorySlotRows - 1 - Mathf.FloorToInt(i / inventorySlotColumns);
             InventorySlot slot = slotDict[new Vector2Int(xPos, yPos)];
             slot.SetItem(PlayerStats.Inventory[i]);
+        }
+    }
+
+    //Update the UI Description Text to display the currently selected item's description, or the empty string if nothing is selected
+    private void UpdateDescription()
+    {
+        if (slotDict.ContainsKey(selected))
+        {
+            itemDescriptionText.text = slotDict[selected].CurrentItem.itemDescription;
+        }
+        else
+        {
+            itemDescriptionText.text = "";
         }
     }
 
