@@ -15,5 +15,5 @@ MonoBehaviour:
   manaCost: 2
   itemName: Whack
   itemDescription: Does 2 Damage
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: dcb6924d9e704cc4d9467b99353aaf80, type: 3}
   damage: 2

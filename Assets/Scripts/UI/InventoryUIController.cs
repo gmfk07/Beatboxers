@@ -96,7 +96,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
                         if (downPressed)
                         {
                             attackSlotDown.SetItem(itemBeingEquipped);
-                            PlayerStats.leftAttack = attackEquipped;
+                            PlayerStats.downAttack = attackEquipped;
                         }
                     }
                     else if (selectedItemIsDefense)

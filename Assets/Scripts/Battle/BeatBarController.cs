@@ -48,7 +48,7 @@ public class BeatBarController : MonoBehaviour
         float songTime = GetTimer();
         foreach (float beatTime in beatTimes)
         {
-            if (songTime + gracePeriod > beatTime)
+            if (songTime + gracePeriod + beatMargin > beatTime)
                 result++;
         }
         return result;
