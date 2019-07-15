@@ -2456,6 +2456,8 @@ MonoBehaviour:
   defenseSlotLeft: {fileID: 912668637}
   defenseSlotDown: {fileID: 19192162}
   defenseSlotRight: {fileID: 1082793233}
+  defaultAttack: {fileID: 11400000, guid: fd45928d73dda8f418028ee43bc26fc7, type: 2}
+  defaultDefense: {fileID: 11400000, guid: aa4417189461047409296ec23ad2c860, type: 2}
   tempInventory:
   - {fileID: 11400000, guid: d384218f66e43574792b2bdce693789e, type: 2}
   - {fileID: 11400000, guid: 25e70ebde4d4acd4387a6398b805bda8, type: 2}

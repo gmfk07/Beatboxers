@@ -34,6 +34,9 @@ public class InventoryUIController : Singleton<InventoryUIController>
     [SerializeField] private InventorySlot defenseSlotDown;
     [SerializeField] private InventorySlot defenseSlotRight;
 
+    [SerializeField] private Attack defaultAttack;
+    [SerializeField] private Defense defaultDefense;
+
     public List<Item> tempInventory = new List<Item>(); //DELETE LATER!
 
     private void Start()
@@ -43,6 +46,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
         int topRow = inventorySlotRows - 1;
         selected = new Vector2Int(0, topRow);
 
+        PlayerStats.InitializeEquipment(defaultAttack, defaultDefense);
         CreateInventorySlots();
         CloseInventory();
     }

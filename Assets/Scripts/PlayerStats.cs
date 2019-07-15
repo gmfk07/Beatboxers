@@ -12,6 +12,7 @@ public static class PlayerStats
 
     public static List<Item> Inventory = new List<Item>();
 
+    //Take the appropriate amount of damage, taking defending into account
     public static void Damage(int dmg)
     {
         if (isDefending)
@@ -24,9 +25,17 @@ public static class PlayerStats
         //TODO: Do something if no health?
     }
 
+    //Set the current defense value and note that we're defending
     public static void Defend(Defense def)
     {
         isDefending = true;
         currentDefense = def;
+    }
+
+    //Set the player's attacks and defenses to defaultAttack and defaultDefense
+    public static void InitializeEquipment(Attack defaultAttack, Defense defaultDefense)
+    {
+        upAttack = downAttack = leftAttack = rightAttack = defaultAttack;
+        upDefense = downDefense = leftDefense = rightDefense = defaultDefense;
     }
 }
