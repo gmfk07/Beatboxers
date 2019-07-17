@@ -224,6 +224,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
             else if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().frozen)
             {
                 OpenInventory();
+                UpdateSlotItems();
                 UpdateDescription();
             }
         }

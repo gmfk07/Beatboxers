@@ -9,11 +9,10 @@ public class OverworldEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.rigidbody.tag == "Player")
+        if (collision.rigidbody.tag == "Player" && OverworldManager.Instance.OverworldFullyLoaded)
         {
             EnemyStats.currentEnemy = enemy;
-            Destroy(this);
-            OverworldManager.Instance.SaveGame();
+            OverworldManager.Instance.SaveGame(gameObject);
             SceneManager.LoadScene("Battle");
         }
     }

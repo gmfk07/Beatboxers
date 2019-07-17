@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BeatBarController : MonoBehaviour
 {
+    private const int SECONDS_PER_MINUTE = 60;
+
     public float beatWaitTime;
     public float beatMargin;
     public float gracePeriod;
@@ -21,9 +24,13 @@ public class BeatBarController : MonoBehaviour
     private int beatIndex;
     private float startTimer;
     private float timer;
-    private float[] beatTimes = new float[] { 1.764f, .588f * 4, .588f * 5, .588f * 6, .588f * 7, .588f * 8, .588f * 9, .588f * 10, .588f * 11 };
+
+    private float bpm = 102;
+    private float songLength = 197;
+    private List<float> beatTimes = new List<float>();
     private string beatShapes = "tdccdtsdt";
-    private float[] beatPotential = new float[] {0, 0, 1, .5f, 0, 0, 0, 1, .5f};
+    private List<float> beatPotentials = new List<float>();
+
     private Transform Mark;
     private Transform SpawnPoint;
     private Transform DespawnPoint;
@@ -32,6 +39,7 @@ public class BeatBarController : MonoBehaviour
 
     void Start()
     {
+        InitializeBeatmap();
         PlayerStats.upAttack = testUpAttack;
         PlayerStats.upDefense = testUpDefense;
         Mark = transform.Find("Mark");
@@ -39,7 +47,24 @@ public class BeatBarController : MonoBehaviour
         DespawnPoint = transform.Find("DespawnPoint");
         beatIndex = GetInitialBeatIndex();
     }
-    
+
+    //Initializes beatTimes based on bpm, initialize beatShapes randomly, initialize beatPotentials as a repeated pattern.
+    private void InitializeBeatmap()
+    {
+        float secondsPerBeat = SECONDS_PER_MINUTE / bpm;
+        float beatsInSong = songLength / secondsPerBeat;
+
+        char[] potentialShapeChars = new char[] { 't', 'd', 's', 'c' };
+        float[] beatPotentialsLoop = new float[] { 0, 0, 0, 1f, .5f };
+
+        for (int i = 1; i < beatsInSong; i++)
+        {
+            beatTimes.Add(secondsPerBeat * i);
+            beatShapes += potentialShapeChars[UnityEngine.Random.Range(0, potentialShapeChars.Length)];
+            beatPotentials.Add(beatPotentialsLoop[(i - 1) % (beatPotentialsLoop.Length - 1)]);
+        }
+    }
+
     //Returns what the initial beat index should be, using the current time in the song and grace period length to only include beats
     //that should reasonably be spawned.
     private int GetInitialBeatIndex()
@@ -128,7 +153,7 @@ public class BeatBarController : MonoBehaviour
     //Checks if a beat should be spawned, and if so, spawns it with the appropriate characteristics.
     private void BeatSpawn()
     {
-        if (beatIndex < beatTimes.Length && timer >= beatTimes[beatIndex] - beatWaitTime)
+        if (beatIndex < beatTimes.Count && timer >= beatTimes[beatIndex] - beatWaitTime)
         {
             GameObject obj = Instantiate(Beat, SpawnPoint);
             Beat bt = obj.GetComponent<Beat>();
@@ -151,10 +176,10 @@ public class BeatBarController : MonoBehaviour
             beats.Add(obj);
             bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x) / beatWaitTime;
 
-            if (beatPotential[beatIndex] >= target.attackMinimum)
+            if (beatPotentials[beatIndex] >= target.attackMinimum)
             {
                 bt.isAttackBeat = true;
-                bt.attack = target.GetAttack(beatPotential[beatIndex]);
+                bt.attack = target.GetAttack(beatPotentials[beatIndex]);
             }
             else
                 bt.isAttackBeat = false;

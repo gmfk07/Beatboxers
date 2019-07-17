@@ -8,18 +8,23 @@ using UnityEngine.SceneManagement;
 
 public class OverworldManager : Singleton<OverworldManager>
 {
-    private OverworldSave CreateOverworldSave()
+    public bool OverworldFullyLoaded;
+
+    private OverworldSave CreateOverworldSave(GameObject toRemove = null)
     {
         OverworldSave save = new OverworldSave();
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            OverworldEnemy oe = go.GetComponent<OverworldEnemy>();
-            Vector3 pos = go.transform.position;
-            save.names.Add(oe.enemy._name);
-            save.enemyXPos.Add(pos.x);
-            save.enemyYPos.Add(pos.y);
-            save.enemyZPos.Add(pos.z);
+            if (go != toRemove)
+            {
+                OverworldEnemy oe = go.GetComponent<OverworldEnemy>();
+                Vector3 pos = go.transform.position;
+                save.names.Add(oe.enemy._name);
+                save.enemyXPos.Add(pos.x);
+                save.enemyYPos.Add(pos.y);
+                save.enemyZPos.Add(pos.z);
+            }
         }
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         save.playerXPos = playerPos.x;
@@ -50,8 +55,15 @@ public class OverworldManager : Singleton<OverworldManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if (scene.name != "Battle" && SaveExists())
-            LoadGame();
+        OverworldFullyLoaded = false;
+        if (scene.name != "Battle")
+        {
+            if (SaveExists())
+            {
+                LoadGame();
+            }
+            OverworldFullyLoaded = true;
+        }
     }
 
     private static bool SaveExists()
@@ -59,9 +71,9 @@ public class OverworldManager : Singleton<OverworldManager>
         return File.Exists(Application.persistentDataPath + "/overworld.save");
     }
 
-    public void SaveGame()
+    public void SaveGame(GameObject toRemove = null)
     {
-        OverworldSave save = CreateOverworldSave();
+        OverworldSave save = CreateOverworldSave(toRemove);
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/overworld.save");

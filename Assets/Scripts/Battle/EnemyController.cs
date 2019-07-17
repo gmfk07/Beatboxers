@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour {
     
@@ -29,7 +30,7 @@ public class EnemyController : MonoBehaviour {
         if (health == 0)
         {
             Destroy(gameObject);
-            //TODO: The battle is won
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -44,5 +45,11 @@ public class EnemyController : MonoBehaviour {
                 targetKey = a;
         }
         return attackDict[targetKey];
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            SceneManager.LoadScene(1);
     }
 }

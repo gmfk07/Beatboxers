@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCTrigger : MonoBehaviour
 {
     private NPC parent;
-    [SerializeField] private bool playerNear = false;
+    private bool playerNear = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class NPCTrigger : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && playerNear)
         {
-            DialogController.Instance.HandleDialogPress(parent.Dialog);
+            DialogController.Instance.HandleDialogPress(parent.Dialog, parent.ItemToGive);
         }
     }
 

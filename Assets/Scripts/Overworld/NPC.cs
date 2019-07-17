@@ -5,4 +5,5 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     public List<string> Dialog = new List<string>();
+    public Item ItemToGive;
 }
