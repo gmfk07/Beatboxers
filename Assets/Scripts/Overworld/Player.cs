@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
             CheckMovement();
             CheckJump();
         }
+        else
+        {
+            GetComponent<Animator>().SetBool("isWalking", false);
+        }
     }
 
     // Checks if jump conditions are met, and if so, initiates jump.
@@ -47,15 +51,35 @@ public class Player : MonoBehaviour
 
         if (totalMovementIsGrounded)
         {
-            rb.MovePosition(rb.position + new Vector3(speed * horizontalAxis, 0, speed * verticalAxis) * Time.deltaTime);
+            Vector3 movement = new Vector3(speed * horizontalAxis, 0, speed * verticalAxis) * Time.deltaTime;
+            rb.MovePosition(rb.position + movement);
+            RotateAndAnimateWalking(movement);
         }
         else if (xMovementIsGrounded)
         {
-            rb.MovePosition(rb.position + new Vector3(speed * horizontalAxis, 0, 0) * Time.deltaTime);
+            Vector3 movement = new Vector3(speed * horizontalAxis, 0, 0) * Time.deltaTime;
+            rb.MovePosition(rb.position + movement);
+            RotateAndAnimateWalking(movement);
         }
         else if (zMovementIsGrounded)
         {
-            rb.MovePosition(rb.position + new Vector3(0, 0, speed * verticalAxis) * Time.deltaTime);
+            Vector3 movement = new Vector3(0, 0, speed * verticalAxis) * Time.deltaTime;
+            rb.MovePosition(rb.position + movement);
+            RotateAndAnimateWalking(movement);
+        }
+    }
+
+    //Rotate in the movement direction and start the walking animation if movement is nonzero, otherwise, stop the animation.
+    private void RotateAndAnimateWalking(Vector3 movement)
+    {
+        if (movement != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(movement);
+            GetComponent<Animator>().SetBool("isWalking", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("isWalking", false);
         }
     }
 
