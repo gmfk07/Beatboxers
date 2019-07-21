@@ -8,8 +8,13 @@ public class OverworldEnemyDatabase : Singleton<OverworldEnemyDatabase>
     public List<GameObject> prefabValues;
     public Dictionary<string, GameObject> enemyDict = new Dictionary<string, GameObject>();
 
-    private void Start()
+    private void Awake()
     {
+        if (FindObjectsOfType<OverworldEnemyDatabase>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
+
         for (int i=0; i < nameKeys.Count; i++)
         {
             enemyDict[nameKeys[i]] = prefabValues[i];

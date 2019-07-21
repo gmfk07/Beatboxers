@@ -2057,6 +2057,67 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1055603064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1055603066}
+  - component: {fileID: 1055603065}
+  - component: {fileID: 1055603067}
+  m_Layer: 0
+  m_Name: Enemy Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1055603065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055603064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc10ea38badfcbc4a92193d1a7b66d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameKeys:
+  - Trashman
+  prefabValues:
+  - {fileID: 3111149738922897838, guid: 6c2ffd1714399fc46a9433246b899ee7, type: 3}
+--- !u!4 &1055603066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055603064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1055603067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055603064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ad8d803f87e154188c8c041a66e274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OverworldFullyLoaded: 0
 --- !u!224 &1061156532 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8363618747102028944, guid: ee217482a038b58449dc6d8d7a524dec,
@@ -2417,8 +2478,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1681347487}
-  - component: {fileID: 1681347488}
-  - component: {fileID: 1681347489}
   - component: {fileID: 1681347490}
   - component: {fileID: 1681347491}
   - component: {fileID: 1681347492}
@@ -2443,35 +2502,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1681347488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681347486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ad8d803f87e154188c8c041a66e274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OverworldFullyLoaded: 0
---- !u!114 &1681347489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681347486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc10ea38badfcbc4a92193d1a7b66d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameKeys:
-  - Trashman
-  prefabValues:
-  - {fileID: 3111149738922897838, guid: 6c2ffd1714399fc46a9433246b899ee7, type: 3}
 --- !u!114 &1681347490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3808,7 +3838,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8296172667686591413}
     - target: {fileID: 4106305582142984910, guid: 2a8812120d34e484d88ef882e8d7127c,
         type: 3}
       propertyPath: m_ClearFlags

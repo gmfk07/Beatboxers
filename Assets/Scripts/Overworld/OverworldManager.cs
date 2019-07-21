@@ -95,7 +95,7 @@ public class OverworldManager : Singleton<OverworldManager>
             //Delete all enemies
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Enemy"))
             {
-                Destroy(go);
+                go.GetComponent<OverworldEnemy>().Unload();
             }
 
             //Reinstantiate the enemies

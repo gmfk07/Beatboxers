@@ -17,6 +17,7 @@ public class NPCTrigger : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && playerNear)
         {
+            Debug.Log(DialogController.Instance);
             DialogController.Instance.HandleDialogPress(parent.Dialog, parent.ItemToGive);
         }
     }
