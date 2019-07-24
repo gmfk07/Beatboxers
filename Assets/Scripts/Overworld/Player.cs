@@ -7,25 +7,27 @@ public class Player : MonoBehaviour
     public float Speed;
     public float JumpVelocity;
     public float DistanceToCheckGround;
-    [HideInInspector] public bool frozen = false;
+    public float Gravity;
+    [HideInInspector] public bool Frozen = false;
 
-    private Rigidbody rb;
     private Animator animator;
+    private CharacterController cc;
+    private float yVelocity;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }
 
     // Move and jump, if not frozen
     void FixedUpdate()
     {
-        if (!frozen)
+        if (!Frozen)
         {
+            HandleGrounding();
             CheckMovement();
-            CheckGrounded();
         }
         else
         {
@@ -34,19 +36,20 @@ public class Player : MonoBehaviour
     }
 
     // Checks if grounded, handling jumps and falling animations.
-    private void CheckGrounded()
+    private void HandleGrounding()
     {
-        if (IsGrounded(rb.position, DistanceToCheckGround))
+        if (IsGrounded(cc.transform.position, DistanceToCheckGround))
         {
             animator.SetBool("isGrounded", true);
             if (Input.GetButton("Jump"))
             {
-                rb.velocity = new Vector3(rb.velocity.x, JumpVelocity, rb.velocity.z);
+                yVelocity = JumpVelocity;
                 animator.SetTrigger("jump");
                 animator.SetBool("isGrounded", false);
             }
             else
             {
+                yVelocity = 0;
                 animator.ResetTrigger("jump");
                 animator.SetBool("isGrounded", true);
             }
@@ -60,30 +63,24 @@ public class Player : MonoBehaviour
     // Checks if movement conditions are met, and if so, moves.
     private void CheckMovement()
     {
+        yVelocity -= Gravity * Time.deltaTime;
+
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
-        bool xMovementIsGrounded = IsGrounded(rb.position + new Vector3(Speed * horizontalAxis, 0) * Time.deltaTime, Mathf.Infinity);
-        bool zMovementIsGrounded = IsGrounded(rb.position + new Vector3(0, 0, Speed * verticalAxis) * Time.deltaTime, Mathf.Infinity);
-        bool totalMovementIsGrounded = IsGrounded(rb.position + new Vector3(Speed * horizontalAxis, 0, Speed * verticalAxis) * Time.deltaTime, Mathf.Infinity);
 
-        if (totalMovementIsGrounded)
+        Vector3 movement = new Vector3(Speed * horizontalAxis, yVelocity, Speed * verticalAxis) * Time.deltaTime;
+
+        if (IsGrounded(cc.transform.position + movement, Mathf.Infinity, .3f))
         {
-            Vector3 movement = new Vector3(Speed * horizontalAxis, 0, Speed * verticalAxis) * Time.deltaTime;
-            rb.MovePosition(rb.position + movement);
-            RotateAndAnimateWalking(movement);
+            cc.Move(movement);
         }
-        else if (xMovementIsGrounded)
+        else
         {
-            Vector3 movement = new Vector3(Speed * horizontalAxis, 0, 0) * Time.deltaTime;
-            rb.MovePosition(rb.position + movement);
-            RotateAndAnimateWalking(movement);
+            movement = Vector3.up * yVelocity * Time.deltaTime;
+            cc.Move(movement);
         }
-        else if (zMovementIsGrounded)
-        {
-            Vector3 movement = new Vector3(0, 0, Speed * verticalAxis) * Time.deltaTime;
-            rb.MovePosition(rb.position + movement);
-            RotateAndAnimateWalking(movement);
-        }
+
+        RotateAndAnimateWalking(new Vector3(horizontalAxis, 0, verticalAxis));
     }
 
     //Rotate in the movement direction and start the walking animation if movement is nonzero, otherwise, stop the animation.
@@ -100,22 +97,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(rb.position + Vector3.up * .2f, .2f);
-    }
-
     //Checks if an object exists at most dist down from the player at position.
-    bool IsGrounded(Vector3 position, float dist)
+    bool IsGrounded(Vector3 position, float dist, float fractionOfRadius = 1)
     {
         float xExtent = GetComponent<Collider>().bounds.extents.x;
         float zExtent = GetComponent<Collider>().bounds.extents.z;
 
-        bool centerHit = Physics.Raycast(position + Vector3.up * .2f, Vector3.down, dist);
-        bool leftHit = Physics.Raycast(position + Vector3.left * xExtent, Vector3.down, dist);
-        bool rightHit = Physics.Raycast(position + Vector3.right * xExtent, Vector3.down, dist);
-        bool frontHit = Physics.Raycast(position + Vector3.forward * zExtent, Vector3.down, dist);
-        bool backHit = Physics.Raycast(position + Vector3.back * zExtent, Vector3.down, dist);
+        bool centerHit = Physics.Raycast(position + Vector3.up * .2f, transform.TransformDirection(Vector3.down), dist);
+        bool leftHit = Physics.Raycast(position + Vector3.left * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
+        bool rightHit = Physics.Raycast(position + Vector3.right * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
+        bool frontHit = Physics.Raycast(position + Vector3.forward * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
+        bool backHit = Physics.Raycast(position + Vector3.back * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
 
         return centerHit || leftHit || rightHit || frontHit || backHit;
     }

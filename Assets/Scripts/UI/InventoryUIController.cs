@@ -221,7 +221,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
             {
                 CloseInventory();
             }
-            else if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().frozen)
+            else if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Frozen)
             {
                 OpenInventory();
                 UpdateSlotItems();
@@ -279,7 +279,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
     {
         inventoryPanel.SetActive(true);
         displayingInventory = true;
-        player.frozen = true;
+        player.Frozen = true;
     }
 
     //Turn off the inventory panel and reenable movement
@@ -289,7 +289,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
         DeselectEquipmentSlots();
         inventoryPanel.SetActive(false);
         displayingInventory = false;
-        player.frozen = false;
+        player.Frozen = false;
     }
 
     //Trigger the select method of a given slot to make it look selected

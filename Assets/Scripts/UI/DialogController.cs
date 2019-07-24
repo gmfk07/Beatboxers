@@ -59,7 +59,7 @@ public class DialogController : Singleton<DialogController>
             newItem = toGet;
         }
 
-        player.frozen = true;
+        player.Frozen = true;
 
         isDisplayingDialog = true;
         currentDialog = new Queue<string>(dialog);
@@ -87,7 +87,7 @@ public class DialogController : Singleton<DialogController>
     //Close the dialog window and resume normal gameplay, or do the give item text and give the item
     private void EndDialog()
     {
-        player.frozen = false;
+        player.Frozen = false;
         isDisplayingDialog = false;
         DialogText.text = "";
         DialogPanel.SetActive(false);
