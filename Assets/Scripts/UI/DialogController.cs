@@ -32,6 +32,10 @@ public class DialogController : Singleton<DialogController>
     //Handle dialog button being pressed around an NPC with dialog dialog and giving item toGet
     public void HandleDialogPress(List<string> dialog, Item toGet = null)
     {
+        //Leave if player is in inventory
+        if (!isDisplayingDialog && player.Frozen)
+            return;
+
         if (!isDisplayingDialog)
         {
             BeginDialog(dialog, toGet);

@@ -8,11 +8,14 @@ public class Player : MonoBehaviour
     public float JumpVelocity;
     public float DistanceToCheckGround;
     public float Gravity;
+    public float MaxJumpHoldTime;
     [HideInInspector] public bool Frozen = false;
 
     private Animator animator;
     private CharacterController cc;
     private float yVelocity;
+    private bool isJumping = false;
+    private float startedJumpingTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour
                 yVelocity = JumpVelocity;
                 animator.SetTrigger("jump");
                 animator.SetBool("isGrounded", false);
+                isJumping = true;
+                startedJumpingTime = Time.time;
             }
             else
             {
@@ -56,6 +61,14 @@ public class Player : MonoBehaviour
         }
         else
         {
+            if (isJumping && Input.GetButton("Jump") && Time.time - startedJumpingTime <= MaxJumpHoldTime)
+            {
+                yVelocity = JumpVelocity;
+            }
+            else
+            {
+                isJumping = false;
+            }
             animator.SetBool("isGrounded", false);
         }
     }

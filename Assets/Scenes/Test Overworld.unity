@@ -3160,7 +3160,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3a391aa0c7b7f7c4ab1d378faf3117e6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -3776,7 +3776,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3a391aa0c7b7f7c4ab1d378faf3117e6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -4073,7 +4073,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172667686591413}
   m_LocalRotation: {x: -0, y: 0.99989027, z: -0, w: -0.014814793}
-  m_LocalPosition: {x: 4.58, y: -0.047, z: 3.3137932}
+  m_LocalPosition: {x: 4.58, y: 1.4, z: 3.3137932}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2030955232}
@@ -4512,10 +4512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071090f81997f994db678f0979c3e647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2.5
-  JumpVelocity: 6
+  Speed: 3.5
+  JumpVelocity: 4
   DistanceToCheckGround: 0.2
-  Gravity: 1
+  Gravity: 9.8
+  MaxJumpHoldTime: 0.25
   Frozen: 0
 --- !u!143 &8296172667686591415
 CharacterController:
