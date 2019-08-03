@@ -3833,7 +3833,12 @@ PrefabInstance:
     - target: {fileID: 4106305582142984896, guid: 2a8812120d34e484d88ef882e8d7127c,
         type: 3}
       propertyPath: lerpSpeedY
-      value: 10
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106305582142984896, guid: 2a8812120d34e484d88ef882e8d7127c,
+        type: 3}
+      propertyPath: yDistAbovePlayer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4106305582142984910, guid: 2a8812120d34e484d88ef882e8d7127c,
         type: 3}
