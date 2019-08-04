@@ -401,7 +401,7 @@ PrefabInstance:
     - target: {fileID: 3006396465559217332, guid: a986b6b0f700bd448a4519169d5b2223,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.61
+      value: -6.26
       objectReference: {fileID: 0}
     - target: {fileID: 3006396465559217332, guid: a986b6b0f700bd448a4519169d5b2223,
         type: 3}
@@ -446,6 +446,11 @@ PrefabInstance:
     - target: {fileID: 3006396465559217332, guid: a986b6b0f700bd448a4519169d5b2223,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798474878560082511, guid: a986b6b0f700bd448a4519169d5b2223,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2085,26 +2090,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8363618746785305124}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1065455452 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3111149738922897838, guid: 6c2ffd1714399fc46a9433246b899ee7,
-    type: 3}
-  m_PrefabInstance: {fileID: 3111149738285867640}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1065455453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065455452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6f9efa9c5e2ea4bbc831884dc95f2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Displacement: {x: -1, y: 0, z: 0}
-  BeatsPerPeriod: 2
 --- !u!1001 &1082793231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3323,6 +3308,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9143528901910066869, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: dialog.Array.size
@@ -3519,6 +3509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trashman
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111149738922897838, guid: 6c2ffd1714399fc46a9433246b899ee7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3111149738922897828, guid: 6c2ffd1714399fc46a9433246b899ee7,
         type: 3}
@@ -4476,7 +4471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 4.5
   JumpVelocity: 4.25
-  DistanceToCheckGround: 0.2
+  DistanceToCheckGround: 0.09
   Gravity: 9.8
   MaxJumpHoldTime: 0.25
   Frozen: 0

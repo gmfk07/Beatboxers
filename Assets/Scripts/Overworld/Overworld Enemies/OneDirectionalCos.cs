@@ -34,6 +34,6 @@ public class OneDirectionalCos : MonoBehaviour
         float x = startingPosition.x + Mathf.Cos(sinInput) * Displacement.x;
         float y = startingPosition.y + Mathf.Cos(sinInput) * Displacement.y;
         float z = startingPosition.z + Mathf.Cos(sinInput) * Displacement.z;
-        gameObject.GetComponent<Rigidbody>().position = new Vector3(x, y, z);
+        transform.position = new Vector3(x, y, z);
     }
 }

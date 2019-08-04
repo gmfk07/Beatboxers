@@ -9,9 +9,10 @@ public class OverworldEnemy : MonoBehaviour
 
     private bool unloaded = false;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.rigidbody.tag == "Player" && OverworldManager.Instance.OverworldFullyLoaded && !unloaded)
+        Debug.Log(collider.gameObject.name);
+        if (collider.gameObject.tag == "Player" && OverworldManager.Instance.OverworldFullyLoaded && !unloaded)
         {
             EnemyStats.currentEnemy = enemy;
             OverworldManager.Instance.SaveGame(gameObject);

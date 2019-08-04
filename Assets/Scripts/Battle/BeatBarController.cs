@@ -14,6 +14,7 @@ public class BeatBarController : MonoBehaviour
     public GameObject Beat;
     public int manaCount = 0;
     public int manaMax = 10;
+    public int safeBeats = 3;
     public Text manaCounter;
     public EnemyController target;
 
@@ -24,6 +25,7 @@ public class BeatBarController : MonoBehaviour
     private int beatIndex;
     private float startTimer;
     private float timer;
+    private int safeBeatsLeft;
 
     private float bpm = 102;
     private float songLength = 197;
@@ -40,6 +42,8 @@ public class BeatBarController : MonoBehaviour
     void Start()
     {
         InitializeBeatmap();
+        safeBeatsLeft = safeBeats;
+
         PlayerStats.upAttack = testUpAttack;
         PlayerStats.upDefense = testUpDefense;
         Mark = transform.Find("Mark");
@@ -175,14 +179,28 @@ public class BeatBarController : MonoBehaviour
 
             beats.Add(obj);
             bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x) / beatWaitTime;
-
-            if (beatPotentials[beatIndex] >= target.attackMinimum)
+            if (safeBeatsLeft > 0)
             {
-                bt.isAttackBeat = true;
-                bt.attack = target.GetAttack(beatPotentials[beatIndex]);
+                safeBeatsLeft--;
+                bt.isAttackBeat = false;
             }
             else
-                bt.isAttackBeat = false;
+            {
+                if (beatPotentials[beatIndex] >= target.attackMinimum)
+                {
+                    bt.isAttackBeat = true;
+                    bt.attack = target.GetAttack(beatPotentials[beatIndex]);
+                }
+                else
+                {
+                    bt.isAttackBeat = false;
+                }
+            }
+
+            if (safeBeatsLeft > 0)
+            {
+                safeBeatsLeft--;
+            }
 
             beatIndex++;
         }
@@ -195,6 +213,7 @@ public class BeatBarController : MonoBehaviour
             return false;
         manaAmount -= attack.manaCost;
         target.Hit(attack);
+        AttackAnimationController.Instance.PlayPlayerAttackAnimation(attack.itemName);
         return true;
     }
 
