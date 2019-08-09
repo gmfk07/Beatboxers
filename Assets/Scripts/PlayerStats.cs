@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.IO;
 
 public static class PlayerStats
 {
@@ -21,8 +23,23 @@ public static class PlayerStats
             dmg -= Mathf.RoundToInt(dmg * (currentDefense.relativeProtection));
         }
         health = Mathf.Max(health - dmg, 0);
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle"))
+        {
+            HealthDisplay.Instance.UpdateHealthMeter();
+        }
+
         isDefending = false;
-        //TODO: Do something if no health?
+
+        bool overworldSaveExists = File.Exists(Application.persistentDataPath + "/overworld.save");
+        if (health == 0)
+        {
+            if (overworldSaveExists)
+            {
+                File.Delete(Application.persistentDataPath + "/overworld.save");
+            }
+            SceneManager.LoadScene("Test Overworld");
+        }
     }
 
     //Set the current defense value and note that we're defending
