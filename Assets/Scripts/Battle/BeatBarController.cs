@@ -110,7 +110,9 @@ public class BeatBarController : MonoBehaviour
             Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
         //Did the player press a key and miss?
         if (buttonJustPressed)
+        {
             punish = true;
+        }
         foreach (GameObject beat in beats)
         {
             if (beat.transform.position.x <= DespawnPoint.position.x)

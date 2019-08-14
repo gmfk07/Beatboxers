@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d123c8ad4efd042a4adf2a61e85a74, type: 3}
   m_Name: TrashAttack
   m_EditorClassIdentifier: 
-  damage: 2
-  danger: 0.5
+  Damage: 2
+  Danger: 0.5
+  AttackName: TrashAttack

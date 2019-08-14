@@ -14,7 +14,7 @@ public class Beat : MonoBehaviour
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
 
         if (isAttackBeat)
-            sr.color = new Color(1, 1 - attack.danger, 1 - attack.danger, 1);
+            sr.color = new Color(1, 1 - attack.Danger, 1 - attack.Danger, 1);
         switch (shape)
         {
             case GlobalStats.Shape.CIRCLE:
@@ -45,6 +45,9 @@ public class Beat : MonoBehaviour
     {
         //Attack the player
         if (isAttackBeat)
-            PlayerStats.Damage(attack.damage);
+        {
+            PlayerStats.Damage(attack.Damage);
+            AttackAnimationController.Instance.PlayEnemyAttackAnimation(attack.AttackName);
+        }
     }
 }
