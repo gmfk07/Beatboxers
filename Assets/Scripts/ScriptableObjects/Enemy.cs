@@ -14,4 +14,7 @@ public class Enemy : ScriptableObject
     //Round beat potential down to the nearest key, the corresponding EnemyAttack is the EnemyAttack that will be executed
     public Dictionary<float, EnemyAttack> attackDict = new Dictionary<float, EnemyAttack>();
 
+    //The keys and values that'll go into attackDict
+    public List<float> attackDictKeys = new List<float>();
+    public List<EnemyAttack> attackDictValues = new List<EnemyAttack>();
 }

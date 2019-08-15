@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f9de7a236f94444281762247c3acb62, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fdbc75db30fc974fae799009b43421a, type: 3}
   m_Name: Trashman
   m_EditorClassIdentifier: 
   _name: Trashman
-  health: 10
-  attackMinimum: 0.4
+  health: 4
+  attackMinimum: 0.5
+  attackDictKeys:
+  - 0.4
+  attackDictValues:
+  - {fileID: 11400000, guid: 5c90b4bcf270efe41b90ccad808757c4, type: 2}
