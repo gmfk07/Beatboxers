@@ -18,10 +18,6 @@ public class BeatBarController : MonoBehaviour
     public Text manaCounter;
     public EnemyController target;
 
-    //Just here for testing, please remove later
-    public Attack testUpAttack;
-    public Defense testUpDefense;
-
     private int beatIndex;
     private float startTimer;
     private float timer;
@@ -44,8 +40,6 @@ public class BeatBarController : MonoBehaviour
         InitializeBeatmap();
         safeBeatsLeft = safeBeats;
 
-        PlayerStats.upAttack = testUpAttack;
-        PlayerStats.upDefense = testUpDefense;
         Mark = transform.Find("Mark");
         SpawnPoint = transform.Find("SpawnPoint");
         DespawnPoint = transform.Find("DespawnPoint");
@@ -188,7 +182,7 @@ public class BeatBarController : MonoBehaviour
             }
             else
             {
-                if (beatPotentials[beatIndex] >= target.attackMinimum)
+                if (beatPotentials[beatIndex] >= target.AttackMinimum)
                 {
                     bt.isAttackBeat = true;
                     bt.attack = target.GetAttack(beatPotentials[beatIndex]);

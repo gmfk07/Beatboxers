@@ -32,14 +32,23 @@ public static class PlayerStats
         isDefending = false;
 
         bool overworldSaveExists = File.Exists(Application.persistentDataPath + "/overworld.save");
+
         if (health == 0)
         {
-            if (overworldSaveExists)
-            {
-                File.Delete(Application.persistentDataPath + "/overworld.save");
-            }
-            SceneManager.LoadScene("Test Overworld");
+            HandlePlayerDeath(overworldSaveExists);
         }
+    }
+    
+    //Erase temp save, reload battle scene, refill HP
+    private static void HandlePlayerDeath(bool overworldSaveExists)
+    {
+        if (overworldSaveExists)
+        {
+            File.Delete(Application.persistentDataPath + "/overworld.save");
+        }
+
+        health = 10;
+        SceneManager.LoadScene("Test Overworld");
     }
 
     //Set the current defense value and note that we're defending
