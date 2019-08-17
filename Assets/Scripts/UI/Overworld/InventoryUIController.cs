@@ -46,9 +46,11 @@ public class InventoryUIController : Singleton<InventoryUIController>
         int topRow = inventorySlotRows - 1;
         selected = new Vector2Int(0, topRow);
 
-        PlayerStats.InitializeEquipment(defaultAttack, defaultDefense);
+        PlayerStats.TryInitializeEquipment(defaultAttack, defaultDefense);
+
         CreateInventorySlots();
         CloseInventory();
+        InitializeEquippedSlots();
     }
 
     private void Update()
@@ -302,5 +304,19 @@ public class InventoryUIController : Singleton<InventoryUIController>
     private void DeselectSlot(Vector2Int toDeselect)
     {
         slotDict[toDeselect].Deselect();
+    }
+
+    //Initialize the equipped item slots with the already equipped items.
+    private void InitializeEquippedSlots()
+    {
+        attackSlotUp.SetItem(PlayerStats.upAttack);
+        attackSlotLeft.SetItem(PlayerStats.leftAttack);
+        attackSlotDown.SetItem(PlayerStats.downAttack);
+        attackSlotRight.SetItem(PlayerStats.rightAttack);
+
+        defenseSlotUp.SetItem(PlayerStats.upDefense);
+        defenseSlotLeft.SetItem(PlayerStats.leftDefense);
+        defenseSlotDown.SetItem(PlayerStats.downDefense);
+        defenseSlotRight.SetItem(PlayerStats.rightDefense);
     }
 }

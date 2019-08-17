@@ -2438,8 +2438,6 @@ MonoBehaviour:
   safeBeats: 3
   manaCounter: {fileID: 1115249155}
   target: {fileID: 2106407241}
-  testUpAttack: {fileID: 11400000, guid: d384218f66e43574792b2bdce693789e, type: 2}
-  testUpDefense: {fileID: 11400000, guid: 25e70ebde4d4acd4387a6398b805bda8, type: 2}
 --- !u!212 &1834629366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3260,7 +3258,7 @@ GameObject:
   - component: {fileID: 2106407242}
   - component: {fileID: 2106407241}
   m_Layer: 0
-  m_Name: Trashman
+  m_Name: EnemyController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3278,12 +3276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8da41a0c2683304f85797c6147ffe79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  attackMinimum: 0.4
-  attackDictKeys:
-  - 0.4
-  attackDictValues:
-  - {fileID: 11400000, guid: 5c90b4bcf270efe41b90ccad808757c4, type: 2}
+  AttackMinimum: 0
+  secondsInDeathDelay: 1
 --- !u!212 &2106407242
 SpriteRenderer:
   m_ObjectHideFlags: 0

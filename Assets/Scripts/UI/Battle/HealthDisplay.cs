@@ -8,6 +8,12 @@ public class HealthDisplay : Singleton<HealthDisplay>
     [SerializeField] private List<Sprite> healthMeterSprites;
     [SerializeField] private Image healthMeterImage;
 
+    private void Start()
+    {
+        UpdateHealthMeter();
+    }
+
+    //Updates the health display
     public void UpdateHealthMeter()
     {
         healthMeterImage.sprite = healthMeterSprites[PlayerStats.health];

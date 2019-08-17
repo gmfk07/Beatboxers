@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour {
     
-    public int health;
+    private int health;
     //The enemy will attack on all potential attack beats with potential values above or equal to attackMinimum
     public float AttackMinimum;
 
@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour {
     {
         Enemy enemy = EnemyStats.currentEnemy;
 
+        health = enemy.health;
+
         AttackMinimum = Mathf.Min(enemy.attackDictKeys.ToArray());
 
         //Set up the actual dictionary
@@ -25,15 +27,22 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    //Take damage
     public void Hit(Attack attack)
     {
         int damage = attack.damage;
         health = Mathf.Max(health - damage, 0);
+
         if (health == 0)
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene(1);
+            Die();
         }
+    }
+
+    //Handle the enemy death
+    private void Die()
+    {
+        SceneManager.LoadScene(1);
     }
 
     //Get the attack associated with a given attackPotential, given that the attackPotential is greater than attackMinimum

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class OverworldEnemyDatabase : Singleton<OverworldEnemyDatabase>
 {
-    public List<string> nameKeys;
-    public List<GameObject> prefabValues;
+    public List<GameObject> enemyPrefabs;
+
+    //Maps names to enemy prefabs
     public Dictionary<string, GameObject> enemyDict = new Dictionary<string, GameObject>();
 
     private void Awake()
@@ -15,9 +16,9 @@ public class OverworldEnemyDatabase : Singleton<OverworldEnemyDatabase>
             Destroy(gameObject);
         }
 
-        for (int i=0; i < nameKeys.Count; i++)
+        for (int i=0; i < enemyPrefabs.Count; i++)
         {
-            enemyDict[nameKeys[i]] = prefabValues[i];
+            enemyDict[enemyPrefabs[i].name] = enemyPrefabs[i];
         }
 
         DontDestroyOnLoad(gameObject);

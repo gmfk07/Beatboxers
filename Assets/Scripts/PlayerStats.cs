@@ -12,6 +12,8 @@ public static class PlayerStats
     private static bool isDefending = false;
     private static Defense currentDefense;
 
+    private static bool equipmentInitialized = false;
+
     public static List<Item> Inventory = new List<Item>();
 
     //Take the appropriate amount of damage, taking defending into account
@@ -58,10 +60,14 @@ public static class PlayerStats
         currentDefense = def;
     }
 
-    //Set the player's attacks and defenses to defaultAttack and defaultDefense
-    public static void InitializeEquipment(Attack defaultAttack, Defense defaultDefense)
+    //If attacks and defenses haven't been initialized, sets the player's attacks and defenses to defaultAttack and defaultDefense and marks initialization
+    public static void TryInitializeEquipment(Attack defaultAttack, Defense defaultDefense)
     {
-        upAttack = downAttack = leftAttack = rightAttack = defaultAttack;
-        upDefense = downDefense = leftDefense = rightDefense = defaultDefense;
+        if (!equipmentInitialized)
+        {
+            upAttack = downAttack = leftAttack = rightAttack = defaultAttack;
+            upDefense = downDefense = leftDefense = rightDefense = defaultDefense;
+            equipmentInitialized = true;
+        }
     }
 }
