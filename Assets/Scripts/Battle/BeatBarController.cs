@@ -99,9 +99,7 @@ public class BeatBarController : MonoBehaviour
     private bool BeatDespawn()
     {
         bool punish = false;
-        bool buttonJustPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)
-            || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
-            Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
+        bool buttonJustPressed = CheckButtonPressed();
         //Did the player press a key and miss?
         if (buttonJustPressed)
         {
@@ -157,21 +155,7 @@ public class BeatBarController : MonoBehaviour
         {
             GameObject obj = Instantiate(Beat, SpawnPoint);
             Beat bt = obj.GetComponent<Beat>();
-            switch (beatShapes[beatIndex])
-            {
-                case 's':
-                    bt.shape = GlobalStats.Shape.SQUARE;
-                    break;
-                case 't':
-                    bt.shape = GlobalStats.Shape.TRIANGLE;
-                    break;
-                case 'd':
-                    bt.shape = GlobalStats.Shape.DIAMOND;
-                    break;
-                case 'c':
-                    bt.shape = GlobalStats.Shape.CIRCLE;
-                    break;
-            }
+            SetBeatShape(bt);
 
             beats.Add(obj);
             bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x) / beatWaitTime;
@@ -200,6 +184,34 @@ public class BeatBarController : MonoBehaviour
 
             beatIndex++;
         }
+    }
+
+    //Set the given beat's shape based on the given char in beatShapes.
+    private void SetBeatShape(Beat beat)
+    {
+        switch (beatShapes[beatIndex])
+        {
+            case 's':
+                beat.shape = GlobalStats.Shape.SQUARE;
+                break;
+            case 't':
+                beat.shape = GlobalStats.Shape.TRIANGLE;
+                break;
+            case 'd':
+                beat.shape = GlobalStats.Shape.DIAMOND;
+                break;
+            case 'c':
+                beat.shape = GlobalStats.Shape.CIRCLE;
+                break;
+        }
+    }
+
+    //Returns true if an attack or defense or mana gain was input, false otherwise.
+    private bool CheckButtonPressed()
+    {
+        return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)
+                    || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
+                    Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
     }
 
     //Returns false if manaAmount is less than the provided amount's cost, otherwise reduces manaAmount by the cost, attacks, and returns true

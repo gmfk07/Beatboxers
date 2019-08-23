@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class EnemyController : MonoBehaviour {
     
     private int health;
+
     //The enemy will attack on all potential attack beats with potential values above or equal to attackMinimum
-    public float AttackMinimum;
+    [HideInInspector] public float AttackMinimum;
 
     //Round beat potential down to the nearest key, the corresponding EnemyAttack is the EnemyAttack that will be executed
     private Dictionary<float, EnemyAttack> attackDict = new Dictionary<float, EnemyAttack>();
@@ -56,11 +57,5 @@ public class EnemyController : MonoBehaviour {
                 targetKey = a;
         }
         return attackDict[targetKey];
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-            SceneManager.LoadScene(1);
     }
 }

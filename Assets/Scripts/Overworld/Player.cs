@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     public float Speed;
     public float JumpVelocity;
-    public float DistanceToCheckGround;
+    public float DistanceToCheckGrounded;
+    public float DistanceToCheckInBounds;
     public float Gravity;
     public float MaxJumpHoldTime;
     [HideInInspector] public bool Frozen = false;
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
     private float yVelocity;
     private bool isJumping = false;
     private float startedJumpingTime = 0;
+
+    [SerializeField] private float fractionOfRadiusForInBoundsCheck;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +44,7 @@ public class Player : MonoBehaviour
     // Checks if grounded, handling jumps and falling animations.
     private void HandleGrounding()
     {
-        if (IsGrounded(cc.transform.position, DistanceToCheckGround))
+        if (CheckGrounded())
         {
             animator.SetBool("isGrounded", true);
             if (Input.GetButton("Jump"))
@@ -82,8 +85,9 @@ public class Player : MonoBehaviour
         float verticalAxis = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(Speed * horizontalAxis, yVelocity, Speed * verticalAxis) * Time.deltaTime;
+        bool isInBounds = CheckInBounds(cc.transform.position + movement, fractionOfRadiusForInBoundsCheck);
 
-        if (IsGrounded(cc.transform.position + movement, Mathf.Infinity, .3f))
+        if (isInBounds)
         {
             cc.Move(movement);
         }
@@ -110,18 +114,26 @@ public class Player : MonoBehaviour
         }
     }
 
-    //Checks if an object exists at most dist down from the player at position.
-    bool IsGrounded(Vector3 position, float dist, float fractionOfRadius = 1)
+    //Checks if the player is grounded.
+    bool CheckGrounded()
     {
-        float xExtent = GetComponent<Collider>().bounds.extents.x;
-        float zExtent = GetComponent<Collider>().bounds.extents.z;
+        Vector3 bottomOfCapsuleSpherePosition = new Vector3(cc.transform.position.x, cc.transform.position.y + cc.radius, cc.transform.position.z);
 
-        bool centerHit = Physics.Raycast(position + Vector3.up * .2f, transform.TransformDirection(Vector3.down), dist);
-        bool leftHit = Physics.Raycast(position + Vector3.left * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
-        bool rightHit = Physics.Raycast(position + Vector3.right * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
-        bool frontHit = Physics.Raycast(position + Vector3.forward * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
-        bool backHit = Physics.Raycast(position + Vector3.back * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), dist);
+        return Physics.CheckCapsule(bottomOfCapsuleSpherePosition, bottomOfCapsuleSpherePosition + DistanceToCheckGrounded * Vector3.down, cc.radius);
+    }
 
-        return centerHit || leftHit || rightHit || frontHit || backHit;
+    //Checks if the player would be in bounds at position position (aka, checks that radius * fractionOfRadius is above ground at some distance).
+    bool CheckInBounds(Vector3 position, float fractionOfRadius)
+    {
+        float xExtent = cc.bounds.extents.x;
+        float zExtent = cc.bounds.extents.z;
+
+        bool centerHit = Physics.Raycast(position, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool leftHit = Physics.Raycast(position + Vector3.left * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool rightHit = Physics.Raycast(position + Vector3.right * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool frontHit = Physics.Raycast(position + Vector3.forward * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool backHit = Physics.Raycast(position + Vector3.back * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+
+        return centerHit && leftHit && rightHit && frontHit && backHit;
     }
 }
