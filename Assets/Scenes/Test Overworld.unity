@@ -1942,17 +1942,17 @@ PrefabInstance:
     - target: {fileID: 8883835694363192036, guid: 3b619edcf4a9048469bd110fa9e2f192,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.53684425
+      value: 7.75
       objectReference: {fileID: 0}
     - target: {fileID: 8883835694363192036, guid: 3b619edcf4a9048469bd110fa9e2f192,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55750024
+      value: 0.511
       objectReference: {fileID: 0}
     - target: {fileID: 8883835694363192036, guid: 3b619edcf4a9048469bd110fa9e2f192,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.068342336
+      value: -1.57
       objectReference: {fileID: 0}
     - target: {fileID: 8883835694363192036, guid: 3b619edcf4a9048469bd110fa9e2f192,
         type: 3}
@@ -2002,6 +2002,18 @@ PrefabInstance:
       propertyPath: teleportSpots.Array.data[1]
       value: 
       objectReference: {fileID: 1887101236}
+    - target: {fileID: 1006177458, guid: 3b619edcf4a9048469bd110fa9e2f192, type: 3}
+      propertyPath: modelAnimator
+      value: 
+      objectReference: {fileID: 1006177458}
+    - target: {fileID: 1006177458, guid: 3b619edcf4a9048469bd110fa9e2f192, type: 3}
+      propertyPath: timeBeforeTeleportToAnimate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006177458, guid: 3b619edcf4a9048469bd110fa9e2f192, type: 3}
+      propertyPath: secondsBetweenTeleport
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7565922959891016028, guid: 3b619edcf4a9048469bd110fa9e2f192,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2704,7 +2716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887101235}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.36, y: 0, z: 0}
+  m_LocalPosition: {x: 22.36, y: 1.98, z: -1.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1407429279}
@@ -3114,13 +3126,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993802987}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 7.77, y: 0.53, z: -1.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1407429279}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2030955231
 GameObject:
   m_ObjectHideFlags: 0

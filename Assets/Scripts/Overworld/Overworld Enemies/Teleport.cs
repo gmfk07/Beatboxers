@@ -14,7 +14,19 @@ public class Teleport : MonoBehaviour
     private void Start()
     {
         UpdateTransform();
-        InvokeRepeating("TeleportToNextSpot", secondsBetweenTeleport, secondsBetweenTeleport);
+        StartCoroutine("TeleportCycle");
+    }
+
+    private IEnumerator TeleportCycle()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(secondsBetweenTeleport - timeBeforeTeleportToAnimate);
+            BeginPreTeleportAnimation();
+            yield return new WaitForSeconds(timeBeforeTeleportToAnimate);
+            TeleportToNextSpot();
+            BeginTeleportAnimation();
+        }
     }
 
     //Teleport to the next spot in teleportSpots and update position, resetting teleportSpotIndex when the end of the list is reached.
@@ -28,13 +40,15 @@ public class Teleport : MonoBehaviour
     //Sends the trigger "TeleportIncoming", which should begin playing modelAnimator's pre-teleport animation.
     private void BeginPreTeleportAnimation()
     {
-
+        modelAnimator.SetTrigger("TeleportIncoming");
+        Debug.Log("Teleport Incoming!");
     }
 
     //Sends the trigger "Teleport", which should begin playing modelAnimator's on-teleport animation.
     private void BeginTeleportAnimation()
     {
-
+        modelAnimator.SetTrigger("Teleport");
+        Debug.Log("Teleport Happening!");
     }
 
     //Updates this GameObject's transform based on its current teleportSpotIndex
