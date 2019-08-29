@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class EnemyController : MonoBehaviour {
     
     private int health;
+    [SerializeField] private Animator enemyAnimator;
 
     //The enemy will attack on all potential attack beats with potential values above or equal to attackMinimum
     [HideInInspector] public float AttackMinimum;
@@ -18,8 +19,8 @@ public class EnemyController : MonoBehaviour {
         Enemy enemy = EnemyStats.currentEnemy;
 
         health = enemy.health;
-
         AttackMinimum = Mathf.Min(enemy.attackDictKeys.ToArray());
+        enemyAnimator.Play(enemy._name);
 
         //Set up the actual dictionary
         for (int i = 0; i < enemy.attackDictKeys.Count; i++)
