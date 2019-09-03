@@ -10,33 +10,29 @@ public class OverworldManager : Singleton<OverworldManager>
 {
     public bool OverworldFullyLoaded;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     //Create an overworld save without the GameObject toRemove.
     private OverworldSave CreateOverworldSave(GameObject toRemove = null)
     {
         OverworldSave save = new OverworldSave();
+        save.EnemyNameList = new List<string>();
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyParent"))
         {
             if (go != toRemove)
             {
-                OverworldEnemy oe = go.GetComponentInChildren<OverworldEnemy>();
-                Vector3 pos = go.transform.position;
-                Quaternion rot = go.transform.rotation;
-
-                save.names.Add(oe.enemy._name);
-                save.enemyXPos.Add(pos.x);
-                save.enemyYPos.Add(pos.y);
-                save.enemyZPos.Add(pos.z);
-                save.enemyXRot.Add(rot.x);
-                save.enemyYRot.Add(rot.y);
-                save.enemyZRot.Add(rot.z);
-                save.enemyWRot.Add(rot.w);
+                save.EnemyNameList.Add(go.name);
             }
         }
+
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        save.playerXPos = playerPos.x;
-        save.playerYPos = playerPos.y;
-        save.playerZPos = playerPos.z;
+        save.PlayerXPos = playerPos.x;
+        save.PlayerYPos = playerPos.y;
+        save.PlayerZPos = playerPos.z;
         return save;
     }
 
@@ -102,27 +98,31 @@ public class OverworldManager : Singleton<OverworldManager>
             OverworldSave save = (OverworldSave)bf.Deserialize(file);
             file.Close();
 
-            //Delete all enemies
+            //Delete the enemies that aren't in the save
+            //If it has the same name, we call it the same!!!
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyParent"))
             {
-                go.GetComponentInChildren<OverworldEnemy>().Unload();
+                bool isInSave = false;
+
+                foreach (string name in save.EnemyNameList)
+                {
+                    Debug.Log(go.name + " vs " + name);
+
+                    if (go.name == name)
+                    {
+                        isInSave = true;
+                        break;
+                    }
+                }
+
+                if (!isInSave)
+                {
+                    go.GetComponentInChildren<OverworldEnemy>().Unload();
+                }
             }
 
-            //Reinstantiate the enemies
-            for (int i=0; i < save.names.Count; i++)
-            {
-                GameObject go = OverworldEnemyDatabase.Instance.enemyDict[save.names[i]];
-                float xPos = save.enemyXPos[i];
-                float yPos = save.enemyYPos[i];
-                float zPos = save.enemyZPos[i];
-                float xRot = save.enemyXRot[i];
-                float yRot = save.enemyYRot[i];
-                float zRot = save.enemyZRot[i];
-                float wRot = save.enemyWRot[i];
-                Instantiate(go, new Vector3(xPos, yPos, zPos), new Quaternion(xRot, yRot, zRot, wRot));
-            }
-            Vector3 newPos = new Vector3(save.playerXPos, save.playerYPos, save.playerZPos);
-            GameObject.FindGameObjectWithTag("Player").transform.position = newPos;
+            Vector3 newPlayerPos = new Vector3(save.PlayerXPos, save.PlayerYPos, save.PlayerZPos);
+            GameObject.FindGameObjectWithTag("Player").transform.position = newPlayerPos;
 
             Debug.Log("Game Loaded");
             File.Delete(Application.persistentDataPath + "/overworld.save");

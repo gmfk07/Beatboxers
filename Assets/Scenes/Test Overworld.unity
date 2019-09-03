@@ -2161,30 +2161,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1055603066}
-  - component: {fileID: 1055603065}
   - component: {fileID: 1055603067}
   m_Layer: 0
-  m_Name: Enemy Database
+  m_Name: Overworld Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1055603065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055603064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc10ea38badfcbc4a92193d1a7b66d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 1861745148461389211, guid: 6c2ffd1714399fc46a9433246b899ee7, type: 3}
-  - {fileID: 603505580348857846, guid: 3b619edcf4a9048469bd110fa9e2f192, type: 3}
 --- !u!4 &1055603066
 Transform:
   m_ObjectHideFlags: 0

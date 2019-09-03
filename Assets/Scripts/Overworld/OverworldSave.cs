@@ -5,15 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class OverworldSave
 {
-    public List<string> names = new List<string>();
-    public List<float> enemyXPos = new List<float>();
-    public List<float> enemyYPos = new List<float>();
-    public List<float> enemyZPos = new List<float>();
-    public List<float> enemyXRot = new List<float>();
-    public List<float> enemyYRot = new List<float>();
-    public List<float> enemyZRot = new List<float>();
-    public List<float> enemyWRot = new List<float>();
-    public float playerXPos;
-    public float playerYPos;
-    public float playerZPos;
+    public List<string> EnemyNameList;
+    public float PlayerXPos;
+    public float PlayerYPos;
+    public float PlayerZPos;
 }

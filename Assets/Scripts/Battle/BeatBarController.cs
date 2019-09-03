@@ -53,13 +53,13 @@ public class BeatBarController : MonoBehaviour
         float beatsInSong = songLength / secondsPerBeat;
 
         char[] potentialShapeChars = new char[] { 't', 'd', 's', 'c' };
-        float[] beatPotentialsLoop = new float[] { 0, 0, 0, 1f, .5f };
+        float[] beatPotentialsLoop = new float[] { 0, 0, 0, 1f, .25f };
 
         for (int i = 1; i < beatsInSong; i++)
         {
             beatTimes.Add(secondsPerBeat * i);
             beatShapes += potentialShapeChars[UnityEngine.Random.Range(0, potentialShapeChars.Length)];
-            beatPotentials.Add(beatPotentialsLoop[(i - 1) % (beatPotentialsLoop.Length - 1)]);
+            beatPotentials.Add(beatPotentialsLoop[(i - 1) % beatPotentialsLoop.Length]);
         }
     }
 
