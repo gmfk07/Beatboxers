@@ -2008,10 +2008,14 @@ PrefabInstance:
       objectReference: {fileID: 1006177458}
     - target: {fileID: 1006177458, guid: 3b619edcf4a9048469bd110fa9e2f192, type: 3}
       propertyPath: timeBeforeTeleportToAnimate
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1006177458, guid: 3b619edcf4a9048469bd110fa9e2f192, type: 3}
       propertyPath: secondsBetweenTeleport
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006177458, guid: 3b619edcf4a9048469bd110fa9e2f192, type: 3}
+      propertyPath: beatsBetweenTeleport
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7565922959891016028, guid: 3b619edcf4a9048469bd110fa9e2f192,

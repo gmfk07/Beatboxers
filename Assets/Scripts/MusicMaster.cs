@@ -5,6 +5,7 @@ using UnityEngine;
 public class MusicMaster : Singleton<MusicMaster>
 {
     public float SecondsPerBeat { get; private set; }
+    public bool Initialized = false;
     private FMOD.Studio.EventInstance musicEvent;
 
     void Start()
@@ -12,7 +13,9 @@ public class MusicMaster : Singleton<MusicMaster>
         SecondsPerBeat = .5882353f;
         musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Jump");
         musicEvent.start();
-        DontDestroyOnLoad(this.gameObject);
+        Initialized = true;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     //Returns the amount of seconds into the song the soundtrack currently is.

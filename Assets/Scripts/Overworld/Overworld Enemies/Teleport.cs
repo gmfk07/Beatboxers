@@ -5,7 +5,7 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
     [SerializeField] private List<Transform> teleportSpots = new List<Transform>();
-    [SerializeField] private float secondsBetweenTeleport;
+    [SerializeField] private float beatsBetweenTeleport;
     [SerializeField] private Animator modelAnimator;
     [SerializeField] private float timeBeforeTeleportToAnimate;
 
@@ -19,11 +19,24 @@ public class Teleport : MonoBehaviour
 
     private IEnumerator TeleportCycle()
     {
+        while (!MusicMaster.Instance.Initialized)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        float secondsBetweenTeleport = MusicMaster.Instance.SecondsPerBeat * beatsBetweenTeleport;
+
+        yield return new WaitForSeconds(secondsBetweenTeleport - (MusicMaster.Instance.GetPlaybackTime() % secondsBetweenTeleport));
+
+        //Main loop
         while (true)
         {
             yield return new WaitForSeconds(secondsBetweenTeleport - timeBeforeTeleportToAnimate);
+
             BeginPreTeleportAnimation();
+
             yield return new WaitForSeconds(timeBeforeTeleportToAnimate);
+
             TeleportToNextSpot();
             BeginTeleportAnimation();
         }
@@ -41,14 +54,12 @@ public class Teleport : MonoBehaviour
     private void BeginPreTeleportAnimation()
     {
         modelAnimator.SetTrigger("TeleportIncoming");
-        Debug.Log("Teleport Incoming!");
     }
 
     //Sends the trigger "Teleport", which should begin playing modelAnimator's on-teleport animation.
     private void BeginTeleportAnimation()
     {
         modelAnimator.SetTrigger("Teleport");
-        Debug.Log("Teleport Happening!");
     }
 
     //Updates this GameObject's transform based on its current teleportSpotIndex
