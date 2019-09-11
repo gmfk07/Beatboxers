@@ -87,10 +87,14 @@ public class BeatBarController : MonoBehaviour
 
         //Remove the beats in a separate enumeration
         foreach (GameObject beat in beatsToRemove)
+        {
             beats.Remove(beat);
+        }
 
         if (punish)
+        {
             manaCount = Mathf.Max(manaCount - 1, 0);
+        }
 
         beatsToRemove.Clear();
     }
@@ -158,22 +162,25 @@ public class BeatBarController : MonoBehaviour
             SetBeatShape(bt);
 
             beats.Add(obj);
-            bt.distancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x) / beatWaitTime;
+            bt.DistancePerSecond = (SpawnPoint.transform.position.x - Mark.transform.position.x) / beatWaitTime;
             if (safeBeatsLeft > 0)
             {
                 safeBeatsLeft--;
-                bt.isAttackBeat = false;
+                bt.IsAttackBeat = false;
             }
             else
             {
                 if (beatPotentials[beatIndex] >= target.AttackMinimum)
                 {
-                    bt.isAttackBeat = true;
-                    bt.attack = target.GetAttack(beatPotentials[beatIndex]);
+                    float danger = beatPotentials[beatIndex];
+
+                    bt.IsAttackBeat = true;
+                    bt.Attack = target.GetAttack(danger);
+                    bt.Danger = danger;
                 }
                 else
                 {
-                    bt.isAttackBeat = false;
+                    bt.IsAttackBeat = false;
                 }
             }
 
@@ -192,16 +199,16 @@ public class BeatBarController : MonoBehaviour
         switch (beatShapes[beatIndex])
         {
             case 's':
-                beat.shape = GlobalStats.Shape.SQUARE;
+                beat.Shape = GlobalStats.Shape.SQUARE;
                 break;
             case 't':
-                beat.shape = GlobalStats.Shape.TRIANGLE;
+                beat.Shape = GlobalStats.Shape.TRIANGLE;
                 break;
             case 'd':
-                beat.shape = GlobalStats.Shape.DIAMOND;
+                beat.Shape = GlobalStats.Shape.DIAMOND;
                 break;
             case 'c':
-                beat.shape = GlobalStats.Shape.CIRCLE;
+                beat.Shape = GlobalStats.Shape.CIRCLE;
                 break;
         }
     }

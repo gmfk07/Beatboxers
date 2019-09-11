@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Beat : MonoBehaviour
 {
-    public float distancePerSecond = 0;
-    public bool isAttackBeat;
-    public EnemyAttack attack;
-    public GlobalStats.Shape shape;
+    public float DistancePerSecond = 0;
+    public bool IsAttackBeat;
+    public EnemyAttack Attack;
+    public GlobalStats.Shape Shape;
+    public float Danger;
 
     private void Start()
     {
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
 
-        if (isAttackBeat)
-            sr.color = new Color(1, 1 - attack.Danger, 1 - attack.Danger, 1);
-        switch (shape)
+        if (IsAttackBeat)
+        {
+            sr.color = new Color(1, 1 - Danger, 1 - Danger, 1);
+        }
+        switch (Shape)
         {
             case GlobalStats.Shape.CIRCLE:
                 sr.sprite = GlobalStats.circleBeat;
@@ -37,17 +40,17 @@ public class Beat : MonoBehaviour
 
     void Update()
     {
-        float movement = distancePerSecond * Time.deltaTime;
+        float movement = DistancePerSecond * Time.deltaTime;
         gameObject.transform.position += new Vector3(-movement, 0);
     }
 
     void OnDestroy()
     {
         //Attack the player
-        if (isAttackBeat)
+        if (IsAttackBeat)
         {
-            PlayerStats.Damage(attack.Damage);
-            AttackAnimationController.Instance.PlayEnemyAttackAnimation(attack.AttackName);
+            PlayerStats.Damage(Attack.Damage);
+            AttackAnimationController.Instance.PlayEnemyAttackAnimation(Attack.AttackName);
         }
     }
 }

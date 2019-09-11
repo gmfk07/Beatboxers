@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   Danger: 0.25
-  AttackName: TrashAttack
+  AttackName: EnemyAttack

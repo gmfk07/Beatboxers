@@ -6,6 +6,5 @@ using UnityEngine;
 public class EnemyAttack : ScriptableObject
 {
     public int Damage;
-    public float Danger;
     public string AttackName;
 }
