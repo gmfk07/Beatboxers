@@ -176,7 +176,7 @@ public class BeatBarController : MonoBehaviour
 
                     bt.IsAttackBeat = true;
                     bt.Attack = target.GetAttack(danger);
-                    bt.Danger = danger;
+                    bt.Redness = target.GetAttack(danger).Redness;
                 }
                 else
                 {

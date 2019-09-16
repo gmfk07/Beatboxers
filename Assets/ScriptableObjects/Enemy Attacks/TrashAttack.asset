@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TrashAttack
   m_EditorClassIdentifier: 
   Damage: 2
-  Danger: 0.5
   AttackName: TrashAttack
+  Redness: 0.5

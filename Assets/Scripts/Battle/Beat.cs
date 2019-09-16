@@ -8,7 +8,7 @@ public class Beat : MonoBehaviour
     public bool IsAttackBeat;
     public EnemyAttack Attack;
     public GlobalStats.Shape Shape;
-    public float Danger;
+    public float Redness;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class Beat : MonoBehaviour
 
         if (IsAttackBeat)
         {
-            sr.color = new Color(1, 1 - Danger, 1 - Danger, 1);
+            sr.color = new Color(1, 1 - Redness, 1 - Redness, 1);
         }
         switch (Shape)
         {

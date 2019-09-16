@@ -106,8 +106,6 @@ public class OverworldManager : Singleton<OverworldManager>
 
                 foreach (string name in save.EnemyNameList)
                 {
-                    Debug.Log(go.name + " vs " + name);
-
                     if (go.name == name)
                     {
                         isInSave = true;
