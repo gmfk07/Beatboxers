@@ -35,15 +35,21 @@ public class BeatBarController : MonoBehaviour
     private List<GameObject> beats = new List<GameObject>();
     private List<GameObject> beatsToRemove = new List<GameObject>();
 
+    private float previousSongTime;
+
     void Start()
     {
         InitializeBeatmap();
+
         safeBeatsLeft = safeBeats;
+        previousSongTime = MusicMaster.Instance.GetPlaybackTime();
 
         Mark = transform.Find("Mark");
         SpawnPoint = transform.Find("SpawnPoint");
         DespawnPoint = transform.Find("DespawnPoint");
         beatIndex = GetInitialBeatIndex();
+
+        previousSongTime = GetTimer();
     }
 
     //Initializes beatTimes based on bpm, initialize beatShapes randomly, initialize beatPotentials as a repeated pattern.
@@ -80,10 +86,21 @@ public class BeatBarController : MonoBehaviour
     void Update()
     {
         timer = GetTimer();
+        if (timer < previousSongTime)
+        {
+            beatIndex = 0;
+            foreach (float beatTime in beatTimes)
+            {
+                if (timer + beatMargin > beatTime)
+                    beatIndex++;
+            }
+        }
+        previousSongTime = timer;
+
         manaCounter.text = manaCount + " Mana\nHealth: " + PlayerStats.health;
 
-        BeatSpawn();
-        bool punish = BeatDespawn();
+        TryBeatSpawn();
+        bool punish = TryBeatDespawn();
 
         //Remove the beats in a separate enumeration
         foreach (GameObject beat in beatsToRemove)
@@ -100,7 +117,7 @@ public class BeatBarController : MonoBehaviour
     }
     
     //Handles beat despawning if applicable, returning true if the player should be punished for a missed beat and false otherwise.
-    private bool BeatDespawn()
+    private bool TryBeatDespawn()
     {
         bool punish = false;
         bool buttonJustPressed = CheckButtonPressed();
@@ -153,7 +170,7 @@ public class BeatBarController : MonoBehaviour
     }
 
     //Checks if a beat should be spawned, and if so, spawns it with the appropriate characteristics.
-    private void BeatSpawn()
+    private void TryBeatSpawn()
     {
         if (beatIndex < beatTimes.Count && timer >= beatTimes[beatIndex] - beatWaitTime)
         {
