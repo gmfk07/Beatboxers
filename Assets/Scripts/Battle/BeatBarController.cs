@@ -8,9 +8,11 @@ public class BeatBarController : MonoBehaviour
 {
     private const int SECONDS_PER_MINUTE = 60;
 
-    public float beatWaitTime;
-    public float beatMargin;
+    public float beatWaitTime; //How long (in secs) between a beat appearing on the screen and the beat reaching the marker
+    public float beatMargin; //How many seconds before or after a beat you can act and still be considered on beat
     public float gracePeriod;
+    public float loopTimeBegin = 60f * 2f + 21.682f;
+    public float loopTimeEnd = 151.119f;
     public GameObject Beat;
     public int manaCount = 0;
     public int manaMax = 10;
@@ -20,7 +22,6 @@ public class BeatBarController : MonoBehaviour
 
     private int beatIndex;
     private float startTimer;
-    private float timer;
     private int safeBeatsLeft;
 
     private float bpm = 102;
@@ -28,6 +29,7 @@ public class BeatBarController : MonoBehaviour
     private List<float> beatTimes = new List<float>();
     private string beatShapes = "tdccdtsdt";
     private List<float> beatPotentials = new List<float>();
+    private bool canLoopBeats;
 
     private Transform Mark;
     private Transform SpawnPoint;
@@ -47,9 +49,12 @@ public class BeatBarController : MonoBehaviour
         Mark = transform.Find("Mark");
         SpawnPoint = transform.Find("SpawnPoint");
         DespawnPoint = transform.Find("DespawnPoint");
-        beatIndex = GetInitialBeatIndex();
+        beatIndex = GetBeatIndex(true, GetTimer());
 
-        previousSongTime = GetTimer();
+        float timer = GetTimer();
+
+        previousSongTime = timer;
+        canLoopBeats = timer < loopTimeEnd - beatWaitTime;
     }
 
     //Initializes beatTimes based on bpm, initialize beatShapes randomly, initialize beatPotentials as a repeated pattern.
@@ -69,34 +74,34 @@ public class BeatBarController : MonoBehaviour
         }
     }
 
-    //Returns what the initial beat index should be, using the current time in the song and grace period length to only include beats
-    //that should reasonably be spawned.
-    private int GetInitialBeatIndex()
+    //Returns what the current beat index should be, using songTime as the current time in the song to calculate beatTimer and (optionally)
+    //grace period length to only include beats that should reasonably be spawned.
+    private int GetBeatIndex(bool useGracePeriod, float songTime)
     {
         int result = 0;
-        float songTime = GetTimer();
+
         foreach (float beatTime in beatTimes)
         {
-            if (songTime + gracePeriod + beatMargin > beatTime)
-                result++;
+            if (useGracePeriod)
+            {
+                if (songTime + gracePeriod + beatWaitTime > beatTime)
+                {
+                    result++;
+                }
+            }
+            else
+            {
+                if (songTime + beatWaitTime > beatTime)
+                {
+                    result++;
+                }
+            }
         }
         return result;
     }
 
     void Update()
     {
-        timer = GetTimer();
-        if (timer < previousSongTime)
-        {
-            beatIndex = 0;
-            foreach (float beatTime in beatTimes)
-            {
-                if (timer + beatMargin > beatTime)
-                    beatIndex++;
-            }
-        }
-        previousSongTime = timer;
-
         manaCounter.text = manaCount + " Mana\nHealth: " + PlayerStats.health;
 
         TryBeatSpawn();
@@ -113,7 +118,11 @@ public class BeatBarController : MonoBehaviour
             manaCount = Mathf.Max(manaCount - 1, 0);
         }
 
+        HandleLooping();
+
         beatsToRemove.Clear();
+
+        previousSongTime = GetTimer();
     }
     
     //Handles beat despawning if applicable, returning true if the player should be punished for a missed beat and false otherwise.
@@ -169,10 +178,36 @@ public class BeatBarController : MonoBehaviour
         return punish;
     }
 
+    //Checks to see if currentBeat should be updated due to an impending loop, and also resets looking for a loop after looping.
+    private void HandleLooping()
+    {
+        float timer = GetTimer();
+
+        if (canLoopBeats && timer >= loopTimeEnd - beatWaitTime)
+        {
+            Debug.Log("Reached " + beatIndex);
+            Debug.Log("timer: " + timer + " vs what's fed into GetBeatIndex " + (loopTimeBegin - (loopTimeEnd - timer)));
+            beatIndex = GetBeatIndex(false, loopTimeBegin - (loopTimeEnd - timer));
+            Debug.Log("Took me back to " + beatIndex);
+            canLoopBeats = false;
+        }
+
+        //If we've looped, we can reset the loop clock!
+        if (timer < previousSongTime)
+        {
+            canLoopBeats = true;
+            Debug.Log("WE LOOPIN BOIS");
+        }
+    }
+
     //Checks if a beat should be spawned, and if so, spawns it with the appropriate characteristics.
     private void TryBeatSpawn()
     {
-        if (beatIndex < beatTimes.Count && timer >= beatTimes[beatIndex] - beatWaitTime)
+        float timer = GetTimer();
+        bool beatBackInTime = beatTimes[beatIndex] < timer;
+        bool beatShouldSpawnNormal = timer >= beatTimes[beatIndex] - beatWaitTime;
+        bool beatShouldSpawnLoop = loopTimeBegin - (loopTimeEnd - timer) >= beatTimes[beatIndex] - beatWaitTime;
+        if (beatIndex < beatTimes.Count && ((!beatBackInTime && beatShouldSpawnNormal) || (beatBackInTime && beatShouldSpawnLoop)))
         {
             GameObject obj = Instantiate(Beat, SpawnPoint);
             Beat bt = obj.GetComponent<Beat>();
@@ -207,6 +242,7 @@ public class BeatBarController : MonoBehaviour
             }
 
             beatIndex++;
+            Debug.Log("New Beat Index: " + beatIndex);
         }
     }
 
