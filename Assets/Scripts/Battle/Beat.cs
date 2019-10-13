@@ -7,7 +7,7 @@ public class Beat : MonoBehaviour
     public float DistancePerSecond = 0;
     public bool IsAttackBeat;
     public EnemyAttack Attack;
-    public GlobalStats.Shape Shape;
+    public Shape Shape;
     public float Redness;
 
     private void Start()
@@ -20,19 +20,19 @@ public class Beat : MonoBehaviour
         }
         switch (Shape)
         {
-            case GlobalStats.Shape.CIRCLE:
+            case Shape.Circle:
                 sr.sprite = GlobalStats.circleBeat;
                 break;
 
-            case GlobalStats.Shape.SQUARE:
+            case Shape.Square:
                 sr.sprite = GlobalStats.squareBeat;
                 break;
 
-            case GlobalStats.Shape.TRIANGLE:
+            case Shape.Triangle:
                 sr.sprite = GlobalStats.triangleBeat;
                 break;
 
-            case GlobalStats.Shape.DIAMOND:
+            case Shape.Diamond:
                 sr.sprite = GlobalStats.diamondBeat;
                 break;
         }

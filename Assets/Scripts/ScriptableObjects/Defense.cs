@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Defense", order = 1)]
 public class Defense : Item
 {
-    public int constantProtection;
+    public int ConstantProtection;
     //relative protection is a decimal fraction
-    public float relativeProtection;
+    public float RelativeProtection;
+    public Shape Shape;
 }

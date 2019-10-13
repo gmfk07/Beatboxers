@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour {
     //Take damage
     public void Hit(Attack attack)
     {
-        int damage = attack.damage;
+        int damage = attack.Damage;
         health = Mathf.Max(health - damage, 0);
 
         if (health == 0)

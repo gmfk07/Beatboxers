@@ -16,4 +16,5 @@ MonoBehaviour:
   itemName: None
   itemDescription: 
   itemSprite: {fileID: 0}
-  damage: 0
+  Damage: 0
+  Shape: 0

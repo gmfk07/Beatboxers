@@ -144,6 +144,8 @@ public class BeatBarController : MonoBehaviour
             }
             if (buttonJustPressed && Mathf.Abs(beat.transform.position.x - Mark.transform.position.x) <= beatMargin)
             {
+                Beat beatComponent = beat.GetComponent<Beat>();
+
                 //This beat is in range and something was pressed
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -151,21 +153,21 @@ public class BeatBarController : MonoBehaviour
                     manaCount = Mathf.Min(manaCount + 1, manaMax);
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
-                    punish = !ResolveAttack(ref manaCount, PlayerStats.upAttack);
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.upAttack, beatComponent);
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
-                    punish = !ResolveAttack(ref manaCount, PlayerStats.downAttack);
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.downAttack, beatComponent);
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                    punish = !ResolveAttack(ref manaCount, PlayerStats.leftAttack);
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.leftAttack, beatComponent);
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
-                    punish = !ResolveAttack(ref manaCount, PlayerStats.rightAttack);
+                    punish = !ResolveAttack(ref manaCount, PlayerStats.rightAttack, beatComponent);
                 else if (Input.GetKeyDown(KeyCode.W))
-                    punish = !ResolveDefense(ref manaCount, PlayerStats.upDefense);
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.upDefense, beatComponent);
                 else if (Input.GetKeyDown(KeyCode.S))
-                    punish = !ResolveDefense(ref manaCount, PlayerStats.downDefense);
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.downDefense, beatComponent);
                 else if (Input.GetKeyDown(KeyCode.A))
-                    punish = !ResolveDefense(ref manaCount, PlayerStats.leftDefense);
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.leftDefense, beatComponent);
                 else if (Input.GetKeyDown(KeyCode.D))
-                    punish = !ResolveDefense(ref manaCount, PlayerStats.rightDefense);
+                    punish = !ResolveDefense(ref manaCount, PlayerStats.rightDefense, beatComponent);
 
                 if (!punish)
                 {
@@ -185,10 +187,7 @@ public class BeatBarController : MonoBehaviour
 
         if (canLoopBeats && timer >= loopTimeEnd - beatWaitTime)
         {
-            Debug.Log("Reached " + beatIndex);
-            Debug.Log("timer: " + timer + " vs what's fed into GetBeatIndex " + (loopTimeBegin - (loopTimeEnd - timer)));
             beatIndex = GetBeatIndex(false, loopTimeBegin - (loopTimeEnd - timer));
-            Debug.Log("Took me back to " + beatIndex);
             canLoopBeats = false;
         }
 
@@ -196,7 +195,6 @@ public class BeatBarController : MonoBehaviour
         if (timer < previousSongTime)
         {
             canLoopBeats = true;
-            Debug.Log("WE LOOPIN BOIS");
         }
     }
 
@@ -242,7 +240,6 @@ public class BeatBarController : MonoBehaviour
             }
 
             beatIndex++;
-            Debug.Log("New Beat Index: " + beatIndex);
         }
     }
 
@@ -252,16 +249,16 @@ public class BeatBarController : MonoBehaviour
         switch (beatShapes[beatIndex])
         {
             case 's':
-                beat.Shape = GlobalStats.Shape.SQUARE;
+                beat.Shape = Shape.Square;
                 break;
             case 't':
-                beat.Shape = GlobalStats.Shape.TRIANGLE;
+                beat.Shape = Shape.Triangle;
                 break;
             case 'd':
-                beat.Shape = GlobalStats.Shape.DIAMOND;
+                beat.Shape = Shape.Diamond;
                 break;
             case 'c':
-                beat.Shape = GlobalStats.Shape.CIRCLE;
+                beat.Shape = Shape.Circle;
                 break;
         }
     }
@@ -274,22 +271,34 @@ public class BeatBarController : MonoBehaviour
                     Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
     }
 
-    //Returns false if manaAmount is less than the provided amount's cost, otherwise reduces manaAmount by the cost, attacks, and returns true
-    bool ResolveAttack(ref int manaAmount, Attack attack)
+    //Returns false if manaAmount is less than the provided amount's cost or there's a shape mismatch, otherwise reduces manaAmount by the cost, attacks, and returns true
+    bool ResolveAttack(ref int manaAmount, Attack attack, Beat beat)
     {
         if (manaAmount < attack.manaCost)
+        {
             return false;
+        }
+        if (attack.Shape != Shape.Any && attack.Shape != beat.Shape)
+        {
+            return false;
+        }
         manaAmount -= attack.manaCost;
         target.Hit(attack);
         AttackAnimationController.Instance.PlayPlayerAttackAnimation(attack.itemName);
         return true;
     }
 
-    //Returns false if manaAmount is less than the provided amount's cost, otherwise reduces manaAmount by the cost, defends, and returns true
-    bool ResolveDefense(ref int manaAmount, Defense defense)
+    //Returns false if manaAmount is less than the provided amount's cost or there's a shape mismatch, otherwise reduces manaAmount by the cost, defends, and returns true
+    bool ResolveDefense(ref int manaAmount, Defense defense, Beat beat)
     {
         if (manaAmount < defense.manaCost)
+        {
             return false;
+        }
+        if (defense.Shape != Shape.Any && defense.Shape != beat.Shape)
+        {
+            return false;
+        }
         manaAmount -= defense.manaCost;
         PlayerStats.Defend(defense);
         return true;

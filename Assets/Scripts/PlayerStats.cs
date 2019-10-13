@@ -21,8 +21,8 @@ public static class PlayerStats
     {
         if (isDefending)
         {
-            dmg -= currentDefense.constantProtection;
-            dmg -= Mathf.RoundToInt(dmg * (currentDefense.relativeProtection));
+            dmg = Mathf.Max(dmg - currentDefense.ConstantProtection, 0);
+            dmg -= Mathf.RoundToInt(dmg * (currentDefense.RelativeProtection));
         }
         health = Mathf.Max(health - dmg, 0);
 

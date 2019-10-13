@@ -16,5 +16,6 @@ MonoBehaviour:
   itemName: None
   itemDescription: 
   itemSprite: {fileID: 0}
-  constantProtection: 0
-  relativeProtection: 0
+  ConstantProtection: 0
+  RelativeProtection: 0
+  Shape: 0
