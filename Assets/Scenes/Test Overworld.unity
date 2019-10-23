@@ -3672,7 +3672,7 @@ PrefabInstance:
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: Dialog.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
@@ -3693,28 +3693,28 @@ PrefabInstance:
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: Dialog.Array.data[0]
-      value: Oh, hello there! Sorry about my ramblings earlier.
+      value: Hey! Beatboxer girl! Have I got the weapon for you!
       objectReference: {fileID: 0}
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: Dialog.Array.data[1]
-      value: I hope you're adjusting well to life here.
+      value: This here slingshot doesn't need any Mana to operate! Isn't that swell?
       objectReference: {fileID: 0}
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: Dialog.Array.data[2]
-      value: What's that? You're looking for the laundromat?
+      value: Still, it only works on Circle beats, so be careful!
       objectReference: {fileID: 0}
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: Dialog.Array.data[3]
-      value: Should be further east.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: ItemToGive
       value: 
-      objectReference: {fileID: 11400000, guid: d384218f66e43574792b2bdce693789e,
+      objectReference: {fileID: 11400000, guid: 7046e79c081439a46b16c8097f3f9022,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224bfbec7a463614a99532d4244333cb, type: 3}
