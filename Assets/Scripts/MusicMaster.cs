@@ -5,13 +5,18 @@ using UnityEngine;
 public class MusicMaster : Singleton<MusicMaster>
 {
     public float SecondsPerBeat { get; private set; }
+    public float LoopTimeBegin { get; private set; }
+    public float LoopTimeEnd { get; private set; }
     public bool Initialized = false;
     private FMOD.Studio.EventInstance musicEvent;
 
     void Start()
     {
-        SecondsPerBeat = .5882353f;
-        musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Jump");
+        SecondsPerBeat = 60f/110f;
+        LoopTimeBegin = 36 * SecondsPerBeat;
+        LoopTimeEnd = 71 * SecondsPerBeat;
+
+        musicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Argula");
         musicEvent.start();
         Initialized = true;
 

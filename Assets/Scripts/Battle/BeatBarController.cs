@@ -11,8 +11,6 @@ public class BeatBarController : MonoBehaviour
     public float beatWaitTime; //How long (in secs) between a beat appearing on the screen and the beat reaching the marker
     public float beatMargin; //How many seconds before or after a beat you can act and still be considered on beat
     public float gracePeriod;
-    public float loopTimeBegin = 60f * 2f + 21.682f;
-    public float loopTimeEnd = 151.119f;
     public GameObject Beat;
     public int manaCount = 0;
     public int manaMax = 10;
@@ -54,7 +52,7 @@ public class BeatBarController : MonoBehaviour
         float timer = GetTimer();
 
         previousSongTime = timer;
-        canLoopBeats = timer < loopTimeEnd - beatWaitTime;
+        canLoopBeats = timer < MusicMaster.Instance.LoopTimeEnd - beatWaitTime;
     }
 
     //Initializes beatTimes based on bpm, initialize beatShapes randomly, initialize beatPotentials as a repeated pattern.
@@ -184,10 +182,11 @@ public class BeatBarController : MonoBehaviour
     private void HandleLooping()
     {
         float timer = GetTimer();
+        MusicMaster mm = MusicMaster.Instance;
 
-        if (canLoopBeats && timer >= loopTimeEnd - beatWaitTime)
+        if (canLoopBeats && timer >= mm.LoopTimeEnd - beatWaitTime)
         {
-            beatIndex = GetBeatIndex(false, loopTimeBegin - (loopTimeEnd - timer));
+            beatIndex = GetBeatIndex(false, mm.LoopTimeBegin - (mm.LoopTimeEnd - timer));
             canLoopBeats = false;
         }
 
@@ -201,10 +200,12 @@ public class BeatBarController : MonoBehaviour
     //Checks if a beat should be spawned, and if so, spawns it with the appropriate characteristics.
     private void TryBeatSpawn()
     {
+        MusicMaster mm = MusicMaster.Instance;
+
         float timer = GetTimer();
         bool beatBackInTime = beatTimes[beatIndex] < timer;
         bool beatShouldSpawnNormal = timer >= beatTimes[beatIndex] - beatWaitTime;
-        bool beatShouldSpawnLoop = loopTimeBegin - (loopTimeEnd - timer) >= beatTimes[beatIndex] - beatWaitTime;
+        bool beatShouldSpawnLoop = mm.LoopTimeBegin - (mm.LoopTimeEnd - timer) >= beatTimes[beatIndex] - beatWaitTime;
         if (beatIndex < beatTimes.Count && ((!beatBackInTime && beatShouldSpawnNormal) || (beatBackInTime && beatShouldSpawnLoop)))
         {
             GameObject obj = Instantiate(Beat, SpawnPoint);
