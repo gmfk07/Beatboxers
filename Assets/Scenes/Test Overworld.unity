@@ -4098,6 +4098,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
+        type: 3}
+      propertyPath: jumpLengthInBeats
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
+        type: 3}
+      propertyPath: jumpPauseInBeats
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
+        type: 3}
+      propertyPath: gravity
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a84c7be8da0564d4e92b44487a61893f, type: 3}
 --- !u!4 &2963660788588825248
@@ -5206,26 +5226,6 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.25, z: 0}
---- !u!1 &8296172669354980864 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6154655323736277269, guid: a84c7be8da0564d4e92b44487a61893f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2758550970550040341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8296172669354980865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8296172669354980864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4595a93518b74e044a4ab6ff05860d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpVelocity: 0
-  gravityAccel: 0
 --- !u!1001 &8363618746785305124
 PrefabInstance:
   m_ObjectHideFlags: 0

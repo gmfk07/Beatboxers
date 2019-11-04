@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 80217026422174957}
   - component: {fileID: 8664466347927377949}
   - component: {fileID: 2534866581512377246}
+  - component: {fileID: 1024441973}
   m_Layer: 0
   m_Name: Pop Rock Model
   m_TagString: Untagged
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 82eed604175ef744dbf22bbe16e0e9c7, type: 2}
   enemyParent: {fileID: 6154655323736277269}
+--- !u!65 &1024441973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388981683656615048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.9, z: 2.6}
+  m_Center: {x: -1.95, y: 3.5, z: -2}
 --- !u!1 &6154655323736277269
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7148025906090636038}
+  - component: {fileID: 8296172669354980865}
   m_Layer: 0
   m_Name: Pop Rock
   m_TagString: Untagged
@@ -123,3 +138,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8296172669354980865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154655323736277269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4595a93518b74e044a4ab6ff05860d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpVelocity: 0
+  gravityAccel: 0
