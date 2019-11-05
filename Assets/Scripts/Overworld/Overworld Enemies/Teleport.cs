@@ -24,7 +24,7 @@ public class Teleport : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        float secondsBetweenTeleport = MusicMaster.Instance.SecondsPerBeat * beatsBetweenTeleport;
+        float secondsBetweenTeleport = MusicMaster.Instance.GetSecondsPerBeat() * beatsBetweenTeleport;
 
         yield return new WaitForSeconds(secondsBetweenTeleport - (MusicMaster.Instance.GetPlaybackTime() % secondsBetweenTeleport));
 

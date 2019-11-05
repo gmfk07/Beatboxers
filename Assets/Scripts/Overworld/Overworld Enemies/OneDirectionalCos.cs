@@ -18,7 +18,7 @@ public class OneDirectionalCos : MonoBehaviour
 
     void FixedUpdate()
     {
-        float period = (MusicMaster.Instance.SecondsPerBeat * BeatsPerPeriod);
+        float period = (MusicMaster.Instance.GetSecondsPerBeat() * BeatsPerPeriod);
         float time = MusicMaster.Instance.GetPlaybackTime();
 
         float sinInput;

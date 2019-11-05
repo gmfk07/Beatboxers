@@ -4098,26 +4098,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
-        type: 3}
-      propertyPath: jumpLengthInBeats
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
-        type: 3}
-      propertyPath: jumpPauseInBeats
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
-        type: 3}
-      propertyPath: jumpHeight
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296172669354980865, guid: a84c7be8da0564d4e92b44487a61893f,
-        type: 3}
-      propertyPath: gravity
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a84c7be8da0564d4e92b44487a61893f, type: 3}
 --- !u!4 &2963660788588825248

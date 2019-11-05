@@ -58,7 +58,7 @@ public class BeatBarController : MonoBehaviour
     //Initializes beatTimes based on bpm, initialize beatShapes randomly, initialize beatPotentials as a repeated pattern.
     private void InitializeBeatmap()
     {
-        float secondsPerBeat = SECONDS_PER_MINUTE / bpm;
+        float secondsPerBeat = MusicMaster.Instance.GetSecondsPerBeat();
         float beatsInSong = songLength / secondsPerBeat;
 
         char[] potentialShapeChars = new char[] { 't', 'd', 's', 'c' };

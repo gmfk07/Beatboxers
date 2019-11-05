@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 8296172669354980865}
   m_Layer: 0
   m_Name: Pop Rock
-  m_TagString: Untagged
+  m_TagString: EnemyParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,5 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4595a93518b74e044a4ab6ff05860d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVelocity: 0
-  gravityAccel: 0
+  jumpLengthInBeats: 2
+  jumpPauseInBeats: 1
+  jumpHeight: 5
