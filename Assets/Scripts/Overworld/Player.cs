@@ -85,14 +85,12 @@ public class Player : MonoBehaviour
         float verticalAxis = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(Speed * horizontalAxis, yVelocity, Speed * verticalAxis) * Time.deltaTime;
-        bool isInBounds = CheckInBounds(cc.transform.position + movement, fractionOfRadiusForInBoundsCheck);
+        cc.Move(movement);
+        bool isInBounds = CheckInBounds(fractionOfRadiusForInBoundsCheck);
 
-        if (isInBounds)
+        if (!isInBounds)
         {
-            cc.Move(movement);
-        }
-        else
-        {
+            cc.Move(-movement);
             movement = Vector3.up * yVelocity * Time.deltaTime;
             cc.Move(movement);
         }
@@ -122,17 +120,17 @@ public class Player : MonoBehaviour
         return Physics.CheckCapsule(bottomOfCapsuleSpherePosition, bottomOfCapsuleSpherePosition + DistanceToCheckGrounded * Vector3.down, cc.radius);
     }
 
-    //Checks if the player would be in bounds at position position (aka, checks that radius * fractionOfRadius is above ground at some distance).
-    bool CheckInBounds(Vector3 position, float fractionOfRadius)
+    //Checks if the player would be in bounds at their current position (aka, checks that radius * fractionOfRadius is above ground at some distance).
+    bool CheckInBounds(float fractionOfRadius)
     {
         float xExtent = cc.bounds.extents.x;
         float zExtent = cc.bounds.extents.z;
 
-        bool centerHit = Physics.Raycast(position, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
-        bool leftHit = Physics.Raycast(position + Vector3.left * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
-        bool rightHit = Physics.Raycast(position + Vector3.right * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
-        bool frontHit = Physics.Raycast(position + Vector3.forward * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
-        bool backHit = Physics.Raycast(position + Vector3.back * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool centerHit = Physics.Raycast(cc.transform.position, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool leftHit = Physics.Raycast(cc.transform.position + Vector3.left * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool rightHit = Physics.Raycast(cc.transform.position + Vector3.right * xExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool frontHit = Physics.Raycast(cc.transform.position + Vector3.forward * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
+        bool backHit = Physics.Raycast(cc.transform.position + Vector3.back * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
 
         return centerHit && leftHit && rightHit && frontHit && backHit;
     }
