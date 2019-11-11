@@ -20,6 +20,7 @@ public class OverworldManager : Singleton<OverworldManager>
     {
         OverworldSave save = new OverworldSave();
         save.EnemyNameList = new List<string>();
+        save.PickupNameList = new List<string>();
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyParent"))
         {
@@ -27,6 +28,11 @@ public class OverworldManager : Singleton<OverworldManager>
             {
                 save.EnemyNameList.Add(go.name);
             }
+        }
+
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup"))
+        {
+            save.PickupNameList.Add(go.name);
         }
 
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
@@ -116,6 +122,26 @@ public class OverworldManager : Singleton<OverworldManager>
                 if (!isInSave)
                 {
                     go.GetComponentInChildren<OverworldEnemy>().Unload();
+                }
+            }
+
+            //Delete the pickups that aren't in the save
+            //If it has the same name, we call it the same!!!
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup"))
+            {
+                bool isInSave = false;
+
+                foreach (string name in save.PickupNameList)
+                {
+                    if (go.name == name)
+                    {
+                        isInSave = true;
+                    }
+
+                    if (!isInSave)
+                    {
+                        Destroy(go);
+                    }
                 }
             }
 

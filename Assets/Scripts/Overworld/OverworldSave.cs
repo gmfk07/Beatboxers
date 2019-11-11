@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class OverworldSave
 {
+    public List<string> PickupNameList;
     public List<string> EnemyNameList;
     public float PlayerXPos;
     public float PlayerYPos;

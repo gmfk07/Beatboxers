@@ -25,7 +25,7 @@ public class EnemyJump : MonoBehaviour
         jumpPauseInSeconds = jumpPauseInBeats * MusicMaster.Instance.GetSecondsPerBeat();
         jumping = false;
         gravity = -8 * jumpHeight / Mathf.Pow(jumpLengthInSeconds, 2);
-        Invoke("Jump", jumpPauseInSeconds);
+        Invoke("Jump", MusicMaster.Instance.GetPlaybackTime() % (jumpPauseInSeconds + jumpLengthInSeconds));
         yVelocity = 0;
     }
 
@@ -34,6 +34,7 @@ public class EnemyJump : MonoBehaviour
     {
         yVelocity = 4 * jumpHeight/jumpLengthInSeconds;
         jumping = true;
+        Invoke("StopJump", jumpLengthInSeconds);
     }
 
     //Update position with yVelocity, then changes yVelocity based on gravity.
@@ -45,14 +46,16 @@ public class EnemyJump : MonoBehaviour
             Vector3 newPos = new Vector3(transform.position.x, newY, transform.position.z);
             transform.position = newPos;
             yVelocity += gravity * Time.deltaTime;
-            Debug.Log(newY + " vs " + yStart);
-            if (newY <= yStart)
-            {
-                Debug.Log("REEEEset");
-                transform.position.Set(transform.position.x, yStart, transform.position.z);
-                jumping = false;
-                Invoke("Jump", jumpPauseInSeconds);
-            }
         }
+    }
+
+    //End the jump and start the timer for the next jump.
+    private void StopJump()
+    {
+        Vector3 startPos = new Vector3(transform.position.x, yStart, transform.position.z);
+        transform.position = startPos;
+
+        jumping = false;
+        Invoke("Jump", jumpPauseInSeconds);
     }
 }

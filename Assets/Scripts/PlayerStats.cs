@@ -8,6 +8,7 @@ public static class PlayerStats
 {
     public static Attack upAttack, downAttack, leftAttack, rightAttack;
     public static Defense upDefense, downDefense, leftDefense, rightDefense;
+    public static int maxHealth = 10;
     public static int health = 10;
     private static bool isDefending = false;
     private static Defense currentDefense;
@@ -39,6 +40,12 @@ public static class PlayerStats
         {
             HandlePlayerDeath(overworldSaveExists);
         }
+    }
+
+    //Heal the appropriate amount of health, taking maxHealth into account
+    public static void Heal(int healthGain)
+    {
+        health = Mathf.Min(health + healthGain, maxHealth);
     }
     
     //Erase temp save, reload battle scene, refill HP
