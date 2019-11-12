@@ -136,12 +136,13 @@ public class OverworldManager : Singleton<OverworldManager>
                     if (go.name == name)
                     {
                         isInSave = true;
+                        break;
                     }
+                }
 
-                    if (!isInSave)
-                    {
-                        Destroy(go);
-                    }
+                if (!isInSave)
+                {
+                    Destroy(go);
                 }
             }
 

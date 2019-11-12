@@ -8,15 +8,16 @@ public class BeatBarController : MonoBehaviour
 {
     private const int SECONDS_PER_MINUTE = 60;
 
-    public float beatWaitTime; //How long (in secs) between a beat appearing on the screen and the beat reaching the marker
-    public float beatMargin; //How many seconds before or after a beat you can act and still be considered on beat
-    public float gracePeriod;
-    public GameObject Beat;
-    public int manaCount = 0;
-    public int manaMax = 10;
-    public int safeBeats = 3;
-    public Text manaCounter;
-    public EnemyController target;
+    [SerializeField] private float beatWaitTime; //How long (in secs) between a beat appearing on the screen and the beat reaching the marker
+    [SerializeField] private float beatMargin; //How many seconds before or after a beat you can act and still be considered on beat
+    [SerializeField] private float gracePeriod;
+    [SerializeField] private GameObject Beat;
+    [SerializeField] private int manaCount = 0;
+    [SerializeField] private int manaMax = 10;
+    [SerializeField] private int safeBeats = 3;
+    [SerializeField] private Text manaCounter;
+    [SerializeField] private EnemyController target;
+    [SerializeField] private HealthDisplay healthDisplay;
 
     private int beatIndex;
     private float startTimer;
@@ -228,6 +229,7 @@ public class BeatBarController : MonoBehaviour
                     bt.IsAttackBeat = true;
                     bt.Attack = target.GetAttack(danger);
                     bt.Redness = target.GetAttack(danger).Redness;
+                    bt.HealthDisplay = healthDisplay;
                 }
                 else
                 {

@@ -2432,14 +2432,13 @@ MonoBehaviour:
   beatWaitTime: 1.5
   beatMargin: 1
   gracePeriod: 1.5
-  loopTimeBegin: 141.682
-  loopTimeEnd: 151.119
   Beat: {fileID: 6858820538123302504, guid: 6c313ac3cd5ed934e99f5ddb904cb6d7, type: 3}
   manaCount: 0
   manaMax: 10
   safeBeats: 3
   manaCounter: {fileID: 1115249155}
   target: {fileID: 2106407241}
+  healthDisplay: {fileID: 2055000397}
 --- !u!212 &1834629366
 SpriteRenderer:
   m_ObjectHideFlags: 0

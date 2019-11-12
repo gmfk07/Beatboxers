@@ -18,7 +18,7 @@ public static class PlayerStats
     public static List<Item> Inventory = new List<Item>();
 
     //Take the appropriate amount of damage, taking defending into account
-    public static void Damage(int dmg)
+    public static void Damage(int dmg, HealthDisplay hdToUpdate)
     {
         if (isDefending)
         {
@@ -27,10 +27,7 @@ public static class PlayerStats
         }
         health = Mathf.Max(health - dmg, 0);
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Battle"))
-        {
-            HealthDisplay.Instance.UpdateHealthMeter();
-        }
+        hdToUpdate.UpdateHealthMeter();
 
         isDefending = false;
 
@@ -43,9 +40,10 @@ public static class PlayerStats
     }
 
     //Heal the appropriate amount of health, taking maxHealth into account
-    public static void Heal(int healthGain)
+    public static void Heal(int healthGain, HealthDisplay hdToUpdate)
     {
         health = Mathf.Min(health + healthGain, maxHealth);
+        hdToUpdate.UpdateHealthMeter();
     }
     
     //Erase temp save, reload battle scene, refill HP

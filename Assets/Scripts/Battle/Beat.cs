@@ -9,6 +9,7 @@ public class Beat : MonoBehaviour
     public EnemyAttack Attack;
     public Shape Shape;
     public float Redness;
+    public HealthDisplay HealthDisplay;
 
     private void Start()
     {
@@ -49,7 +50,7 @@ public class Beat : MonoBehaviour
         //Attack the player
         if (IsAttackBeat)
         {
-            PlayerStats.Damage(Attack.Damage);
+            PlayerStats.Damage(Attack.Damage, HealthDisplay);
             AttackAnimationController.Instance.PlayEnemyAttackAnimation(Attack.AttackName);
         }
     }
