@@ -11,6 +11,8 @@ public class Beat : MonoBehaviour
     public float Redness;
     public HealthDisplay HealthDisplay;
 
+    private float levelLoadTimeEpsilon = 0.25f; //Don't deal damage if the last level was loaded at most epsilon seconds ago
+
     private void Start()
     {
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
@@ -47,9 +49,10 @@ public class Beat : MonoBehaviour
 
     void OnDestroy()
     {
-        //Attack the player
-        if (IsAttackBeat)
+        //Attack the player IF this beat was not destroyed as a result of a scene change
+        if (IsAttackBeat && Time.timeSinceLevelLoad > levelLoadTimeEpsilon)
         {
+            Debug.Log("bro you just got attacked");
             PlayerStats.Damage(Attack.Damage, HealthDisplay);
             AttackAnimationController.Instance.PlayEnemyAttackAnimation(Attack.AttackName);
         }

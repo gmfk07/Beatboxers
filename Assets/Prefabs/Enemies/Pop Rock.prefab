@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8664466347927377949}
   - component: {fileID: 2534866581512377246}
   - component: {fileID: 1024441973}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pop Rock Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7148025906090636038}
   - component: {fileID: 8296172669354980865}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pop Rock
   m_TagString: EnemyParent
   m_Icon: {fileID: 0}
@@ -151,5 +151,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpLengthInBeats: 2
-  jumpPauseInBeats: 1
-  jumpHeight: 5
+  jumpPauseInBeats: 2
+  jumpHeight: 10
