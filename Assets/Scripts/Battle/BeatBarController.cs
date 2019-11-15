@@ -109,6 +109,7 @@ public class BeatBarController : MonoBehaviour
         //Remove the beats in a separate enumeration
         foreach (GameObject beat in beatsToRemove)
         {
+            beat.GetComponent<Beat>().Triggered = true;
             beats.Remove(beat);
         }
 

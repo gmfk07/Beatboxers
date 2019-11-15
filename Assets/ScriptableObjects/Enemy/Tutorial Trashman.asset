@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fdbc75db30fc974fae799009b43421a, type: 3}
-  m_Name: Trashman
+  m_Name: Tutorial Trashman
   m_EditorClassIdentifier: 
   _name: Trashman
   health: 6
   attackDictKeys:
-  - 0.4
+  - 999
   attackDictValues:
   - {fileID: 11400000, guid: 5c90b4bcf270efe41b90ccad808757c4, type: 2}
