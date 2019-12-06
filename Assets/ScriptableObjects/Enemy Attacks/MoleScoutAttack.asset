@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MoleScoutAttack
   m_EditorClassIdentifier: 
   Damage: 1
-  AttackName: EnemyAttack
+  AttackName: MoleScoutAttack
   Redness: 0.35

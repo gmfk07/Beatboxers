@@ -1,40 +1,34 @@
 fileFormatVersion: 2
-guid: 856d87af199311b4fbcaa0a06f3dafe3
+guid: 8b0c8116e3b8d904d8888833cd2d69c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 492294312700710392
-    second: Healthbar_0
+      213: -2354114271248926801
+    second: Manabar_0
   - first:
-      213: -4820266478397548756
-    second: Healthbar_1
+      213: 4655424554592327870
+    second: Manabar_1
   - first:
-      213: 1433150741489427827
-    second: Healthbar_2
+      213: -3895702343310036982
+    second: Manabar_2
   - first:
-      213: -8947679856231861078
-    second: Healthbar_3
+      213: -8895021181783411143
+    second: Manabar_3
   - first:
-      213: 2507519226623998461
-    second: Healthbar_4
+      213: 8071000019775245177
+    second: Manabar_4
   - first:
-      213: -2623376977026066100
-    second: Healthbar_5
+      213: -5452254836092299557
+    second: Manabar_5
   - first:
-      213: 8689527458692105449
-    second: Healthbar_6
+      213: -3103792208053344140
+    second: Manabar_6
   - first:
-      213: 7460444572925629776
-    second: Healthbar_7
+      213: 8414851099153574775
+    second: Manabar_7
   - first:
-      213: -7796659902075397026
-    second: Healthbar_8
-  - first:
-      213: 1545902151051686009
-    second: Healthbar_9
-  - first:
-      213: 3301125847436932941
-    second: Healthbar_10
+      213: 8245238733818289788
+    second: Manabar_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -74,7 +68,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -139,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Healthbar_0
+      name: Manabar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 160
-        height: 160
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b75ef9b1546c5ac4dabb861e20e24cf8
-      internalID: 492294312700710392
+      spriteID: a5dfc0885e7f5bc48ac2d8365431c242
+      internalID: -2354114271248926801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Healthbar_1
+      name: Manabar_1
       rect:
         serializedVersion: 2
-        x: 160
+        x: 64
         y: 0
-        width: 160
-        height: 160
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +168,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f508fc4b5046edb4dadd6ee62c36deed
-      internalID: -4820266478397548756
+      spriteID: 5777fdc1feca65046bdf1897a0c76e75
+      internalID: 4655424554592327870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Healthbar_2
+      name: Manabar_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c52a840dc2adc74082534e447af614f
+      internalID: -3895702343310036982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Manabar_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d239cb19b7076c74fbdd8d099afd3130
+      internalID: -8895021181783411143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Manabar_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef0c898f95dfc6419b57cce91b95d8b
+      internalID: 8071000019775245177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Manabar_5
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 160
-        height: 160
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +252,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cac34c3d9088d344976f542d90f75ec
-      internalID: 1433150741489427827
+      spriteID: 13a9121caca0f0f4abdc639523a1eb01
+      internalID: -5452254836092299557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Healthbar_3
+      name: Manabar_6
       rect:
         serializedVersion: 2
-        x: 480
+        x: 384
         y: 0
-        width: 160
-        height: 160
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +273,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ec72ce51600b6f47bd9c070418b3f1a
-      internalID: -8947679856231861078
+      spriteID: 1156dee0e6ffd8647b84d5590d20bf00
+      internalID: -3103792208053344140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Healthbar_4
+      name: Manabar_7
       rect:
         serializedVersion: 2
-        x: 640
+        x: 448
         y: 0
-        width: 160
-        height: 160
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +294,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a3d21a3dc7d4894bbb8fe01eebbf953
-      internalID: 2507519226623998461
+      spriteID: 932fd2eb44148f441a8b51411341f3f8
+      internalID: 8414851099153574775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Healthbar_5
+      name: Manabar_8
       rect:
         serializedVersion: 2
-        x: 800
+        x: 512
         y: 0
-        width: 160
-        height: 160
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,113 +315,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1d730937fa92a84fac9a3decc91cdf5
-      internalID: -2623376977026066100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Healthbar_6
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e54394e3d893df3488e01af27df859e8
-      internalID: 8689527458692105449
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Healthbar_7
-      rect:
-        serializedVersion: 2
-        x: 1120
-        y: 0
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 791825590e0498049b80bc9b06ec51b1
-      internalID: 7460444572925629776
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Healthbar_8
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: becc659ace0431f4c9a6a597e0f85e5c
-      internalID: -7796659902075397026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Healthbar_9
-      rect:
-        serializedVersion: 2
-        x: 1440
-        y: 0
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef6582dfb80cb2848944335f6de1d864
-      internalID: 1545902151051686009
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Healthbar_10
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f115168c91dfb7d47bef1db9c389be96
-      internalID: 3301125847436932941
+      spriteID: 41269967677bef04aa13051d79c0d49b
+      internalID: 8245238733818289788
       vertices: []
       indices: 
       edges: []
@@ -372,7 +324,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0226b1c66aea7904ba67874878f1d739
+    spriteID: 29dc8c45917a62445807b967bd389640
     internalID: 0
     vertices: []
     indices: 

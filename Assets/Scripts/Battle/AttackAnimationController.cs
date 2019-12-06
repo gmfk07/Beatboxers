@@ -14,6 +14,7 @@ public class AttackAnimationController : Singleton<AttackAnimationController>
 
     public void PlayEnemyAttackAnimation(string attackUsed)
     {
-            enemyAttackAnimator.SetTrigger(attackUsed);
+        Debug.Log(attackUsed);
+        enemyAttackAnimator.SetTrigger(attackUsed);
     }
 }

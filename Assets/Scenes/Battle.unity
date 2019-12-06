@@ -233,6 +233,105 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &259256866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259256867}
+  - component: {fileID: 259256869}
+  - component: {fileID: 259256868}
+  - component: {fileID: 259256870}
+  m_Layer: 5
+  m_Name: Mana Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &259256867
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259256866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1404377245}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 32, y: 0}
+  m_SizeDelta: {x: 64, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &259256868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259256866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 8414851099153574775, guid: 8b0c8116e3b8d904d8888833cd2d69c1,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &259256869
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259256866}
+  m_CullTransparentMesh: 0
+--- !u!114 &259256870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259256866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122c15a84c3b4fd43a75079fc8987c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -2354114271248926801, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: 4655424554592327870, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: -3895702343310036982, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: -8895021181783411143, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: 8071000019775245177, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: -5452254836092299557, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: -3103792208053344140, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: 8414851099153574775, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  - {fileID: 8245238733818289788, guid: 8b0c8116e3b8d904d8888833cd2d69c1, type: 3}
+  manaBarImage: {fileID: 259256868}
 --- !u!1 &283482085
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471430583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 0, z: 0}
+  m_LocalPosition: {x: -0.347, y: 0, z: 0}
   m_LocalScale: {x: 0.01625879, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1834629367}
@@ -1850,7 +1949,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1896,6 +1995,7 @@ RectTransform:
   - {fileID: 441992259}
   - {fileID: 105893219}
   - {fileID: 2055000396}
+  - {fileID: 259256867}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2439,6 +2539,7 @@ MonoBehaviour:
   manaCounter: {fileID: 1115249155}
   target: {fileID: 2106407241}
   healthDisplay: {fileID: 2055000397}
+  manabar: {fileID: 259256870}
 --- !u!212 &1834629366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2506,7 +2607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.59}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1834629368

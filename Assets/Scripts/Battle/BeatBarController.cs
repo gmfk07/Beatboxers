@@ -18,6 +18,7 @@ public class BeatBarController : MonoBehaviour
     [SerializeField] private Text manaCounter;
     [SerializeField] private EnemyController target;
     [SerializeField] private HealthDisplay healthDisplay;
+    [SerializeField] private ManaBar manabar;
 
     private int beatIndex;
     private float startTimer;
@@ -41,6 +42,7 @@ public class BeatBarController : MonoBehaviour
     void Start()
     {
         InitializeBeatmap();
+        manabar.UpdateManaBar(manaCount);
 
         safeBeatsLeft = safeBeats;
         previousSongTime = MusicMaster.Instance.GetPlaybackTime();
@@ -151,6 +153,7 @@ public class BeatBarController : MonoBehaviour
                 {
                     punish = false;
                     manaCount = Mathf.Min(manaCount + 1, manaMax);
+                    manabar.UpdateManaBar(manaCount);
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
                     punish = !ResolveAttack(ref manaCount, PlayerStats.upAttack, beatComponent);
@@ -287,6 +290,7 @@ public class BeatBarController : MonoBehaviour
             return false;
         }
         manaAmount -= attack.manaCost;
+        manabar.UpdateManaBar(manaAmount);
         target.Hit(attack);
         AttackAnimationController.Instance.PlayPlayerAttackAnimation(attack.itemName);
         return true;
@@ -304,6 +308,7 @@ public class BeatBarController : MonoBehaviour
             return false;
         }
         manaAmount -= defense.manaCost;
+        manabar.UpdateManaBar(manaAmount);
         PlayerStats.Defend(defense);
         return true;
     }
