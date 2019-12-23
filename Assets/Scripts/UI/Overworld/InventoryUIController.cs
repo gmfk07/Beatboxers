@@ -235,16 +235,18 @@ public class InventoryUIController : Singleton<InventoryUIController>
     //Create the inventory slot GameObjects and initialize using the inventory list.
     private void CreateInventorySlots()
     {
-        for (int i = 0; i < inventorySlotColumns; i++)
+        GridLayoutGroup glg = inventorySlotParent.GetComponent<GridLayoutGroup>();
+        glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+        glg.constraintCount = inventorySlotColumns;
+        glg.startAxis = GridLayoutGroup.Axis.Horizontal;
+        glg.startCorner = GridLayoutGroup.Corner.LowerLeft;
+
+        for (int i = 0; i < inventorySlotRows; i++)
         {
-            for (int j = 0; j < inventorySlotRows; j++)
+            for (int j = 0; j < inventorySlotColumns; j++)
             {
-                float xPerColumn = (maxInventorySlotX - minInventorySlotX) / (inventorySlotColumns - 1) * i;
-                float yPerRow = (maxInventorySlotY - minInventorySlotY) / (inventorySlotRows - 1) * j;
-                float newX = minInventorySlotX + xPerColumn;
-                float newY = minInventorySlotY + yPerRow;
-                GameObject created = Instantiate(inventorySlotPrefab, new Vector3(newX, newY, 0), Quaternion.identity, inventorySlotParent.transform);
-                slotDict[new Vector2Int(i, j)] = created.GetComponent<InventorySlot>();
+                GameObject created = Instantiate(inventorySlotPrefab, new Vector3(0, 0, 0), Quaternion.identity, inventorySlotParent.transform);
+                slotDict[new Vector2Int(j, i)] = created.GetComponent<InventorySlot>();
             }
         }
         SelectSlot(selected);
