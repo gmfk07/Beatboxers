@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd260b7f83835eb45a19334bb7f60a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNear: 0
+  TalkedTo: 0
 --- !u!1 &9143528901910066875
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6704770347950918832}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Player
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,4 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f0f0bc094bca949986b4673d5efe9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialog: []
+  Dialog: []
+  ItemToGive: {fileID: 0}
+  HasRepeatDialog: 0
+  RepeatDialog: []

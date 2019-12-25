@@ -15,7 +15,6 @@ public class BeatBarController : MonoBehaviour
     [SerializeField] private int manaCount = 0;
     [SerializeField] private int manaMax = 10;
     [SerializeField] private int safeBeats = 3;
-    [SerializeField] private Text manaCounter;
     [SerializeField] private EnemyController target;
     [SerializeField] private HealthDisplay healthDisplay;
     [SerializeField] private ManaBar manabar;
@@ -103,8 +102,6 @@ public class BeatBarController : MonoBehaviour
 
     void Update()
     {
-        manaCounter.text = manaCount + " Mana\nHealth: " + PlayerStats.health;
-
         TryBeatSpawn();
         bool punish = TryBeatDespawn();
 

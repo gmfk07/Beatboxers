@@ -21,6 +21,7 @@ public class OverworldManager : Singleton<OverworldManager>
         OverworldSave save = new OverworldSave();
         save.EnemyNameList = new List<string>();
         save.PickupNameList = new List<string>();
+        save.NPCsSpokenTo = new List<string>();
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyParent"))
         {
@@ -33,6 +34,14 @@ public class OverworldManager : Singleton<OverworldManager>
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup"))
         {
             save.PickupNameList.Add(go.name);
+        }
+
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("NPC"))
+        {
+            if (go.GetComponentInChildren<NPCTrigger>().TalkedTo)
+            {
+                save.NPCsSpokenTo.Add(go.name);
+            }
         }
 
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
@@ -143,6 +152,16 @@ public class OverworldManager : Singleton<OverworldManager>
                 if (!isInSave)
                 {
                     Destroy(go);
+                }
+            }
+
+            //Make NPCs we've talked to still have the talked to variable checked
+            //If it has the same name, we call it the same!!!
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("NPC"))
+            {
+                if (save.NPCsSpokenTo.Contains(go.name))
+                {
+                    go.GetComponentInChildren<NPCTrigger>().TalkedTo = true;
                 }
             }
 

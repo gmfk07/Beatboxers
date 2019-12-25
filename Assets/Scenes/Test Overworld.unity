@@ -875,7 +875,7 @@ PrefabInstance:
     - target: {fileID: 9143528901910066875, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 9143528901910066869, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
@@ -949,6 +949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
+      propertyPath: RepeatDialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
       propertyPath: dialog.Array.data[0]
       value: Pasito a pasito, suave suavecito, nos vamos pegando...
       objectReference: {fileID: 0}
@@ -1013,6 +1018,21 @@ PrefabInstance:
         type: 3}
       propertyPath: Dialog.Array.data[7]
       value: Good luck! I'm rooting for you!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: HasRepeatDialog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[0]
+      value: '...what''s up?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704770347950918832, guid: 224bfbec7a463614a99532d4244333cb,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[1]
+      value: Get that trash guy!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224bfbec7a463614a99532d4244333cb, type: 3}
@@ -1597,7 +1617,7 @@ PrefabInstance:
     - target: {fileID: 9143528901910066875, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 9143528901910066869, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
@@ -4896,7 +4916,7 @@ PrefabInstance:
     - target: {fileID: 9143528901910066875, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 9143528901910066869, guid: 224bfbec7a463614a99532d4244333cb,
         type: 3}
@@ -5686,7 +5706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172667686591413}
   m_LocalRotation: {x: -0, y: 0.99989027, z: -0, w: -0.014814793}
-  m_LocalPosition: {x: -3.83, y: 1.11, z: 2.67}
+  m_LocalPosition: {x: -29.52, y: 1.11, z: 5.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2030955232}

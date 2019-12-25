@@ -6,6 +6,7 @@ public class NPCTrigger : MonoBehaviour
 {
     private NPC parent;
     private bool playerNear = false;
+    public bool TalkedTo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +18,15 @@ public class NPCTrigger : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && playerNear)
         {
-            Debug.Log(DialogController.Instance);
-            DialogController.Instance.HandleDialogPress(parent.Dialog, parent.ItemToGive);
+            if (parent.HasRepeatDialog && TalkedTo)
+            {
+                DialogController.Instance.HandleDialogPress(parent.RepeatDialog, null);
+            }
+            else
+            {
+                DialogController.Instance.HandleDialogPress(parent.Dialog, parent.ItemToGive);
+                TalkedTo = true;
+            }
         }
     }
 
