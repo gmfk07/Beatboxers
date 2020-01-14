@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class DialogController : Singleton<DialogController>
 {
-    public GameObject DialogPanel;
-    public GameObject NewItemImage;
-    public Text DialogText;
-    public float TimeBetweenCharacters;
+    [SerializeField] private GameObject dialogPanel;
+    [SerializeField] private GameObject newItemImage;
+    [SerializeField] private Text dialogText;
+    [SerializeField] private float timeBetweenCharacters;
+    [SerializeField] private Color defaultTextColor;
+    [SerializeField] private List<string> colorCodeKeys;
+    [SerializeField] private List<Color> colorCodeValues;
 
     private bool isDisplayingDialog = false;
     private bool isRevealingChars = false;
@@ -23,10 +26,10 @@ public class DialogController : Singleton<DialogController>
     //Disable dialog box, get player
     private void Start()
     {
-        DialogPanel.SetActive(false);
-        DialogText.text = "";
+        dialogPanel.SetActive(false);
+        dialogText.text = "";
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        NewItemImage.SetActive(false);
+        newItemImage.SetActive(false);
     }
 
     //Handle dialog button being pressed around an NPC with dialog dialog and giving item toGet
@@ -67,7 +70,7 @@ public class DialogController : Singleton<DialogController>
 
         isDisplayingDialog = true;
         currentDialog = new Queue<string>(dialog);
-        DialogPanel.SetActive(true);
+        dialogPanel.SetActive(true);
         charsToDisplay = 0;
         ShowNextLine();
     }
@@ -75,17 +78,46 @@ public class DialogController : Singleton<DialogController>
     //Handle displaying the line of dialog atop the queue, or ending if the queue is empty
     private void ShowNextLine()
     {
-        StopCoroutine(IncreaseCharsToDisplay());
+        StopAllCoroutines();
         charsToDisplay = 0;
         isRevealingChars = true;
 
         if (currentDialog.Count > 0)
         {
             stringToDisplay = currentDialog.Dequeue();
+
+            //Update color based on color code
+            string code = UpdateTextColor(stringToDisplay);
+            //Remove the color code from the string
+            if (code != "none")
+            {
+                stringToDisplay = stringToDisplay.Substring(code.Length);
+            }
+
             StartCoroutine(IncreaseCharsToDisplay());
-        } else {
+        }
+        else {
             EndDialog();
         }
+    }
+
+    //Given the dialog that will be displayed, sets the text color based on the color code at the start of the dialog and returns the color code, or "none" if none was found.
+    private string UpdateTextColor(string toDisplay)
+    {
+        dialogText.color = defaultTextColor;
+        string ret = "none";
+
+        for (int i = 0; i < colorCodeKeys.Count; i++)
+        {
+            string code = colorCodeKeys[i];
+            if (toDisplay.StartsWith(code))
+            {
+                ret = code;
+                dialogText.color = colorCodeValues[i];
+            }
+        }
+
+        return ret;
     }
 
     //Close the dialog window and resume normal gameplay, or do the give item text and give the item
@@ -93,9 +125,9 @@ public class DialogController : Singleton<DialogController>
     {
         player.Frozen = false;
         isDisplayingDialog = false;
-        DialogText.text = "";
-        DialogPanel.SetActive(false);
-        NewItemImage.SetActive(false);
+        dialogText.text = "";
+        dialogPanel.SetActive(false);
+        newItemImage.SetActive(false);
 
         if (isGettingNewItem)
         {
@@ -108,9 +140,9 @@ public class DialogController : Singleton<DialogController>
     //Display all characters, as long as there's a stringToDisplay
     private void MaximizeCharsToDisplay()
     {
-        charsToDisplay = stringToDisplay.Length;
+        dialogText.text = stringToDisplay.Substring(0, stringToDisplay.Length);
         isRevealingChars = false;
-        StopCoroutine(IncreaseCharsToDisplay());
+        StopAllCoroutines();
     }
 
     //Display one more character
@@ -118,7 +150,7 @@ public class DialogController : Singleton<DialogController>
     {
         while (true)
         {
-            yield return new WaitForSeconds(TimeBetweenCharacters);
+            yield return new WaitForSeconds(timeBetweenCharacters);
             if (charsToDisplay < stringToDisplay.Length)
             {
                 charsToDisplay++;
@@ -127,7 +159,7 @@ public class DialogController : Singleton<DialogController>
             {
                 isRevealingChars = false;
             }
-            DialogText.text = stringToDisplay.Substring(0, charsToDisplay);
+            dialogText.text = stringToDisplay.Substring(0, charsToDisplay);
         }
     }
 
@@ -136,7 +168,7 @@ public class DialogController : Singleton<DialogController>
     {
         HandleDialogPress(new List<string>() { item.itemName + ": " + item.itemDescription });
 
-        NewItemImage.GetComponent<Image>().sprite = item.itemSprite;
-        NewItemImage.SetActive(true);
+        newItemImage.GetComponent<Image>().sprite = item.itemSprite;
+        newItemImage.SetActive(true);
     }
 }

@@ -115,6 +115,7 @@ public class BeatBarController : MonoBehaviour
         if (punish)
         {
             manaCount = Mathf.Max(manaCount - 1, 0);
+            manabar.UpdateManaBar(manaCount);
         }
 
         HandleLooping();
