@@ -27,15 +27,13 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Move and jump, if not frozen
+    // Move and jump, stopping movement if frozen.
     void FixedUpdate()
     {
-        if (!Frozen)
-        {
-            HandleGrounding();
-            CheckMovement();
-        }
-        else
+        HandleGrounding();
+        CheckMovement();
+
+        if (Frozen)
         {
             animator.SetBool("isWalking", false);
         }
@@ -47,7 +45,7 @@ public class Player : MonoBehaviour
         if (CheckGrounded())
         {
             animator.SetBool("isGrounded", true);
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump") && !Frozen)
             {
                 yVelocity = JumpVelocity;
                 animator.SetTrigger("jump");
@@ -83,6 +81,11 @@ public class Player : MonoBehaviour
 
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
+
+        if (Frozen)
+        {
+            horizontalAxis = verticalAxis = 0;
+        }
 
         Vector3 movement = new Vector3(Speed * horizontalAxis, yVelocity, Speed * verticalAxis) * Time.deltaTime;
         cc.Move(movement);

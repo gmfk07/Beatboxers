@@ -67,8 +67,7 @@ public class OverworldManager : Singleton<OverworldManager>
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        if (SaveExists())
-            File.Delete(Application.persistentDataPath + "/overworld.save");
+        DeleteSave();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -174,6 +173,15 @@ public class OverworldManager : Singleton<OverworldManager>
         else
         {
             Debug.Log("No game saved!");
+        }
+    }
+
+    //If a temp save exists, delete it.
+    public void DeleteSave()
+    {
+        if (SaveExists())
+        {
+            File.Delete(Application.persistentDataPath + "/overworld.save");
         }
     }
 }
