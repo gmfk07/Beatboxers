@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd260b7f83835eb45a19334bb7f60a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TalkedTo: 1
+  TalkedTo: 0
 --- !u!1 &2390057824668550829
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,12 +195,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dialog:
-  - As a rock with the gift of sapience, I come here to the mountain to visit my less
-    lucky rock brethren.
-  - You're a human, right? Do you visit monkeys or whatever and ponder the mysteries
-    of consciousness?
-  - '...me doing this isn''t weird or anything, is it?'
+  - Welcome to Ostinato village! ...wait, you're not working for the Prince, are you?
+  - <r>N-no, sir! I'm a Beatboxer who's come for the Metrostone pieces.
+  - Oh. In that case, welcome to Ostinato village!
+  - I am the village greeter. It is my job to say hello to people and keep their spirits
+    high even in these trying times!
+  - <r>Hehe, a very noble profession, my good Rock.
   ItemToGive: {fileID: 0}
   HasRepeatDialog: 1
   RepeatDialog:
-  - Stay strong, rock friends. You'll get there someday.
+  - Greetings are such a strange thing. Everyone loves them, from humans to rocks.
+  - They're unneeded, but everyone says "hello" to everyone anyways.
+  - Make sure to greet as many people as you can to make the world a happier place!
+    Within reason, of course.
