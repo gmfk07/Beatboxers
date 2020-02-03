@@ -9,10 +9,12 @@ using UnityEngine.SceneManagement;
 public class OverworldManager : Singleton<OverworldManager>
 {
     public bool OverworldFullyLoaded;
+    private AsyncOperation battleLoad;
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        battleLoad = SceneManager.LoadSceneAsync("Battle");
+        battleLoad.allowSceneActivation = false;
     }
 
     //Create an overworld save without the GameObject toRemove.
@@ -67,7 +69,6 @@ public class OverworldManager : Singleton<OverworldManager>
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        DeleteSave();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -183,5 +184,11 @@ public class OverworldManager : Singleton<OverworldManager>
         {
             File.Delete(Application.persistentDataPath + "/overworld.save");
         }
+    }
+
+    //Go to the battle scene
+    public void GoToBattleScene()
+    {
+        battleLoad.allowSceneActivation = true;
     }
 }
