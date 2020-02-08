@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="Event" id="{d32dd327-c780-4025-a835-e3016a37e1dd}">
 		<property name="name">
-			<value>Sound1</value>
+			<value>BeatMiss</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{8acef306-1651-48ab-96fe-a07ec8b967f2}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{2b4e11ef-126b-440e-8681-150abbacc2d0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{25b73e94-0c28-4737-884f-8e3b95f49480}">

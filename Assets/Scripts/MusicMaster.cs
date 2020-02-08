@@ -49,4 +49,11 @@ public class MusicMaster : Singleton<MusicMaster>
         }
         return SecondsPerBeat;
     }
+
+    //Play the sound for opening and closing a menu.
+    public void PlayMenuSound()
+    {
+        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Menu");
+        audioEvent.start();
+    }
 }

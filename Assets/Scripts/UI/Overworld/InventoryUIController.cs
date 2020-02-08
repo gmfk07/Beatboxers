@@ -219,6 +219,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
     {
         if (Input.GetButtonDown("Inventory"))
         {
+            MusicMaster.Instance.PlayMenuSound();
             if (displayingInventory)
             {
                 CloseInventory();

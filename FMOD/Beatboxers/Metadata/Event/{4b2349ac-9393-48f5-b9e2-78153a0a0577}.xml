@@ -2,10 +2,10 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="Event" id="{4b2349ac-9393-48f5-b9e2-78153a0a0577}">
 		<property name="name">
-			<value>Sound6</value>
+			<value>Menu</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f5e90545-d112-46c2-90d9-3ae450cca84b}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{2fa432dc-5344-4dd5-89f7-2646137d6162}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{2b4e11ef-126b-440e-8681-150abbacc2d0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{c8aa5dc8-4ebb-4c0d-bd81-7ae4ecb2380f}">
@@ -113,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{c084e566-6de6-428f-9801-f9cfc392b761}">
 		<relationship name="effects">
 			<destination>{f2020d68-f5d3-4246-bfe9-a71c0b0f64e4}</destination>
-			<destination>{e759636d-a4ed-4ac1-8524-0a0373f86b55}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2616a5e9-4d09-48bd-aaf9-8e35a87e0cbc}" />
@@ -125,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{7ef64f70-79d2-4755-85d0-98202a4315b2}" />
 	<object class="MixerBusFader" id="{f2020d68-f5d3-4246-bfe9-a71c0b0f64e4}" />
-	<object class="SpatialiserEffect" id="{e759636d-a4ed-4ac1-8524-0a0373f86b55}" />
 	<object class="MixerBusFader" id="{116d13ad-fa10-48aa-95d1-c046acc40a91}" />
 </objects>
