@@ -5,7 +5,7 @@
 			<value>Sound4</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f5e90545-d112-46c2-90d9-3ae450cca84b}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{c004c51e-1cf8-4fb1-ad47-ac35a43c930f}">
 		<relationship name="effects">
 			<destination>{b956b2f6-26fd-41f1-a988-5ce61d5c13a1}</destination>
-			<destination>{39c96f66-234e-4819-8081-fe2a6fb46d7a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{47eb309a-9bcb-4dd6-89f5-4479b422b6ae}" />
@@ -128,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{8af26134-6950-47ba-82e6-2ffd1d21f814}" />
 	<object class="MixerBusFader" id="{b956b2f6-26fd-41f1-a988-5ce61d5c13a1}" />
-	<object class="SpatialiserEffect" id="{39c96f66-234e-4819-8081-fe2a6fb46d7a}" />
 	<object class="MixerBusFader" id="{80ff0864-636a-4a78-a313-7cf571336aa3}" />
 </objects>

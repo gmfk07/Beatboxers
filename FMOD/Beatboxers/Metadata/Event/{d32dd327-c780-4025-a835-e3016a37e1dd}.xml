@@ -5,7 +5,7 @@
 			<value>BeatMiss</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f5e90545-d112-46c2-90d9-3ae450cca84b}</destination>
@@ -113,7 +113,6 @@
 	<object class="MixerBusEffectChain" id="{e0d43793-f616-4732-aa49-9982366f51fb}">
 		<relationship name="effects">
 			<destination>{1d11b5f3-cc90-4bf4-aeb9-8fe449e2bb94}</destination>
-			<destination>{5bd2f1ac-9039-4a1f-9bed-ba462ab9f644}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4ec3c81a-aed7-4e0e-90a6-68b429893b08}" />
@@ -125,6 +124,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{f73c465b-b400-4204-a9f2-4351796aff14}" />
 	<object class="MixerBusFader" id="{1d11b5f3-cc90-4bf4-aeb9-8fe449e2bb94}" />
-	<object class="SpatialiserEffect" id="{5bd2f1ac-9039-4a1f-9bed-ba462ab9f644}" />
 	<object class="MixerBusFader" id="{98bc7956-eae3-473f-8d60-ac395f51ed60}" />
 </objects>
