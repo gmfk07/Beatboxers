@@ -56,4 +56,32 @@ public class MusicMaster : Singleton<MusicMaster>
         FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Menu");
         audioEvent.start();
     }
+
+    //Play the sound for successfully hitting a beat.
+    public void PlayBeatHitSound()
+    {
+        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Beat");
+        audioEvent.start();
+    }
+
+    //Play the sound for missing a beat.
+    public void PlayBeatMissSound()
+    {
+        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/BeatMiss");
+        audioEvent.start();
+    }
+
+    //Play the sound for blocking.
+    public void PlayBlockSound()
+    {
+        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Block");
+        audioEvent.start();
+    }
+
+    //Play the sound for being hurt.
+    public void PlayHurtSound()
+    {
+        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Hurt");
+        audioEvent.start();
+    }
 }

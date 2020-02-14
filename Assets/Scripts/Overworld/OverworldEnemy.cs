@@ -26,10 +26,12 @@ public class OverworldEnemy : MonoBehaviour
     {
         if (CanEnterBattle(collider))
         {
+            //Start the battle enter animation and freeze the player
             loadingLevel = true;
             battleStartObject.GetComponent<Image>().enabled = true;
             battleStartAnim.SetTrigger("BattleStart");
             StartCoroutine("LoadBattleScene");
+            collider.GetComponent<Player>().Frozen = true;
         }
     }
 
