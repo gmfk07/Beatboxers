@@ -13,7 +13,7 @@ public class BeatBarController : MonoBehaviour
     [SerializeField] private float gracePeriod;
     [SerializeField] private GameObject Beat;
     [SerializeField] private int manaCount = 0;
-    [SerializeField] private int manaMax = 10;
+    [SerializeField] private int manaMax = 8;
     [SerializeField] private int safeBeats = 3;
     [SerializeField] private EnemyController target;
     [SerializeField] private HealthDisplay healthDisplay;
@@ -152,6 +152,7 @@ public class BeatBarController : MonoBehaviour
                     punish = false;
                     manaCount = Mathf.Min(manaCount + 1, manaMax);
                     manabar.UpdateManaBar(manaCount);
+                    MusicMaster.Instance.PlayBeatHitSound();
                 }
                 else if (Input.GetKeyDown(KeyCode.UpArrow))
                     punish = !ResolveAttack(ref manaCount, PlayerStats.upAttack, beatComponent);
@@ -175,6 +176,10 @@ public class BeatBarController : MonoBehaviour
                     beatsToRemove.Add(beat);
                     Destroy(beat);
                 }
+            }
+            if (punish)
+            {
+                MusicMaster.Instance.PlayBeatMissSound();
             }
         }
 
@@ -276,38 +281,42 @@ public class BeatBarController : MonoBehaviour
                     Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
     }
 
-    //Returns false if manaAmount is less than the provided amount's cost or there's a shape mismatch, otherwise reduces manaAmount by the cost, attacks, and returns true
+    //Returns false if manaAmount is less than the provided amount's cost or there's a shape mismatch, otherwise reduces manaAmount by the cost, attacks, and returns true.
+    //Plays the right sound effect.
     bool ResolveAttack(ref int manaAmount, Attack attack, Beat beat)
     {
-        if (manaAmount < attack.manaCost)
+        bool shapeWrong = attack.Shape != Shape.Any && attack.Shape != beat.Shape;
+        bool manaWrong = manaAmount < attack.manaCost;
+        if (shapeWrong || manaWrong)
         {
-            return false;
-        }
-        if (attack.Shape != Shape.Any && attack.Shape != beat.Shape)
-        {
+            MusicMaster.Instance.PlayBeatMissSound();
             return false;
         }
         manaAmount -= attack.manaCost;
         manabar.UpdateManaBar(manaAmount);
         target.Hit(attack);
         AttackAnimationController.Instance.PlayPlayerAttackAnimation(attack.itemName);
+        MusicMaster.Instance.PlayHitSound();
+
         return true;
     }
 
     //Returns false if manaAmount is less than the provided amount's cost or there's a shape mismatch, otherwise reduces manaAmount by the cost, defends, and returns true
     bool ResolveDefense(ref int manaAmount, Defense defense, Beat beat)
     {
-        if (manaAmount < defense.manaCost)
+        bool shapeWrong = defense.Shape != Shape.Any && defense.Shape != beat.Shape;
+        bool manaWrong = manaAmount < defense.manaCost;
+
+        if (shapeWrong || manaWrong)
         {
-            return false;
-        }
-        if (defense.Shape != Shape.Any && defense.Shape != beat.Shape)
-        {
+            MusicMaster.Instance.PlayBeatMissSound();
             return false;
         }
         manaAmount -= defense.manaCost;
         manabar.UpdateManaBar(manaAmount);
         PlayerStats.Defend(defense);
+        MusicMaster.Instance.PlayBlockSound();
+
         return true;
     }
 

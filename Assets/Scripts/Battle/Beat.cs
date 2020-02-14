@@ -48,11 +48,12 @@ public class Beat : MonoBehaviour
 
     void OnDestroy()
     {
-        //Attack the player IF this beat was not destroyed as a result of a scene change
+        //Attack the player IF this beat was not destroyed as a result of a scene change, playing the right sound
         if (IsAttackBeat && Triggered)
         {
             Debug.Log("bro you just got attacked");
             PlayerStats.Damage(Attack.Damage, HealthDisplay);
+            MusicMaster.Instance.PlayBeatMissSound();
             AttackAnimationController.Instance.PlayEnemyAttackAnimation(Attack.AttackName);
         }
     }

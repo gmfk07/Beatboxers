@@ -78,10 +78,10 @@ public class MusicMaster : Singleton<MusicMaster>
         audioEvent.start();
     }
 
-    //Play the sound for being hurt.
-    public void PlayHurtSound()
+    //Play a hit sound.
+    public void PlayHitSound()
     {
-        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Hurt");
+        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Hit");
         audioEvent.start();
     }
 }

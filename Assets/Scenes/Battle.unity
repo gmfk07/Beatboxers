@@ -2454,9 +2454,8 @@ MonoBehaviour:
   gracePeriod: 1.5
   Beat: {fileID: 6858820538123302504, guid: 6c313ac3cd5ed934e99f5ddb904cb6d7, type: 3}
   manaCount: 0
-  manaMax: 10
+  manaMax: 8
   safeBeats: 3
-  manaCounter: {fileID: 0}
   target: {fileID: 2106407241}
   healthDisplay: {fileID: 2055000397}
   manabar: {fileID: 259256870}
