@@ -14,7 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Overworld.unity
     guid: f93c140439fedb84cb8b90f95e0623e4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/ae731e9eeb30738419007d54db1d9585
+    guid: ae731e9eeb30738419007d54db1d9585
   - enabled: 1
     path: Assets/Scenes/Town.unity
-    guid: da824309683e5bf49ad2d1bb44e8abba
+    guid: 1aa2cadac024de643ae197c214d66ee4
   m_configObjects: {}
