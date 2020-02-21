@@ -4367,7 +4367,7 @@ PrefabInstance:
     - target: {fileID: 8883835694363192036, guid: 3b619edcf4a9048469bd110fa9e2f192,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8883835694363192036, guid: 3b619edcf4a9048469bd110fa9e2f192,
         type: 3}
@@ -8933,7 +8933,7 @@ PrefabInstance:
     - target: {fileID: 4901126519132624962, guid: 707312a37e03134439d0b1ac55678ea5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4901126519132624962, guid: 707312a37e03134439d0b1ac55678ea5,
         type: 3}
@@ -9890,17 +9890,43 @@ PrefabInstance:
     - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
       propertyPath: Dialog.Array.size
-      value: 4
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
       propertyPath: Dialog.Array.data[3]
-      value: ..this isn't weird or anything, is it?
+      value: No, I'm just here to visit my unevolved rock brethren. You're a human,
+        right? Do you ever visit monkeys and just... think?
       objectReference: {fileID: 0}
     - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
       propertyPath: Dialog.Array.data[2]
-      value: <r>Um... I guess I never really thought about it.
+      value: <r>O-oh, thanks! That's... helpful, actually. Are you from around here?
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: <r>Um, excuse me! Do you know the way to Ostinato village?
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: Hmmm? Oh, it's just up this cliffside.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[4]
+      value: '...This isn''t weird or anything, is it?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[0]
+      value: One day, my rocky brothers, you will join our ranks.
       objectReference: {fileID: 0}
     - target: {fileID: 145970425610466332, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
