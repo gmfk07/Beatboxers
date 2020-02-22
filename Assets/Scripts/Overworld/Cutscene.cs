@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +16,7 @@ public class Cutscene : MonoBehaviour
     [SerializeField] private DialogController dialogController; //The DialogController to make cutscene calls to
     [SerializeField] private Player player; //The Player to freeze/unfreeze
 
-    [HideInInspector] public bool hasTriggered = false;
-
-    private bool transitionComplete = false;
-    private bool dialogComplete = false;
+    private bool inDialog = false;
 
     void Start()
     {
@@ -35,6 +33,14 @@ public class Cutscene : MonoBehaviour
         if (other.tag == "Player")
         {
             StartCutscene();
+        }
+    }
+
+    private void Update()
+    {
+        if (inDialog)
+        {
+
         }
     }
 
@@ -56,26 +62,57 @@ public class Cutscene : MonoBehaviour
             if (transitions[shotIndex] == Transition.Cut)
             {
                 Camera.main.transform.SetPositionAndRotation(transforms[shotIndex].position, transforms[shotIndex].rotation);
-                transitionComplete = true;
+                StartDialog(shotIndex);
             }
             else if (transitions[shotIndex] == Transition.Pan)
             {
-                StartCoroutine(Pan(transforms[shotIndex], panTimes[shotIndex]));
+                StartCoroutine(Pan(shotIndex));
             }
         }
-
         return true;
     }
 
-    IEnumerator Pan(Transform newTransform, float panTime)
+    //Attempts to start the dialog of a given shot index. If no dialog exists for that shot, marks the dialog as already over.
+    private void StartDialog(int shotIndex)
     {
+        if (dialogs[shotIndex] != null)
+        {
+            dialogController.HandleDialogPress(dialogs[shotIndex]);
+            inDialog = true;
+        }
+        else
+        {
+            GoToNextShot();
+        }
+    }
+
+    //Go to the next shot, resetting all flags. If no shot exists, exit the cutscene.
+    private void GoToNextShot()
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerator Pan(int shotIndex)
+    {
+        Transform newTransform = transforms[shotIndex];
+        float panTime = panTimes[shotIndex];
+
         Vector3 displacement = Camera.main.transform.position - newTransform.position;
         Vector3 displacementPerSecond = displacement / panTime;
+        Vector3 rotateDiff = Camera.main.transform.rotation.eulerAngles - newTransform.rotation.eulerAngles;
+        Vector3 rotatePerSecond = rotateDiff / panTime;
         float startTime = Time.time;
+
         while (Time.time - startTime < panTime)
         {
             Camera.main.transform.Translate(displacementPerSecond * Time.fixedDeltaTime);
+            Camera.main.transform.Rotate(rotatePerSecond * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
+
+        Camera.main.transform.position = newTransform.position;
+        Camera.main.transform.rotation = newTransform.rotation;
+
+        StartDialog(shotIndex);
     }
 }
