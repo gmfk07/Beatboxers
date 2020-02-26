@@ -3,12 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ListWrapper
+{
+    public List<string> dialog;
+}
+
 public class Cutscene : MonoBehaviour
 {
     public enum Transition { Cut, Pan };
 
     //All the five lists must be the same length!
-    [SerializeField] private List<List<string>> dialogs; //The list of dialog strings in between shots. Empty list = no dialog.
+    [SerializeField] private List<ListWrapper> dialogs; //The list of dialogue strings in between shots. Empty list = no dialog.
     [SerializeField] private List<Transform> transforms; //The different Transforms the camera occupies in different shots. Null = no change from previous position.
     [SerializeField] private List<Transition> transitions; //The transitions to use when moving to the shot. If this shot's Transform is same as prev, this is irrelevant.
     [SerializeField] private List<float> panTimes; //How long a pan transition should take. If this shot's transition isn't Pan, this is irrelevant.
@@ -17,6 +23,9 @@ public class Cutscene : MonoBehaviour
     [SerializeField] private Player player; //The Player to freeze/unfreeze
 
     private bool inDialog = false;
+    private int currentShotIndex = -1;
+
+    [HideInInspector] public bool HasTriggered = false;
 
     void Start()
     {
@@ -28,10 +37,12 @@ public class Cutscene : MonoBehaviour
         }
     }
 
+    //Begin the cutscene if we haven't triggered it yet!
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !HasTriggered)
         {
+            HasTriggered = true;
             StartCutscene();
         }
     }
@@ -40,20 +51,29 @@ public class Cutscene : MonoBehaviour
     {
         if (inDialog)
         {
+            if (Input.GetButtonDown("Interact"))
+            {
+                dialogController.HandleDialogPress(dialogs[currentShotIndex].dialog);
+            }
 
+            if (!player.Frozen)
+            {
+                GoToShot(currentShotIndex + 1);
+            }
         }
     }
 
     //Freezes the player and begins the cutscene with a transition to shot 0.
     private void StartCutscene()
     {
-        player.Frozen = true;
+        currentShotIndex = 0;
+        GoToShot(0);
     }
 
     //Attempts to transition to the given shot index, returning true if this is valid and false if not
     private bool TryTransitionToShot(int shotIndex)
     {
-        if (shotIndex < dialogs.Count)
+        if (shotIndex >= dialogs.Count)
         {
             return false;
         }
@@ -77,19 +97,24 @@ public class Cutscene : MonoBehaviour
     {
         if (dialogs[shotIndex] != null)
         {
-            dialogController.HandleDialogPress(dialogs[shotIndex]);
+            dialogController.HandleDialogPress(dialogs[shotIndex].dialog);
             inDialog = true;
         }
         else
         {
-            GoToNextShot();
+            GoToShot(shotIndex);
         }
     }
 
-    //Go to the next shot, resetting all flags. If no shot exists, exit the cutscene.
-    private void GoToNextShot()
+    //Go to the shot indexed by shotIndex, resetting the inDialog flag and refreezing the player. If no such shot exists, exit the cutscene.
+    private void GoToShot(int shotIndex)
     {
-        throw new NotImplementedException();
+        inDialog = false;
+        if (!TryTransitionToShot(shotIndex))
+        {
+            //End the cutscene
+            player.Frozen = false;
+        }
     }
 
     IEnumerator Pan(int shotIndex)
