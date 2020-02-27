@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 145970425610466335}
   - component: {fileID: 145970425610466305}
   - component: {fileID: 145970425610466334}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NPC Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

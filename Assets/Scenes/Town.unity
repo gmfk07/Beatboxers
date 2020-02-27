@@ -3525,12 +3525,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: 0
+--- !u!1 &1810943503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2534866581884222612, guid: 6fa4379f3fe5f224d9611f9edd171576,
+    type: 3}
+  m_PrefabInstance: {fileID: 1562750425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1810943507
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810943503}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -2432090755550338912, guid: 6fa4379f3fe5f224d9611f9edd171576, type: 3}
 --- !u!4 &1825439353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4836222846064306218, guid: 8fcb438d1c7eccf4e8ea5fc76ddaa915,
     type: 3}
   m_PrefabInstance: {fileID: 1415473302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1831603091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831603092}
+  m_Layer: 0
+  m_Name: Cutscene Transform 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1831603092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831603091}
+  m_LocalRotation: {x: 0.13282742, y: -0, z: -0, w: 0.99113923}
+  m_LocalPosition: {x: 12.5, y: 41.66, z: 147.17}
+  m_LocalScale: {x: 1, y: 1.0638214, z: 1.0638216}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1854083880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 833445111995245044, guid: 5944eb57693d47c4d999259aa58d49e8,
@@ -3947,8 +3997,8 @@ GameObject:
   - component: {fileID: 2074350925}
   - component: {fileID: 2074350924}
   m_Layer: 2
-  m_Name: Cutscene
-  m_TagString: Untagged
+  m_Name: Town Entrance Cutscene
+  m_TagString: Cutscene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3967,14 +4017,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogs:
   - dialog:
-    - HEYYY GAMERRRRR
-    - it me
-    - HEYYY GAMERRRRR
+    - Hey gamer
+    - I'm a rock.
+    - e
+  - dialog:
+    - '...oh, you''re talking to me?'
   transforms:
   - {fileID: 1573458810}
-  transitions: 00000000
+  - {fileID: 1831603092}
+  transitions: 0000000001000000
   panTimes:
   - 0
+  - 1
   dialogController: {fileID: 1681347491}
   player: {fileID: 8296172667686591414}
   HasTriggered: 0

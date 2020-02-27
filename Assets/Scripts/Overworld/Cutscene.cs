@@ -59,6 +59,7 @@ public class Cutscene : MonoBehaviour
             if (!player.Frozen)
             {
                 GoToShot(currentShotIndex + 1);
+                currentShotIndex ++;
             }
         }
     }
@@ -67,6 +68,7 @@ public class Cutscene : MonoBehaviour
     private void StartCutscene()
     {
         currentShotIndex = 0;
+        Camera.main.GetComponent<CameraFollow>().IsFollowing = false;
         GoToShot(0);
     }
 
@@ -102,7 +104,8 @@ public class Cutscene : MonoBehaviour
         }
         else
         {
-            GoToShot(shotIndex);
+            currentShotIndex++;
+            GoToShot(shotIndex + 1);
         }
     }
 
@@ -114,6 +117,7 @@ public class Cutscene : MonoBehaviour
         {
             //End the cutscene
             player.Frozen = false;
+            Camera.main.GetComponent<CameraFollow>().IsFollowing = true;
         }
     }
 
@@ -122,16 +126,17 @@ public class Cutscene : MonoBehaviour
         Transform newTransform = transforms[shotIndex];
         float panTime = panTimes[shotIndex];
 
-        Vector3 displacement = Camera.main.transform.position - newTransform.position;
+        Vector3 displacement = transform.TransformPoint(newTransform.position) - transform.TransformPoint(Camera.main.transform.position);
         Vector3 displacementPerSecond = displacement / panTime;
-        Vector3 rotateDiff = Camera.main.transform.rotation.eulerAngles - newTransform.rotation.eulerAngles;
-        Vector3 rotatePerSecond = rotateDiff / panTime;
         float startTime = Time.time;
+
+        float degreeDifference = Quaternion.Angle(Camera.main.transform.rotation, newTransform.rotation);
+        float degreesPerSecond = degreeDifference / panTime;
 
         while (Time.time - startTime < panTime)
         {
-            Camera.main.transform.Translate(displacementPerSecond * Time.fixedDeltaTime);
-            Camera.main.transform.Rotate(rotatePerSecond * Time.fixedDeltaTime);
+            Camera.main.transform.Translate(displacementPerSecond * Time.fixedDeltaTime, Space.World);
+            Camera.main.transform.rotation = Quaternion.RotateTowards(Camera.main.transform.rotation, newTransform.rotation, degreesPerSecond * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
 

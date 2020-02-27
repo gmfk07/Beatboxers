@@ -8,6 +8,7 @@ public class OverworldSave
     public List<string> PickupNameList;
     public List<string> EnemyNameList;
     public List<string> NPCsSpokenTo;
+    public List<string> CutscenesPlayed;
     public float PlayerXPos;
     public float PlayerYPos;
     public float PlayerZPos;

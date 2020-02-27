@@ -24,6 +24,7 @@ public class OverworldManager : Singleton<OverworldManager>
         save.EnemyNameList = new List<string>();
         save.PickupNameList = new List<string>();
         save.NPCsSpokenTo = new List<string>();
+        save.CutscenesPlayed = new List<string>();
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyParent"))
         {
@@ -43,6 +44,14 @@ public class OverworldManager : Singleton<OverworldManager>
             if (go.GetComponentInChildren<NPCTrigger>().TalkedTo)
             {
                 save.NPCsSpokenTo.Add(go.name);
+            }
+        }
+
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Cutscene"))
+        {
+            if (go.GetComponent<Cutscene>().HasTriggered)
+            {
+                save.CutscenesPlayed.Add(go.name);
             }
         }
 
@@ -162,6 +171,16 @@ public class OverworldManager : Singleton<OverworldManager>
                 if (save.NPCsSpokenTo.Contains(go.name))
                 {
                     go.GetComponentInChildren<NPCTrigger>().TalkedTo = true;
+                }
+            }
+
+            //Make cutscenes we've already triggered have the triggered variable checked
+            //If it has the same name, we call it the same!!!
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Cutscene"))
+            {
+                if (save.CutscenesPlayed.Contains(go.name))
+                {
+                    go.GetComponent<Cutscene>().HasTriggered = true;
                 }
             }
 
