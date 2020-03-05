@@ -41,7 +41,7 @@ public class OverworldManager : Singleton<OverworldManager>
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("NPC"))
         {
-            if (go.GetComponentInChildren<NPCTrigger>().TalkedTo)
+            if (go.GetComponent<NPC>().TalkedTo)
             {
                 save.NPCsSpokenTo.Add(go.name);
             }
@@ -170,7 +170,7 @@ public class OverworldManager : Singleton<OverworldManager>
             {
                 if (save.NPCsSpokenTo.Contains(go.name))
                 {
-                    go.GetComponentInChildren<NPCTrigger>().TalkedTo = true;
+                    go.GetComponent<NPC>().TalkedTo = true;
                 }
             }
 

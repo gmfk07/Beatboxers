@@ -81,7 +81,7 @@ public class MusicMaster : Singleton<MusicMaster>
     //Play a hit sound.
     public void PlayHitSound()
     {
-        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/Hit");
+        FMOD.Studio.EventInstance audioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SoundEffects/MetroHit");
         audioEvent.start();
     }
 }
