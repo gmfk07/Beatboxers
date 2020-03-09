@@ -23,14 +23,15 @@ public class QuestgiverNPC : NPC
             DialogController.Instance.HandleDialogPress(startDialog, null);
             TalkedTo = true;
         }
-        else if (TalkedTo && TasksCompleted < tasksNeeded)
+        else if (TalkedTo && TasksCompleted < tasksNeeded && !HasTurnedInQuest)
         {
             DialogController.Instance.HandleDialogPress(ongoingDialog, null);
         }
-        else if (TalkedTo && TasksCompleted >= tasksNeeded)
+        else if (TalkedTo && TasksCompleted >= tasksNeeded && !HasTurnedInQuest)
         {
             DialogController.Instance.HandleDialogPress(completionDialog, null);
             HasTurnedInQuest = true;
+            GiveQuestRewards();
         }
         else if (HasTurnedInQuest)
         {

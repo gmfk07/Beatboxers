@@ -19,7 +19,13 @@ public class QuestTaskNPC : NPC
         {
             DialogController.Instance.HandleDialogPress(Dialog, null);
             TalkedTo = true;
-            quest.TasksCompleted++;
+            CompleteTask();
         }
+    }
+
+    //Increment the task counter for the parent quest. Called when the task is completed and when the scene is loaded.
+    public void CompleteTask()
+    {
+        quest.TasksCompleted++;
     }
 }
