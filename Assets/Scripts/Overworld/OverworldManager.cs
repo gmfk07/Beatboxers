@@ -55,6 +55,14 @@ public class OverworldManager : Singleton<OverworldManager>
             }
         }
 
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Questgiver"))
+        {
+            if (go.GetComponent<QuestgiverNPC>().HasTurnedInQuest)
+            {
+                save.QuestsCompleted.Add(go.name);
+            }
+        }
+
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         save.PlayerXPos = playerPos.x;
         save.PlayerYPos = playerPos.y;
@@ -186,6 +194,17 @@ public class OverworldManager : Singleton<OverworldManager>
                 if (save.CutscenesPlayed.Contains(go.name))
                 {
                     go.GetComponent<Cutscene>().HasTriggered = true;
+                }
+            }
+
+            //Make cutscenes we've already triggered have the triggered variable checked
+            //If it has the same name, we call it the same!!!
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Questgiver"))
+            {
+                if (save.QuestsCompleted.Contains(go.name))
+                {
+                    go.GetComponent<QuestgiverNPC>().HasTurnedInQuest = true;
+                    go.GetComponent<QuestgiverNPC>().GiveQuestRewards();
                 }
             }
 
