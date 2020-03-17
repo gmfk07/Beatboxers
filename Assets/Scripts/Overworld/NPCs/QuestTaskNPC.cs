@@ -7,7 +7,7 @@ public class QuestTaskNPC : NPC
     public List<string> Dialog = new List<string>();
     public bool HasRepeatDialog;
     public List<string> RepeatDialog = new List<string>();
-    [HideInInspector] private QuestgiverNPC quest;
+    [SerializeField] private QuestgiverNPC quest;
 
     public override void HandleButtonPress()
     {
