@@ -2107,6 +2107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f0f0bc094bca949986b4673d5efe9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TalkedTo: 0
   Dialog:
   - <r>This is a decrepit old log cabin. Looks long abandoned.
   - <r>Old buildings are a big fear of mine. Something about condemned buildings...
@@ -2378,7 +2379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd260b7f83835eb45a19334bb7f60a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TalkedTo: 0
 --- !u!1001 &524899043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5492,7 +5492,7 @@ GameObject:
   - component: {fileID: 1292624412}
   m_Layer: 2
   m_Name: NPCTrigger
-  m_TagString: NPC
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5523,7 +5523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd260b7f83835eb45a19334bb7f60a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TalkedTo: 0
 --- !u!135 &1292624413
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10226,6 +10225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f0f0bc094bca949986b4673d5efe9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TalkedTo: 0
   Dialog: []
   ItemToGive: {fileID: 0}
   HasRepeatDialog: 0
