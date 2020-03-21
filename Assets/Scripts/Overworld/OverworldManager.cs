@@ -25,6 +25,7 @@ public class OverworldManager : Singleton<OverworldManager>
         save.PickupNameList = new List<string>();
         save.NPCsSpokenTo = new List<string>();
         save.CutscenesPlayed = new List<string>();
+        save.QuestsCompleted = new List<string>();
 
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyParent"))
         {
@@ -101,10 +102,10 @@ public class OverworldManager : Singleton<OverworldManager>
         }
     }
 
-    //Returns true if a temporary overworld save exists, false otherwise.
+    //Returns true if a temporary overworld save for this area exists, false otherwise.
     private static bool SaveExists()
     {
-        return File.Exists(Application.persistentDataPath + "/overworld.save");
+        return File.Exists(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "overworld.save");
     }
 
     //Saves the overworld state without GameObject toRemove.
@@ -113,7 +114,7 @@ public class OverworldManager : Singleton<OverworldManager>
         OverworldSave save = CreateOverworldSave(toRemove);
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/overworld.save");
+        FileStream file = File.Create(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "overworld.save");
         bf.Serialize(file, save);
         file.Close();
 
@@ -126,7 +127,7 @@ public class OverworldManager : Singleton<OverworldManager>
         if (SaveExists())
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/overworld.save", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "overworld.save", FileMode.Open);
             OverworldSave save = (OverworldSave)bf.Deserialize(file);
             file.Close();
 

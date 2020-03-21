@@ -1486,6 +1486,7 @@ Transform:
   - {fileID: 1679215909}
   - {fileID: 290444178}
   - {fileID: 1556282582}
+  - {fileID: 711773244000946878}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4297,6 +4298,91 @@ Transform:
   m_Father: {fileID: 7814502683462509121}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1.053145, y: 9.053015, z: 37.314377}
+--- !u!4 &711773244000946878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+    type: 3}
+  m_PrefabInstance: {fileID: 844646965162445470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &844646965162445470
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1015062646}
+    m_Modifications:
+    - target: {fileID: 3747885317924172339, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene Change NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747885317924172339, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 37.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 154.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 169008191564365856, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747885317924172336, guid: 3e2eae44b15e11843a3cb199bbed602e,
+        type: 3}
+      propertyPath: nextSceneName
+      value: Rock Climbing
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e2eae44b15e11843a3cb199bbed602e, type: 3}
 --- !u!1 &1279993479142756212
 GameObject:
   m_ObjectHideFlags: 0
