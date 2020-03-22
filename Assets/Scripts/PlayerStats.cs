@@ -10,6 +10,7 @@ public static class PlayerStats
     public static Defense upDefense, downDefense, leftDefense, rightDefense;
     public static int maxHealth = 10;
     public static int health = 10;
+    public static int sheetMusic = 0;
     private static bool isDefending = false;
     private static Defense currentDefense;
 

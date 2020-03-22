@@ -213,7 +213,7 @@ public class OverworldManager : Singleton<OverworldManager>
             GameObject.FindGameObjectWithTag("Player").transform.position = newPlayerPos;
 
             Debug.Log("Game Loaded");
-            File.Delete(Application.persistentDataPath + "/overworld.save");
+            File.Delete(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "overworld.save");
         }
         else
         {
@@ -226,7 +226,7 @@ public class OverworldManager : Singleton<OverworldManager>
     {
         if (SaveExists())
         {
-            File.Delete(Application.persistentDataPath + "/overworld.save");
+            File.Delete(Application.persistentDataPath + "/" + SceneManager.GetActiveScene().name + "overworld.save");
         }
     }
 
