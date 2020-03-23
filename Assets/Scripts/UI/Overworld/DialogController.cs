@@ -32,7 +32,8 @@ public class DialogController : Singleton<DialogController>
         newItemImage.SetActive(false);
     }
 
-    //Handle dialog button being pressed around an NPC with dialog dialog and giving item toGet
+    //Handle dialog button being pressed in response to a dialog with dialog dialog and giving item toGet.
+    //If no dialog is currently being displayed, this starts the dialog and sets up the item to receive at the end. Otherwise, this merely continues it.
     public void HandleDialogPress(List<string> dialog, Item toGet = null)
     {
         //Leave if player is in inventory
