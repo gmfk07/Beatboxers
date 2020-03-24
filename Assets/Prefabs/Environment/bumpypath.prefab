@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2750102741335613353}
   - component: {fileID: 6847988311038784345}
   - component: {fileID: 107796483210733840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4901126519132624962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bumpypath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8241329220546161233}
-  m_LocalRotation: {x: -0, y: 0.9961947, z: -0.08715578, w: 0}
+  m_LocalRotation: {x: 0, y: 0.9961947, z: -0.08715578, w: 0}
   m_LocalPosition: {x: 3.98, y: 23.68, z: 65.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

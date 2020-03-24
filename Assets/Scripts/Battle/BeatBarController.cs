@@ -9,7 +9,7 @@ public class BeatBarController : MonoBehaviour
     private const int SECONDS_PER_MINUTE = 60;
 
     [SerializeField] private float beatWaitTime; //How long (in secs) between a beat appearing on the screen and the beat reaching the marker
-    [SerializeField] private float beatMargin; //How many seconds before or after a beat you can act and still be considered on beat
+    [SerializeField] private float beatMargin; //X-position before or after a beat you can act and still be considered on beat
     [SerializeField] private float gracePeriod;
     [SerializeField] private GameObject Beat;
     [SerializeField] private int manaCount = 0;

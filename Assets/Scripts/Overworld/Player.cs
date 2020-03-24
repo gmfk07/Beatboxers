@@ -20,11 +20,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float fractionOfRadiusForInBoundsCheck;
 
+    [SerializeField] private float plantBeatWindow;
+    [SerializeField] private GameObject plantPlatform;
+    private GameObject currentPlant;
+
     // Start is called before the first frame update
     void Start()
     {
         cc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        currentPlant = null;
     }
 
     // Move and jump, stopping movement if frozen.
@@ -36,6 +41,18 @@ public class Player : MonoBehaviour
         if (Frozen)
         {
             animator.SetBool("isWalking", false);
+        }
+
+        float beatOffset = MusicMaster.Instance.GetPlaybackTime() % MusicMaster.Instance.GetSecondsPerBeat();
+
+        if (Input.GetButtonDown("Plant"))
+        {
+            Debug.Log(beatOffset);
+        }
+
+        if (Input.GetButtonDown("Plant") && (beatOffset <= plantBeatWindow || beatOffset >= MusicMaster.Instance.GetSecondsPerBeat() - plantBeatWindow))
+        {
+            TryCreatePlantPlatform();
         }
     }
 
@@ -101,6 +118,20 @@ public class Player : MonoBehaviour
         RotateAndAnimateWalking(new Vector3(horizontalAxis, 0, verticalAxis));
     }
 
+    //If the player has collected enough sheet music and is grounded on a plant-layer object, make the plant platform.
+    private void TryCreatePlantPlatform()
+    {
+        if (CheckGroundedOnLayer("Plant") && SheetMusicUnlockManager.Instance.PlantGrowUnlocked)
+        {
+            if (currentPlant != null)
+            {
+                Destroy(currentPlant);
+            }
+            currentPlant = Instantiate(plantPlatform, cc.transform.position, Quaternion.identity);
+            cc.Move(new Vector3(0, plantPlatform.GetComponentInChildren<BoxCollider>().size.y, 0));
+        }
+    }
+
     //Rotate in the movement direction and start the walking animation if movement is nonzero, otherwise, stop the animation.
     private void RotateAndAnimateWalking(Vector3 movement)
     {
@@ -120,7 +151,13 @@ public class Player : MonoBehaviour
     {
         Vector3 bottomOfCapsuleSpherePosition = new Vector3(cc.transform.position.x, cc.transform.position.y + cc.radius, cc.transform.position.z);
 
-        return Physics.CheckCapsule(bottomOfCapsuleSpherePosition, bottomOfCapsuleSpherePosition + DistanceToCheckGrounded * Vector3.down, cc.radius);
+        return Physics.CheckCapsule(GetBottomOfCapsuleSpherePosition(), GetBottomOfCapsuleSpherePosition() + DistanceToCheckGrounded * Vector3.down, cc.radius);
+    }
+
+    //Checks if the player is grounded, checking only on a layer with a given name
+    bool CheckGroundedOnLayer(string layerName)
+    {
+        return Physics.CheckCapsule(GetBottomOfCapsuleSpherePosition(), GetBottomOfCapsuleSpherePosition() + DistanceToCheckGrounded * Vector3.down, cc.radius, LayerMask.GetMask(layerName));
     }
 
     //Checks if the player would be in bounds at their current position (aka, checks that radius * fractionOfRadius is above ground at some distance).
@@ -136,5 +173,11 @@ public class Player : MonoBehaviour
         bool backHit = Physics.Raycast(cc.transform.position + Vector3.back * zExtent * fractionOfRadius, transform.TransformDirection(Vector3.down), DistanceToCheckInBounds);
 
         return centerHit && leftHit && rightHit && frontHit && backHit;
+    }
+
+    //Returns the position of the sphere at the bottom of the capsule.
+    Vector3 GetBottomOfCapsuleSpherePosition()
+    {
+        return new Vector3(cc.transform.position.x, cc.transform.position.y + cc.radius, cc.transform.position.z);
     }
 }
