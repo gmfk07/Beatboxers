@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 655349339}
   - component: {fileID: 655349338}
   - component: {fileID: 655349337}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 743944392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6025,6 +6025,8 @@ MonoBehaviour:
   fractionOfRadiusForInBoundsCheck: 0.25
   plantBeatWindow: 0.1
   plantPlatform: {fileID: 743944391}
+  maxPlantGrowths: 2
+  growthPerPress: 0.5
 --- !u!143 &8296172667686591415
 CharacterController:
   m_ObjectHideFlags: 0

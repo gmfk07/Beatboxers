@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float plantBeatWindow;
     [SerializeField] private GameObject plantPlatform;
+    [SerializeField] private int maxPlantGrowths;
+    [SerializeField] private float growthPerPress;
+
+    private int currentPlantGrowths = 0;
     private GameObject currentPlant;
 
     // Start is called before the first frame update
@@ -47,12 +51,33 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Plant"))
         {
-            Debug.Log(beatOffset);
+            if ((beatOffset <= plantBeatWindow || beatOffset >= MusicMaster.Instance.GetSecondsPerBeat() - plantBeatWindow))
+            {
+                if (!CheckGroundedOnLayer("PlantPlatform"))
+                {
+                    TryCreatePlantPlatform();
+                }
+                else
+                {
+                    TryGrowPlant();
+                }
+            }
+            else
+            {
+                Destroy(currentPlant);
+            }
         }
+    }
 
-        if (Input.GetButtonDown("Plant") && (beatOffset <= plantBeatWindow || beatOffset >= MusicMaster.Instance.GetSecondsPerBeat() - plantBeatWindow))
+    //If there are extra plantGrowths that can be performed, grow the plant.
+    private void TryGrowPlant()
+    {
+        if (currentPlantGrowths < maxPlantGrowths)
         {
-            TryCreatePlantPlatform();
+            Vector3 scale = currentPlant.transform.localScale;
+            currentPlant.transform.localScale = new Vector3(scale.x, scale.y + growthPerPress, scale.z);
+            cc.Move(new Vector3(0, currentPlant.GetComponentInChildren<BoxCollider>().size.y * growthPerPress));
+            currentPlantGrowths++;
         }
     }
 
@@ -129,6 +154,7 @@ public class Player : MonoBehaviour
             }
             currentPlant = Instantiate(plantPlatform, cc.transform.position, Quaternion.identity);
             cc.Move(new Vector3(0, plantPlatform.GetComponentInChildren<BoxCollider>().size.y, 0));
+            currentPlantGrowths = 0;
         }
     }
 
