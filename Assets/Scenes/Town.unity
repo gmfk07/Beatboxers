@@ -1823,6 +1823,7 @@ GameObject:
   - component: {fileID: 1681347491}
   - component: {fileID: 1078633002}
   - component: {fileID: 1078633001}
+  - component: {fileID: 1078633005}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1911,6 +1912,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1078633005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078633000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67891b8b7ea291e48a6693a2e3ba8cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleWaitTime: 1.517
+  LoadingLevel: 0
 --- !u!114 &1082793233 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5898758290918991552, guid: c3d00c97254089540a11fa074918e61f,
@@ -4363,6 +4378,9 @@ MonoBehaviour:
   - 0
   dialogController: {fileID: 1681347491}
   player: {fileID: 8296172667686591414}
+  endsWithBattle: 0
+  postBattleCutscene: {fileID: 0}
+  enemyToBattle: {fileID: 0}
   HasTriggered: 0
 --- !u!65 &2074350925
 BoxCollider:

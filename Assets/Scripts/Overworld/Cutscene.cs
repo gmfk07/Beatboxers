@@ -22,6 +22,10 @@ public class Cutscene : MonoBehaviour
     [SerializeField] private DialogController dialogController; //The DialogController to make cutscene calls to
     [SerializeField] private Player player; //The Player to freeze/unfreeze
 
+    [SerializeField] private bool endsWithBattle;
+    [SerializeField] private Cutscene postBattleCutscene;
+    [SerializeField] private Enemy enemyToBattle;
+
     private bool inDialog = false;
     private int currentShotIndex = -1;
 
@@ -115,9 +119,21 @@ public class Cutscene : MonoBehaviour
         inDialog = false;
         if (!TryTransitionToShot(shotIndex))
         {
-            //End the cutscene
+            EndCutscene();
+        }
+    }
+
+    //Ends the current cutscene, starting a battle if appropriate.
+    private void EndCutscene()
+    {
+        if (endsWithBattle)
+        {
             player.Frozen = false;
             Camera.main.GetComponent<CameraFollow>().IsFollowing = true;
+        }
+        else
+        {
+            BattleStartManager.Instance.StartBattle(enemyToBattle);
         }
     }
 
