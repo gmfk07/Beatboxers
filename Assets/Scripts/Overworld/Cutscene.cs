@@ -69,7 +69,7 @@ public class Cutscene : MonoBehaviour
     }
 
     //Freezes the player and begins the cutscene with a transition to shot 0.
-    private void StartCutscene()
+    public void StartCutscene()
     {
         currentShotIndex = 0;
         Camera.main.GetComponent<CameraFollow>().IsFollowing = false;
