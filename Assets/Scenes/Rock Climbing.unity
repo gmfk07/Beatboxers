@@ -1593,7 +1593,7 @@ Transform:
   - {fileID: 1913505798}
   - {fileID: 29696808}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &389586126 stripped
 GameObject:
@@ -8097,6 +8097,7 @@ GameObject:
   - component: {fileID: 1681347490}
   - component: {fileID: 1681347491}
   - component: {fileID: 1681347492}
+  - component: {fileID: 1681347488}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -8116,8 +8117,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1681347488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681347486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67891b8b7ea291e48a6693a2e3ba8cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleWaitTime: 1.517
+  LoadingLevel: 0
 --- !u!114 &1681347490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9312,6 +9327,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 145970425610466332, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
       propertyPath: Dialog.Array.size
@@ -9364,11 +9384,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Dialog.Array.data[4]
       value: Yup. Now I rebel against authority by listening to slow elevator music.
-      objectReference: {fileID: 0}
-    - target: {fileID: 145970425610466332, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 145970425610466305, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
@@ -9965,6 +9980,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 145970425610466332, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
       propertyPath: Dialog.Array.size
@@ -10005,11 +10025,6 @@ PrefabInstance:
         type: 3}
       propertyPath: RepeatDialog.Array.data[0]
       value: One day, my rocky brothers, you will join our ranks.
-      objectReference: {fileID: 0}
-    - target: {fileID: 145970425610466332, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 145970425610466334, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
@@ -12307,6 +12322,10 @@ MonoBehaviour:
   MaxJumpHoldTime: 0.25
   Frozen: 0
   fractionOfRadiusForInBoundsCheck: 0.25
+  plantBeatWindow: 0
+  plantPlatform: {fileID: 0}
+  maxPlantGrowths: 0
+  growthPerPress: 0
 --- !u!143 &8296172667686591415
 CharacterController:
   m_ObjectHideFlags: 0

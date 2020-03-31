@@ -18,7 +18,11 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        IsFollowing = true;
+        //Start following the player unless the player is frozen, in which case they loaded into a cutscene
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Frozen)
+        {
+            IsFollowing = true;
+        }
         rotation = transform.rotation;
     }
 

@@ -2487,6 +2487,77 @@ Transform:
   m_Father: {fileID: 367879723}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1369911777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1369911780}
+  - component: {fileID: 1369911779}
+  - component: {fileID: 1369911778}
+  m_Layer: 2
+  m_Name: Test PB Cutscene
+  m_TagString: Cutscene
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1369911778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369911777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ffd6d711e236ba4ea138ff6eb9954a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogs:
+  - dialog:
+    - e
+  transforms:
+  - {fileID: 1831603092}
+  transitions: 00000000
+  panTimes:
+  - 0
+  dialogController: {fileID: 1681347491}
+  player: {fileID: 8296172667686591414}
+  endsWithBattle: 0
+  postBattleCutscene: {fileID: 0}
+  enemyToBattle: {fileID: 0}
+  HasTriggered: 0
+--- !u!65 &1369911779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369911777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1369911780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369911777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 76.4, z: 136.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1407845605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4836222846064306218, guid: 8fcb438d1c7eccf4e8ea5fc76ddaa915,
@@ -4370,7 +4441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogs:
   - dialog:
-    - e
+    - damn bitch... you live like this?
   transforms:
   - {fileID: 1573458810}
   transitions: 00000000
@@ -4378,9 +4449,9 @@ MonoBehaviour:
   - 0
   dialogController: {fileID: 1681347491}
   player: {fileID: 8296172667686591414}
-  endsWithBattle: 0
-  postBattleCutscene: {fileID: 0}
-  enemyToBattle: {fileID: 0}
+  endsWithBattle: 1
+  postBattleCutscene: {fileID: 1369911778}
+  enemyToBattle: {fileID: 11400000, guid: f16947ea0f6579d4e91d69721437d0d9, type: 2}
   HasTriggered: 0
 --- !u!65 &2074350925
 BoxCollider:

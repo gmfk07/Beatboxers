@@ -26,9 +26,13 @@ public class DialogController : Singleton<DialogController>
     //Disable dialog box, get player
     private void Start()
     {
-        dialogPanel.SetActive(false);
-        dialogText.text = "";
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        //Clear the dialog panel unless the player is frozen, which means they spawned into a cutscene
+        if (!player.Frozen)
+        {
+            dialogPanel.SetActive(false);
+            dialogText.text = "";
+        }
         newItemImage.SetActive(false);
     }
 
@@ -36,9 +40,15 @@ public class DialogController : Singleton<DialogController>
     //If no dialog is currently being displayed, this starts the dialog and sets up the item to receive at the end. Otherwise, this merely continues it.
     public void HandleDialogPress(List<string> dialog, Item toGet = null)
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        Debug.Log("dc: beginning dialog stuff");
+
         //Leave if player is in inventory
         if (!isDisplayingDialog && player.Frozen)
             return;
+
+        Debug.Log("player ain't frozen");
 
         if (!isDisplayingDialog)
         {
@@ -68,6 +78,8 @@ public class DialogController : Singleton<DialogController>
         }
 
         player.Frozen = true;
+
+        Debug.Log("player now frozen");
 
         isDisplayingDialog = true;
         currentDialog = new Queue<string>(dialog);
@@ -124,6 +136,7 @@ public class DialogController : Singleton<DialogController>
     //Close the dialog window and resume normal gameplay, or do the give item text and give the item
     private void EndDialog()
     {
+        Debug.Log("Dialog over!");
         player.Frozen = false;
         isDisplayingDialog = false;
         dialogText.text = "";

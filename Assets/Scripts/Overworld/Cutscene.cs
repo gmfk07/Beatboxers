@@ -62,18 +62,29 @@ public class Cutscene : MonoBehaviour
 
             if (!player.Frozen)
             {
+                Debug.Log("Going to next shot since no frozone!");
                 GoToShot(currentShotIndex + 1);
                 currentShotIndex ++;
             }
         }
     }
 
-    //Freezes the player and begins the cutscene with a transition to shot 0.
+    //Begins the cutscene with a transition to shot 0.
     public void StartCutscene()
     {
+        Debug.Log("here we are beginning");
         currentShotIndex = 0;
         Camera.main.GetComponent<CameraFollow>().IsFollowing = false;
         GoToShot(0);
+    }
+
+    //Plays the post-battle cutscene if endsWithBattle = true, there is a post-battle cutscene, and the post-battle cutscene hasn't triggered yet
+    public void TryStartPostBattleCutscene()
+    {
+        if (endsWithBattle && postBattleCutscene != null && !postBattleCutscene.HasTriggered)
+        {
+            postBattleCutscene.StartCutscene();
+        }
     }
 
     //Attempts to transition to the given shot index, returning true if this is valid and false if not
@@ -126,8 +137,9 @@ public class Cutscene : MonoBehaviour
     //Ends the current cutscene, starting a battle if appropriate.
     private void EndCutscene()
     {
-        if (endsWithBattle)
+        if (!endsWithBattle)
         {
+            Debug.Log("Cutscene over!");
             player.Frozen = false;
             Camera.main.GetComponent<CameraFollow>().IsFollowing = true;
         }
@@ -139,6 +151,7 @@ public class Cutscene : MonoBehaviour
 
     IEnumerator Pan(int shotIndex)
     {
+        player.Frozen = true;
         Transform newTransform = transforms[shotIndex];
         float panTime = panTimes[shotIndex];
 
@@ -160,5 +173,6 @@ public class Cutscene : MonoBehaviour
         Camera.main.transform.rotation = newTransform.rotation;
 
         StartDialog(shotIndex);
+        player.Frozen = false;
     }
 }

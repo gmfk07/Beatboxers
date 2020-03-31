@@ -223,6 +223,7 @@ public class InventoryUIController : Singleton<InventoryUIController>
             if (displayingInventory)
             {
                 CloseInventory();
+                player.Frozen = false;
             }
             else if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Frozen)
             {
@@ -287,14 +288,13 @@ public class InventoryUIController : Singleton<InventoryUIController>
         player.Frozen = true;
     }
 
-    //Turn off the inventory panel and reenable movement
+    //Turn off the inventory panel.
     void CloseInventory()
     {
         equipping = false;
         DeselectEquipmentSlots();
         inventoryPanel.SetActive(false);
         displayingInventory = false;
-        player.Frozen = false;
     }
 
     //Trigger the select method of a given slot to make it look selected

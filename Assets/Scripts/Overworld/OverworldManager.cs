@@ -15,6 +15,7 @@ public class OverworldManager : Singleton<OverworldManager>
     {
         battleLoad = SceneManager.LoadSceneAsync("Battle");
         battleLoad.allowSceneActivation = false;
+        PlayerStats.lastLoadedScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     //Create an overworld save without the GameObject toRemove.
@@ -198,7 +199,14 @@ public class OverworldManager : Singleton<OverworldManager>
                 }
             }
 
-            //Make cutscenes we've already triggered have the triggered variable checked
+            //Try playing any relevant post-battle cutscenes
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Cutscene"))
+            {
+                go.GetComponent<Cutscene>().TryStartPostBattleCutscene();
+                Debug.Log("PBC trigger done");
+            }
+
+            //Make quests we've already completed have the triggered variable checked
             //If it has the same name, we call it the same!!!
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Questgiver"))
             {

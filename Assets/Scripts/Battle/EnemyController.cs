@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour {
     //Handle the enemy death
     private void Die()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(PlayerStats.lastLoadedScene);
     }
 
     //Get the attack associated with a given attackPotential, given that the attackPotential is greater than attackMinimum
