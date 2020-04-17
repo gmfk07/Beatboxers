@@ -12,8 +12,9 @@ public class QuestgiverNPC : NPC
     [SerializeField] private List<GameObject> questRewardDeactivation;
     [SerializeField] private List<GameObject> questRewardActivations;
 
+    [SerializeField] private string quest;
+
     public int tasksNeeded;
-    [HideInInspector] public int TasksCompleted = 0;
     [HideInInspector] public bool HasTurnedInQuest = false;
 
     public override void HandleButtonPress()
@@ -21,13 +22,14 @@ public class QuestgiverNPC : NPC
         if (!TalkedTo)
         {
             DialogController.Instance.HandleDialogPress(startDialog, null);
+            PlayerStats.StartQuest(quest);
             TalkedTo = true;
         }
-        else if (TalkedTo && TasksCompleted < tasksNeeded && !HasTurnedInQuest)
+        else if (TalkedTo && PlayerStats.QuestCounter[quest] < tasksNeeded && !HasTurnedInQuest)
         {
             DialogController.Instance.HandleDialogPress(ongoingDialog, null);
         }
-        else if (TalkedTo && TasksCompleted >= tasksNeeded && !HasTurnedInQuest)
+        else if (TalkedTo && PlayerStats.QuestCounter[quest] >= tasksNeeded && !HasTurnedInQuest)
         {
             DialogController.Instance.HandleDialogPress(completionDialog, null);
             HasTurnedInQuest = true;

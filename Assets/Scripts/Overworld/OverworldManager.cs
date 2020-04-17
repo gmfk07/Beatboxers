@@ -181,11 +181,6 @@ public class OverworldManager : Singleton<OverworldManager>
                 if (save.NPCsSpokenTo.Contains(go.name))
                 {
                     go.GetComponent<NPC>().TalkedTo = true;
-                    //Is this a Quest Task NPC? If so, mark the task as already completed.
-                    if (go.GetComponent<QuestTaskNPC>() != null)
-                    {
-                        go.GetComponent<QuestTaskNPC>().CompleteTask();
-                    }
                 }
             }
 

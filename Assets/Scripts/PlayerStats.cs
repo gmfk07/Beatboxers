@@ -6,6 +6,8 @@ using System.IO;
 
 public static class PlayerStats
 {
+    public static string name1 = "Treble";
+
     public static Attack upAttack, downAttack, leftAttack, rightAttack;
     public static Defense upDefense, downDefense, leftDefense, rightDefense;
     public static int maxHealth = 10;
@@ -19,6 +21,7 @@ public static class PlayerStats
     private static bool equipmentInitialized = false;
 
     public static List<Item> Inventory = new List<Item>();
+    public static Dictionary<string, int> QuestCounter = new Dictionary<string, int>();
 
     //Take the appropriate amount of damage, taking defending into account
     public static void Damage(int dmg, HealthDisplay hdToUpdate)
@@ -77,5 +80,23 @@ public static class PlayerStats
             upDefense = downDefense = leftDefense = rightDefense = defaultDefense;
             equipmentInitialized = true;
         }
+    }
+
+    //Returns true if a given quest key is recorded, false otherwise.
+    public static bool CheckQuestStarted(string quest)
+    {
+        return QuestCounter.ContainsKey(quest);
+    }
+
+    //Initiates a given quest with counter 0.
+    public static void StartQuest(string quest)
+    {
+        QuestCounter[quest] = 0;
+    }
+
+    //Add one to a given quest counter.
+    public static void IncrementQuestCounter(string quest)
+    {
+        QuestCounter[quest]++;
     }
 }

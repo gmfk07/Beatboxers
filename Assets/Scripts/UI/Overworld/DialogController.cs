@@ -107,6 +107,9 @@ public class DialogController : Singleton<DialogController>
                 stringToDisplay = stringToDisplay.Substring(code.Length);
             }
 
+            //Replace <name1> with relevant name
+            stringToDisplay = stringToDisplay.Replace("<name1>", PlayerStats.name1);
+
             StartCoroutine(IncreaseCharsToDisplay());
         }
         else {

@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class QuestTaskNPC : NPC
 {
-    public List<string> Dialog = new List<string>();
+    public List<string> InactiveQuestDialog = new List<string>();
+    public List<string> QuestDialog = new List<string>();
     public bool HasRepeatDialog;
-    public List<string> RepeatDialog = new List<string>();
-    [SerializeField] private QuestgiverNPC quest;
+    public List<string> QuestRepeatDialog = new List<string>();
+    [SerializeField] private string quest;
 
     public override void HandleButtonPress()
     {
-        if (HasRepeatDialog && TalkedTo)
+        if (!PlayerStats.CheckQuestStarted(quest))
         {
-            DialogController.Instance.HandleDialogPress(RepeatDialog, null);
+            DialogController.Instance.HandleDialogPress(InactiveQuestDialog, null);
+        }
+        else if (HasRepeatDialog && TalkedTo)
+        {
+            DialogController.Instance.HandleDialogPress(QuestRepeatDialog, null);
         }
         else
         {
-            DialogController.Instance.HandleDialogPress(Dialog, null);
+            DialogController.Instance.HandleDialogPress(QuestDialog, null);
             TalkedTo = true;
             CompleteTask();
         }
     }
 
-    //Increment the task counter for the parent quest. Called when the task is completed and when the scene is loaded.
+    //Increment the task counter for the parent quest.
     public void CompleteTask()
     {
-        quest.TasksCompleted++;
+        PlayerStats.IncrementQuestCounter(quest);
     }
 }
