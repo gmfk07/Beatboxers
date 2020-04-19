@@ -140,7 +140,6 @@ public class Cutscene : MonoBehaviour
         if (!endsWithBattle)
         {
             Debug.Log("Cutscene over!");
-            player.Frozen = false;
             Camera.main.GetComponent<CameraFollow>().IsFollowing = true;
         }
         else
@@ -172,7 +171,7 @@ public class Cutscene : MonoBehaviour
         Camera.main.transform.position = newTransform.position;
         Camera.main.transform.rotation = newTransform.rotation;
 
-        StartDialog(shotIndex);
         player.Frozen = false;
+        StartDialog(shotIndex);
     }
 }

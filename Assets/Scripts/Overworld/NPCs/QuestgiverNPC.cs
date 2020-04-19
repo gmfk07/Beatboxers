@@ -17,6 +17,15 @@ public class QuestgiverNPC : NPC
     public int tasksNeeded;
     [HideInInspector] public bool HasTurnedInQuest = false;
 
+    //When instantiated, check if the quest has already been accepted.
+    private void Start()
+    {
+        if (PlayerStats.CheckQuestStarted(quest))
+        {
+            TalkedTo = true;
+        }
+    }
+
     public override void HandleButtonPress()
     {
         if (!TalkedTo)

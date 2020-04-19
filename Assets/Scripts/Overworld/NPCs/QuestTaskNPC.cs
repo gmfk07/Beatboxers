@@ -6,7 +6,6 @@ public class QuestTaskNPC : NPC
 {
     public List<string> InactiveQuestDialog = new List<string>();
     public List<string> QuestDialog = new List<string>();
-    public bool HasRepeatDialog;
     public List<string> QuestRepeatDialog = new List<string>();
     [SerializeField] private string quest;
 
@@ -16,21 +15,21 @@ public class QuestTaskNPC : NPC
         {
             DialogController.Instance.HandleDialogPress(InactiveQuestDialog, null);
         }
-        else if (HasRepeatDialog && TalkedTo)
+        else if (TalkedTo)
         {
             DialogController.Instance.HandleDialogPress(QuestRepeatDialog, null);
         }
         else
         {
             DialogController.Instance.HandleDialogPress(QuestDialog, null);
-            TalkedTo = true;
             CompleteTask();
         }
     }
 
-    //Increment the task counter for the parent quest.
+    //Increment the task counter for the parent quest and mark that this NPC has already advanced their quest.
     public void CompleteTask()
     {
+        TalkedTo = true;
         PlayerStats.IncrementQuestCounter(quest);
     }
 }

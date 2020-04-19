@@ -308,8 +308,41 @@ PrefabInstance:
       value: <r>O-oh, by the way, I was meaning to ask you, um... do you have any
         spare wood planks?
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4804096343461598801, guid: 9fcda2595bdafed4ab50716717c82121, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9fcda2595bdafed4ab50716717c82121, type: 3}
+--- !u!1 &78391942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3569798960711683932, guid: 9fcda2595bdafed4ab50716717c82121,
+    type: 3}
+  m_PrefabInstance: {fileID: 78391941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &78391943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78391942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6c3ca5ab9510f47bb8a26a9e19570f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalkedTo: 0
+  InactiveQuestDialog:
+  - Learn the melodies and become one with the land.
+  QuestDialog:
+  - <r>O-oh, by the way, I was meaning to ask you, um... do you have any spare wood
+    planks?
+  - Hm... oh! I have one left over from the construction process, actually. Here you
+    go.
+  QuestRepeatDialog:
+  - Learn the melodies and become one with the land.
+  - I believe in you. You may not be a Beatboxer by birth, but you fight for their
+    cause all the same.
+  - <r>You're too nice... I appreciate it!
+  quest: bridge
 --- !u!1 &389586126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7576037302535669880, guid: c3d00c97254089540a11fa074918e61f,
@@ -695,6 +728,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d1c427630a1df49b25381e9b74bd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1112772287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2534866581884222612, guid: e091014164e7bdc46a62202e07f2a602,
+    type: 3}
+  m_PrefabInstance: {fileID: 1189133190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1112772291
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112772287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -2432090755550338912, guid: e091014164e7bdc46a62202e07f2a602, type: 3}
 --- !u!1 &1134404137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1082,7 @@ PrefabInstance:
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: transitions.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
@@ -1164,6 +1217,11 @@ PrefabInstance:
         like this your whole life, even if you don't see it yet. You can do this,
         because you must.
       objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: transitions.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99c627fd1c92bbe40bba3c026e8231b7, type: 3}
 --- !u!1 &1924484839 stripped
@@ -1275,14 +1333,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030955231}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
   - {fileID: 4791942291590138656}
   m_Father: {fileID: 5006512736848669094}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2030955233
 Animator:
   serializedVersion: 3
@@ -2068,14 +2126,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172667686591413}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.73, y: 0, z: 3.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2030955232}
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5394787073130782254
 GameObject:
   m_ObjectHideFlags: 0

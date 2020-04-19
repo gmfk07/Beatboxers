@@ -140,7 +140,7 @@ public class DialogController : Singleton<DialogController>
     private void EndDialog()
     {
         Debug.Log("Dialog over!");
-        player.Frozen = false;
+        Invoke("UnfreezePlayer", 0.01f); //Not good code, but prevents other NPCs from treating pressing interact near them to end a dialog as talking to them.
         isDisplayingDialog = false;
         dialogText.text = "";
         dialogPanel.SetActive(false);
@@ -152,6 +152,12 @@ public class DialogController : Singleton<DialogController>
             DisplayItemGetUI(newItem);
             PlayerStats.Inventory.Add(newItem);
         }
+    }
+
+    //Unfreezes the player.
+    private void UnfreezePlayer()
+    {
+        player.Frozen = false;
     }
 
     //Display all characters, as long as there's a stringToDisplay

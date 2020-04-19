@@ -9,7 +9,10 @@ public class SceneChangeNPC : NPC
 
     public override void HandleButtonPress()
     {
-        SceneManager.LoadScene(nextSceneName);
-        OverworldManager.Instance.SaveGame();
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Frozen)
+        {
+            SceneManager.LoadScene(nextSceneName);
+            OverworldManager.Instance.SaveGame();
+        }
     }
 }
