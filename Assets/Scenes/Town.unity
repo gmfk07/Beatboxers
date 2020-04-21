@@ -584,27 +584,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1089185594}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &290444177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315466689321420601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de6c3ca5ab9510f47bb8a26a9e19570f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TalkedTo: 0
-  InactiveQuestDialog:
-  - yo yo yo what it is motherfucker
-  QuestDialog:
-  - yo yo yo "wood' is is motherufckcer
-  HasRepeatDialog: 1
-  QuestRepeatDialog:
-  - aw shit
-  quest: bridge
 --- !u!4 &343156829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 866574618139215770, guid: a822d9c677db35c4685313f2c21aa11b,
@@ -1548,6 +1527,60 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[5]
+      value: 'You''d be headed through the swamplands. That''s to the west, but the
+        bridge is '
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[6]
+      value: <r>Hehe, a very noble profession, my good Rock.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[4]
+      value: <r>Hehe, a very noble profession, my good Rock. Would you happen to know
+        the way to the Prince's castle? Uh, to confront him, that is!
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: <r>Hey, Billy! How have, uh, the last few moments been treating you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: Pretty good, I can't complain. No new people to greet, though. A bit
+        disappointing.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[2]
+      value: '...oh, I guess I just complained...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[0]
+      value: That mysterious mole character really wanted to talk to you. He lives
+        here, but I don't see him out very often.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[1]
+      value: I think that's because he moves underground, though.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c, type: 3}
@@ -4427,6 +4460,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[1].dialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[2].dialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[3].dialog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
       propertyPath: transforms.Array.data[0]
       value: 
       objectReference: {fileID: 1573458810}
@@ -4440,6 +4498,111 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8296172667686591414}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[1]
+      value: <r>N-no, sir! I'm a Beatboxer who's come for the Metrostone pieces.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[2]
+      value: Oh. In that case, welcome to Ostinato village!
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[3]
+      value: I am the village greeter. It is my job to say hello to people and keep
+        their spirits high even in these trying times!
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[4]
+      value: <r>Hehe, a very noble profession, my good Rock. Would you happen to know
+        the way to the Prince's castle? Uh, to confront him, that is!
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[5]
+      value: Please, call me Billy.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[0]
+      value: Welcome to Ostinato village! ...wait, you're not working for the Prince,
+        are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[1].dialog.Array.data[0]
+      value: Anyways, if you're headed to meet... the Prince... you'd be headed through
+        the swamplands. That's to the west, but the bridge there is busted.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[1].dialog.Array.data[1]
+      value: Talk to Bells, the town carpenter. He might be able to do something about
+        that.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[1].dialog.Array.data[2]
+      value: Oh. In that case, welcome to Ostinato village!
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[1].dialog.Array.data[3]
+      value: I am the village greeter. It is my job to say hello to people and keep
+        their spirits high even in these trying times!
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[1].dialog.Array.data[4]
+      value: <r>Hehe, a very noble profession, my good Rock. Would you happen to know
+        the way to the Prince's castle? Uh, to confront him, that is!
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[1].dialog.Array.data[5]
+      value: You'd be headed through the swamplands. That's to the west, but the bridge
+        there is busted at the moment...
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[2].dialog.Array.data[0]
+      value: Also, this enigmatic fellow that lives over there wants to see you. Something
+        about music.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[2].dialog.Array.data[1]
+      value: If I was you, I'd go see what that's all about.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[6]
+      value: <r>Oh! That's a cool name. I knew a Billy once.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[7]
+      value: Oh, that's not my name. I just want people to call me that. Cause, you
+        know, rock-a-billy.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[0].dialog.Array.data[8]
+      value: It's funny. You get it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[3].dialog.Array.data[0]
+      value: '...oh, and on behalf of all of us here, welcome to Ostinato Village!!!!!!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[3].dialog.Array.data[1]
+      value: If I was you, I'd go see what that's all about.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99c627fd1c92bbe40bba3c026e8231b7, type: 3}
 --- !u!4 &159046865126059641
@@ -4698,7 +4861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2601427069813011754}
-  - component: {fileID: 290444177}
+  - component: {fileID: 1315466689321420602}
   m_Layer: 0
   m_Name: duckman
   m_TagString: NPC
@@ -4706,6 +4869,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1315466689321420602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315466689321420601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f0f0bc094bca949986b4673d5efe9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalkedTo: 0
+  Dialog:
+  - Standing here by this cliffside... it used to feel safe.
+  - Now, it feels... wrong. Like there's some nefarious dealings going on top of it.
+  - I'm truly nostalgic for the good old days of cliff standing.
+  ItemToGive: {fileID: 0}
+  HasRepeatDialog: 0
+  RepeatDialog: []
 --- !u!4 &1401826839890997315
 Transform:
   m_ObjectHideFlags: 0
@@ -4752,20 +4935,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkedTo: 0
   startDialog:
-  - Hey, what's up?
-  - Could you get wood for me :3
+  - <r>Excuse me, you're Bells, right? Town carpenter? This is the way to the Prince's
+    castle, right?
+  - Well, it WAS the way there, until the bridge broke apart.
+  - <r>O-oh, that's terrible! I heard you're a talented craftsman, though. Would you
+    be able to fix it for me, please?
+  - It WOULD be an easy fix, but I'm all out of wood planks. I would need four more
+    to extend the bridge to the other side. I'd get them myself, but there are so
+    many other projects to work on...
+  - <r>I see what you're saying. If I bring you four planks, would you be able to
+    repair the bridge?
+  - Well, I GUESS I could do that. It's just a matter of affixing them to rope, so
+    it wouldn't take any time at all. Good luck with finding them, though - the only
+    person I know has any for sure is the mole next door. ...what's his name again?
   ongoingDialog:
-  - Still need wood.
+  - Oh, you again. Do you have the wood?
+  - <r>Sorry! Not yet! I'm working on getting the four planks.
+  - ALRIGHT then, come back once you've got them and leave me to my work 'til then.
+  - <r>S-sorry!! (You don't seem to be hard at work, though...)
   completionDialog:
-  - Ah, that's enough wood! Thanks much!
+  - <r>Alright, here you go - four wooden planks. They're lighter than I expected.
+  - Are you STILL...
+  - '...what... what are these?'
+  - <r>Um... the planks? For the bridge.
+  - '...oh, you actually got them. I could never get people to lend me construction
+    supplies before.'
+  - I wonder if your arrival... the arrival of an old sign of hope... got people to
+    think about something bigger than themselves again.
+  - <r>Oh! I just thought it was that I was nice to everyone.
+  - Hey, what's THAT supposed to mean? Ah, forget it, here's your bridge outta here.
   finishedDialog:
-  - Thanks for that wood.
+  - <r>Thanks for your work!
+  - Don't let the planks hit you on the way out. Because they do that sometimes.
   questRewardDeactivation:
   - {fileID: 602641251}
   questRewardActivations:
   - {fileID: 1687860792}
   quest: bridge
-  tasksNeeded: 1
+  tasksNeeded: 4
   HasTurnedInQuest: 0
 --- !u!4 &1625946004023631077
 Transform:
@@ -4931,7 +5138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315466689321420601}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 12.88, y: 38.535553, z: 151.30125}
+  m_LocalPosition: {x: 47.5, y: 38.535553, z: 154.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5509309639831348754}
@@ -5581,6 +5788,7 @@ GameObject:
   - component: {fileID: 5414752216640424957}
   - component: {fileID: 4712402349557571374}
   - component: {fileID: 4055335545931641822}
+  - component: {fileID: 4980098048487116620}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -5588,6 +5796,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &4980098048487116620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980098048487116619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 4.3, z: 1.2}
+  m_Center: {x: -2, y: 4.25, z: -2.15}
 --- !u!4 &5006512735817946016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4335801391598807037, guid: 32c4fc5893c26204190612dbfc13f957,
@@ -5647,7 +5868,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4980098048487116619}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2543354826329086149}
