@@ -2493,7 +2493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0638214, z: 1.0638216}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 15.266001, y: 0.646, z: 0}
 --- !u!114 &768254115 stripped
 MonoBehaviour:
@@ -3658,7 +3658,7 @@ Transform:
   - {fileID: 1354580627}
   - {fileID: 1434726009}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1144989818
 PrefabInstance:
@@ -7097,7 +7097,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2087218484
 PrefabInstance:
@@ -7312,7 +7312,7 @@ PrefabInstance:
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogs.Array.data[3].dialog.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
@@ -7328,6 +7328,16 @@ PrefabInstance:
         type: 3}
       propertyPath: panTimes.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: itemGiveDialogKeys.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: itemGiveDialogValues.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
@@ -7447,7 +7457,8 @@ PrefabInstance:
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogs.Array.data[3].dialog.Array.data[1]
-      value: If I was you, I'd go see what that's all about.
+      value: You're lucky - you're the first visitor we've had this year! You get
+        a prize for being such an early bird!
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
@@ -7503,6 +7514,27 @@ PrefabInstance:
         type: 3}
       propertyPath: panTimes.Array.data[3]
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: itemGiveDialogKeys.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: itemGiveDialogValues.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7046e79c081439a46b16c8097f3f9022,
+        type: 2}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[3].dialog.Array.data[2]
+      value: <r>Really? ...wait, New Year's is just next week...
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: dialogs.Array.data[3].dialog.Array.data[3]
+      value: I know! We almost had to throw this choice piece of gear out.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99c627fd1c92bbe40bba3c026e8231b7, type: 3}
@@ -8735,7 +8767,7 @@ Transform:
   m_Children:
   - {fileID: 2030955232}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5058737990378762945
 MeshFilter:

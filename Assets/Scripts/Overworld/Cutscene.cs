@@ -26,6 +26,9 @@ public class Cutscene : MonoBehaviour
     [SerializeField] private Cutscene postBattleCutscene;
     [SerializeField] private Enemy enemyToBattle;
 
+    [SerializeField] private List<int> itemGiveDialogKeys; //The dialog indices that give items once the dialog ended.
+    [SerializeField] private List<Item> itemGiveDialogValues; //The items to be given at the listed dialog indices. These should match with itemGiveDialogKeys.
+
     private bool inDialog = false;
     private int currentShotIndex = -1;
 
@@ -59,22 +62,23 @@ public class Cutscene : MonoBehaviour
             {
                 dialogController.HandleDialogPress(dialogs[currentShotIndex].dialog);
             }
-
-            if (!player.Frozen)
-            {
-                Debug.Log("Going to next shot since no frozone!");
-                GoToShot(currentShotIndex + 1);
-                currentShotIndex ++;
-            }
         }
+    }
+
+    //Go to the next shot.
+    public void GoToNextShot()
+    {
+        GoToShot(currentShotIndex + 1);
+        currentShotIndex++;
     }
 
     //Begins the cutscene with a transition to shot 0.
     public void StartCutscene()
     {
-        Debug.Log("here we are beginning");
         currentShotIndex = 0;
+        dialogController.BeginCutscene(this);
         Camera.main.GetComponent<CameraFollow>().IsFollowing = false;
+        player.Frozen = true;
         GoToShot(0);
     }
 
@@ -99,6 +103,7 @@ public class Cutscene : MonoBehaviour
             if (transitions[shotIndex] == Transition.Cut)
             {
                 Camera.main.transform.SetPositionAndRotation(transforms[shotIndex].position, transforms[shotIndex].rotation);
+                player.Frozen = false;
                 StartDialog(shotIndex);
             }
             else if (transitions[shotIndex] == Transition.Pan)
@@ -114,13 +119,17 @@ public class Cutscene : MonoBehaviour
     {
         if (dialogs[shotIndex] != null)
         {
-            dialogController.HandleDialogPress(dialogs[shotIndex].dialog);
+            Item toGive = null;
+            if (itemGiveDialogKeys.Contains(shotIndex))
+            {
+                toGive = itemGiveDialogValues[itemGiveDialogKeys.IndexOf(shotIndex)];
+            }
+            dialogController.HandleDialogPress(dialogs[shotIndex].dialog, toGive);
             inDialog = true;
         }
         else
         {
-            currentShotIndex++;
-            GoToShot(shotIndex + 1);
+            GoToNextShot();
         }
     }
 
@@ -128,6 +137,7 @@ public class Cutscene : MonoBehaviour
     private void GoToShot(int shotIndex)
     {
         inDialog = false;
+        player.Frozen = true;
         if (!TryTransitionToShot(shotIndex))
         {
             EndCutscene();
@@ -137,15 +147,23 @@ public class Cutscene : MonoBehaviour
     //Ends the current cutscene, starting a battle if appropriate.
     private void EndCutscene()
     {
+        dialogController.EndCutscene();
         if (!endsWithBattle)
         {
-            Debug.Log("Cutscene over!");
             Camera.main.GetComponent<CameraFollow>().IsFollowing = true;
+            Invoke("UnfreezePlayer", 0.01f); //An awful solution to preventing other NPCs from interpreting the end of a cutscene button press as interacting with thems
+            Debug.Log("it's over");
         }
         else
         {
             BattleStartManager.Instance.StartBattle(enemyToBattle);
         }
+    }
+
+    //Unfreezes the player.
+    private void UnfreezePlayer()
+    {
+        player.Frozen = false;
     }
 
     IEnumerator Pan(int shotIndex)

@@ -23,6 +23,9 @@ public class DialogController : Singleton<DialogController>
     private Player player;
     private Queue<string> currentDialog;
 
+    private bool cutsceneIsPlaying;
+    private Cutscene currentCutscene;
+
     //Disable dialog box, get player
     private void Start()
     {
@@ -42,13 +45,9 @@ public class DialogController : Singleton<DialogController>
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        Debug.Log("dc: beginning dialog stuff");
-
         //Leave if player is in inventory
         if (!isDisplayingDialog && player.Frozen)
             return;
-
-        Debug.Log("player ain't frozen");
 
         if (!isDisplayingDialog)
         {
@@ -140,24 +139,25 @@ public class DialogController : Singleton<DialogController>
     private void EndDialog()
     {
         Debug.Log("Dialog over!");
-        Invoke("UnfreezePlayer", 0.01f); //Not good code, but prevents other NPCs from treating pressing interact near them to end a dialog as talking to them.
+
         isDisplayingDialog = false;
         dialogText.text = "";
         dialogPanel.SetActive(false);
         newItemImage.SetActive(false);
+
+        if (!cutsceneIsPlaying || isGettingNewItem)
+        {
+            player.Frozen = false;
+        }
 
         if (isGettingNewItem)
         {
             isGettingNewItem = false;
             DisplayItemGetUI(newItem);
             PlayerStats.Inventory.Add(newItem);
+        } else if (cutsceneIsPlaying) {
+            currentCutscene.GoToNextShot();
         }
-    }
-
-    //Unfreezes the player.
-    private void UnfreezePlayer()
-    {
-        player.Frozen = false;
     }
 
     //Display all characters, as long as there's a stringToDisplay
@@ -194,4 +194,18 @@ public class DialogController : Singleton<DialogController>
         newItemImage.GetComponent<Image>().sprite = item.itemSprite;
         newItemImage.SetActive(true);
     }
+
+    //Mark that a cutscene is ongoing.
+    public void BeginCutscene(Cutscene cutscene)
+    {
+        cutsceneIsPlaying = true;
+        currentCutscene = cutscene;
+    }
+
+    //Mark that the current cutscene has just ended.
+    public void EndCutscene()
+    {
+        cutsceneIsPlaying = false;
+    }
+
 }
