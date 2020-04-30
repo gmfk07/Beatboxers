@@ -34,6 +34,8 @@ public class Cutscene : MonoBehaviour
 
     [HideInInspector] public bool HasTriggered = false;
 
+    [SerializeField] private List<GameObject> deleteOnSceneEndList;
+
     void Start()
     {
         //Enforce equal-length lists
@@ -148,6 +150,8 @@ public class Cutscene : MonoBehaviour
     private void EndCutscene()
     {
         dialogController.EndCutscene();
+        HandleCutsceneEndDeletion();
+
         if (!endsWithBattle)
         {
             Camera.main.GetComponent<CameraFollow>().IsFollowing = true;
@@ -164,6 +168,15 @@ public class Cutscene : MonoBehaviour
     private void UnfreezePlayer()
     {
         player.Frozen = false;
+    }
+    
+    //Delete objects marked for deletion at the end of the cutscene.
+    public void HandleCutsceneEndDeletion()
+    {
+        foreach (GameObject go in deleteOnSceneEndList)
+        {
+            Destroy(go);
+        }
     }
 
     IEnumerator Pan(int shotIndex)

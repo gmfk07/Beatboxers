@@ -191,6 +191,7 @@ public class OverworldManager : Singleton<OverworldManager>
                 if (save.CutscenesPlayed.Contains(go.name))
                 {
                     go.GetComponent<Cutscene>().HasTriggered = true;
+                    go.GetComponent<Cutscene>().HandleCutsceneEndDeletion();
                 }
             }
 
