@@ -242,6 +242,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1543506747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &42686581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3023461129931954525, guid: 9d1cf25623965224289c31aa123b64fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 6489918620185430405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &59168508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3023461129931954524, guid: 9d1cf25623965224289c31aa123b64fb,
@@ -2758,7 +2764,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0638214, z: 1.0638216}
   m_Children: []
   m_Father: {fileID: 1404333249}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 15.266001, y: 0.646, z: 0}
 --- !u!114 &768254115 stripped
 MonoBehaviour:
@@ -2989,12 +2995,12 @@ PrefabInstance:
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogs.Array.data[0].dialog.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogs.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
@@ -3039,13 +3045,18 @@ PrefabInstance:
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: deleteOnSceneEndList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: activateOnSceneEndList.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: transforms.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1588203773533467620}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogController
@@ -3070,17 +3081,19 @@ PrefabInstance:
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogs.Array.data[0].dialog.Array.data[3]
-      value: 
+      value: '...oh? Who''re you, little girl? Are you trying to steal my cool wooden
+        plank?'
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogs.Array.data[0].dialog.Array.data[4]
-      value: 
+      value: <r>L-little? I'm 13! And I'm not stealing, I'm just return-
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: dialogs.Array.data[0].dialog.Array.data[5]
-      value: Please, call me Billy.
+      value: BAHAHAHA!!! GANG! Trash Formation... uh, One! Let's beat her up and take
+        her stuff!!!
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
@@ -3239,7 +3252,63 @@ PrefabInstance:
         type: 3}
       propertyPath: deleteOnSceneEndList.Array.data[0]
       value: 
-      objectReference: {fileID: 643263954}
+      objectReference: {fileID: 42686581}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: enemyToBattle
+      value: 
+      objectReference: {fileID: 11400000, guid: 4945e11c41d932a4a81291722eceaaca,
+        type: 2}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: endsWithBattle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: postBattleCutscene
+      value: 
+      objectReference: {fileID: 834979432509280425}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: activateOnSceneEndList.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: deleteAndActivateOnlyOnReload
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: triggerEndOnlyOnReload
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: deleteOnSceneEndList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1544349881}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: deleteOnSceneEndList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1497329306}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: deleteOnSceneEndList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1730242649}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: deleteOnSceneEndList.Array.data[4]
+      value: 
+      objectReference: {fileID: 1938794008}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: deleteOnSceneEndList.Array.data[5]
+      value: 
+      objectReference: {fileID: 2055921128}
     - target: {fileID: 140000934044964133, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: m_Size.x
@@ -5269,10 +5338,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1218575750}
+  - {fileID: 834979432509280427}
   - {fileID: 26552084}
   - {fileID: 1573458810}
   - {fileID: 1831603092}
   - {fileID: 766760236}
+  - {fileID: 1588203773533467620}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5932,6 +6003,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5944eb57693d47c4d999259aa58d49e8, type: 3}
+--- !u!1 &1497329306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3023461129931954525, guid: 9d1cf25623965224289c31aa123b64fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2083613743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1510812237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6156,6 +6233,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f060d9234e3e9e646b372388ee324725, type: 3}
+--- !u!1 &1544349881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3023461129931954525, guid: 9d1cf25623965224289c31aa123b64fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 638430596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1554519866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6358,7 +6441,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0638214, z: 1.0638218}
   m_Children: []
   m_Father: {fileID: 1404333249}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1574462991
 PrefabInstance:
@@ -7323,6 +7406,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1625602842}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1730242649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3023461129931954525, guid: 9d1cf25623965224289c31aa123b64fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1801158486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1736496341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7763,7 +7852,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0638214, z: 1.0638214}
   m_Children: []
   m_Father: {fileID: 1404333249}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 15.266001, y: -11.469001, z: 0}
 --- !u!1001 &1848168902
 PrefabInstance:
@@ -7869,6 +7958,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7576037300865505873, guid: c3d00c97254089540a11fa074918e61f,
     type: 3}
   m_PrefabInstance: {fileID: 7576037302179714230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938794008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3023461129931954525, guid: 9d1cf25623965224289c31aa123b64fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1291661434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1949044045
 GameObject:
@@ -8305,6 +8400,12 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0013134386, y: 0.0030790474, z: 0.00006652344}
     m_Extent: {x: 0.007952199, y: 0.02760227, z: 0.027172621}
   m_DirtyAABB: 0
+--- !u!1 &2055921128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3023461129931954525, guid: 9d1cf25623965224289c31aa123b64fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 62864943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2076805799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 833445111995245044, guid: 5944eb57693d47c4d999259aa58d49e8,
@@ -8618,7 +8719,7 @@ PrefabInstance:
     - target: {fileID: 140000934044964134, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 140000934044964134, guid: 99c627fd1c92bbe40bba3c026e8231b7,
         type: 3}
@@ -8892,6 +8993,11 @@ PrefabInstance:
       propertyPath: deleteOnSceneEndList.Array.data[0]
       value: 
       objectReference: {fileID: 643263954}
+    - target: {fileID: 140000934044964132, guid: 99c627fd1c92bbe40bba3c026e8231b7,
+        type: 3}
+      propertyPath: endsWithBattle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99c627fd1c92bbe40bba3c026e8231b7, type: 3}
 --- !u!4 &159046865126059641
@@ -9046,6 +9152,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 844646965162445470}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &834979432509280425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834979432509280430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ffd6d711e236ba4ea138ff6eb9954a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogs:
+  - dialog:
+    - Hey you nitwits, quiet down!! I'm TRYING to ADMIRE my LOOT over here!!!
+    - As the strongest and biggest and wisest member of the trash gang, I get to keep
+      all the neat garbage we've taken recently.
+    - It's our reward for serving the Prince! Hehe...
+    - '...oh? Who''re you, little girl? Are you trying to steal my cool wooden plank?'
+    - <r>Little? I'm 13! And I'm not stealing, I'm just return-
+    - GANG! Trash Formation... uh, One! Let's beat her up and take her stuff!!!
+  transforms:
+  - {fileID: 0}
+  transitions: 01000000
+  panTimes:
+  - 1
+  dialogController: {fileID: 1681347491}
+  player: {fileID: 8296172667686591414}
+  endsWithBattle: 1
+  postBattleCutscene: {fileID: 0}
+  enemyToBattle: {fileID: 11400000, guid: 4945e11c41d932a4a81291722eceaaca, type: 2}
+  itemGiveDialogKeys: 
+  itemGiveDialogValues: []
+  HasTriggered: 0
+  triggerEndOnlyOnReload: 0
+  deleteOnSceneEndList: []
+  activateOnSceneEndList: []
+--- !u!4 &834979432509280427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834979432509280430}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 64.3, y: 48.2, z: 166.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1404333249}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &834979432509280430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834979432509280427}
+  - component: {fileID: 834979432509280425}
+  m_Layer: 2
+  m_Name: Trash Gang Post-Battle Cutscene
+  m_TagString: Cutscene
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &844646965162445470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9270,6 +9444,36 @@ MonoBehaviour:
   quest: bridge
   tasksNeeded: 4
   HasTurnedInQuest: 0
+--- !u!4 &1588203773533467620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588203773533467623}
+  m_LocalRotation: {x: 0.10726896, y: 0.58452886, z: -0.07833552, w: 0.8004268}
+  m_LocalPosition: {x: 65.4, y: 50.3, z: 159.97}
+  m_LocalScale: {x: 1, y: 1.0638214, z: 1.0638218}
+  m_Children: []
+  m_Father: {fileID: 1404333249}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 15.266001, y: 72.27901, z: 0}
+--- !u!1 &1588203773533467623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1588203773533467620}
+  m_Layer: 0
+  m_Name: Trash Gang Transform
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &1625946004023631077
 Transform:
   m_ObjectHideFlags: 0
@@ -10125,7 +10329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172667686591413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.63, y: 38.44, z: 133.79}
+  m_LocalPosition: {x: 56.7, y: 47.42, z: 133.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2030955232}

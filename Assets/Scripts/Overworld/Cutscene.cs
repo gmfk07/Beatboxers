@@ -34,7 +34,9 @@ public class Cutscene : MonoBehaviour
 
     [HideInInspector] public bool HasTriggered = false;
 
+    [SerializeField] private bool triggerEndOnlyOnReload; //If true, the deletions and activations won't take place after the cutscene, just when the scene is reloaded.
     [SerializeField] private List<GameObject> deleteOnSceneEndList;
+    [SerializeField] private List<GameObject> activateOnSceneEndList;
 
     void Start()
     {
@@ -150,7 +152,11 @@ public class Cutscene : MonoBehaviour
     private void EndCutscene()
     {
         dialogController.EndCutscene();
-        HandleCutsceneEndDeletion();
+        if (!triggerEndOnlyOnReload)
+        {
+            HandleCutsceneEndDeletion();
+            HandleCutsceneEndActivation();
+        }
 
         if (!endsWithBattle)
         {
@@ -176,6 +182,15 @@ public class Cutscene : MonoBehaviour
         foreach (GameObject go in deleteOnSceneEndList)
         {
             Destroy(go);
+        }
+    }
+
+    //Activate objects marked for activation at the end of the cutscene.
+    public void HandleCutsceneEndActivation()
+    {
+        foreach (GameObject go in activateOnSceneEndList)
+        {
+            go.SetActive(true);
         }
     }
 

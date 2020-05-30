@@ -192,6 +192,7 @@ public class OverworldManager : Singleton<OverworldManager>
                 {
                     go.GetComponent<Cutscene>().HasTriggered = true;
                     go.GetComponent<Cutscene>().HandleCutsceneEndDeletion();
+                    go.GetComponent<Cutscene>().HandleCutsceneEndActivation();
                 }
             }
 
