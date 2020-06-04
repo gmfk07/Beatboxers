@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float zDistFromPlayer;
     [SerializeField] private GameObject player;
 
-    [SerializeField] private Quaternion rotation;
+    [SerializeField] private Transform defaultRotation;
 
     [HideInInspector] public bool IsFollowing;
 
@@ -23,7 +23,6 @@ public class CameraFollow : MonoBehaviour
         {
             IsFollowing = true;
         }
-        rotation = transform.rotation;
     }
 
     void FixedUpdate()
@@ -36,7 +35,7 @@ public class CameraFollow : MonoBehaviour
             float y = Mathf.Lerp(cameraPos.y, playerPos.y + yDistAbovePlayer, lerpSpeedY * Time.deltaTime);
             float z = Mathf.Lerp(cameraPos.z, playerPos.z - zDistFromPlayer, lerpSpeedZ * Time.deltaTime);
             transform.position = new Vector3(x, y, z);
-            transform.rotation = rotation;
+            transform.rotation = defaultRotation.transform.rotation;
         }
     }
 }

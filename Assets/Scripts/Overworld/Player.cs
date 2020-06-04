@@ -72,6 +72,8 @@ public class Player : MonoBehaviour
     //If there are extra plantGrowths that can be performed, grow the plant.
     private void TryGrowPlant()
     {
+        Debug.Log("Im tryna grow");
+
         if (currentPlantGrowths < maxPlantGrowths)
         {
             Vector3 scale = currentPlant.transform.localScale;

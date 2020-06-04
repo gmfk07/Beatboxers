@@ -200,7 +200,7 @@ public class Cutscene : MonoBehaviour
         Transform newTransform = transforms[shotIndex];
         float panTime = panTimes[shotIndex];
 
-        Vector3 displacement = transform.TransformPoint(newTransform.position) - transform.TransformPoint(Camera.main.transform.position);
+        Vector3 displacement = newTransform.position - Camera.main.transform.position;
         Vector3 displacementPerSecond = displacement / panTime;
         float startTime = Time.time;
 

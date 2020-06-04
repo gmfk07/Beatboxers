@@ -199,8 +199,10 @@ public class OverworldManager : Singleton<OverworldManager>
             //Try playing any relevant post-battle cutscenes
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Cutscene"))
             {
-                go.GetComponent<Cutscene>().TryStartPostBattleCutscene();
-                Debug.Log("PBC trigger done");
+                if (save.CutscenesPlayed.Contains(go.name))
+                {
+                    go.GetComponent<Cutscene>().TryStartPostBattleCutscene();
+                }
             }
 
             //Make quests we've already completed have the triggered variable checked
