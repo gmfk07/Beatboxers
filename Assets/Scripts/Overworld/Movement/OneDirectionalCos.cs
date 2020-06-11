@@ -10,6 +10,7 @@ public class OneDirectionalCos : MonoBehaviour
     const float RADIANS_PER_CIRCLE = 2 * Mathf.PI;
 
     private Vector3 startingPosition;
+    private Vector3 lastDisplacement;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class OneDirectionalCos : MonoBehaviour
         float x = startingPosition.x + Mathf.Cos(sinInput) * Displacement.x;
         float y = startingPosition.y + Mathf.Cos(sinInput) * Displacement.y;
         float z = startingPosition.z + Mathf.Cos(sinInput) * Displacement.z;
-        transform.position = new Vector3(x, y, z);
+        lastDisplacement = new Vector3(x, y, z) - transform.position;
+        transform.Translate(lastDisplacement, Space.World);
     }
 }

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float DistanceToCheckInBounds;
     public float Gravity;
     public float MaxJumpHoldTime;
+    public float BouncePadVelocity;
     [HideInInspector] public bool Frozen = false;
 
     private Animator animator;
@@ -89,13 +90,13 @@ public class Player : MonoBehaviour
         if (CheckGrounded())
         {
             animator.SetBool("isGrounded", true);
-            if (Input.GetButton("Jump") && !Frozen)
+            if (CheckGroundedOnLayer("BouncePad"))
             {
-                yVelocity = JumpVelocity;
-                animator.SetTrigger("jump");
-                animator.SetBool("isGrounded", false);
-                isJumping = true;
-                startedJumpingTime = Time.time;
+                BeginJump(BouncePadVelocity);
+            }
+            else if (Input.GetButton("Jump") && !Frozen)
+            {
+                BeginJump(JumpVelocity);
             }
             else
             {
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour
         {
             if (isJumping && Input.GetButton("Jump") && Time.time - startedJumpingTime <= MaxJumpHoldTime)
             {
-                yVelocity = JumpVelocity;
+                yVelocity = Mathf.Max(JumpVelocity, yVelocity);
             }
             else
             {
@@ -116,6 +117,16 @@ public class Player : MonoBehaviour
             }
             animator.SetBool("isGrounded", false);
         }
+    }
+
+    //Initiates a jump with a given y velocity.
+    private void BeginJump(float yvel)
+    {
+        yVelocity = yvel;
+        animator.SetTrigger("jump");
+        animator.SetBool("isGrounded", false);
+        isJumping = true;
+        startedJumpingTime = Time.time;
     }
 
     // Checks if movement conditions are met, and if so, moves.
