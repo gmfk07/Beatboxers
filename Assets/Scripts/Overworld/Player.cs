@@ -153,6 +153,11 @@ public class Player : MonoBehaviour
             cc.Move(movement);
         }
 
+        if (cc.velocity.y == 0)
+        {
+            isJumping = false;
+            yVelocity = 0;
+        }
         RotateAndAnimateWalking(new Vector3(horizontalAxis, 0, verticalAxis));
     }
 
@@ -188,9 +193,7 @@ public class Player : MonoBehaviour
     //Checks if the player is grounded.
     bool CheckGrounded()
     {
-        Vector3 bottomOfCapsuleSpherePosition = new Vector3(cc.transform.position.x, cc.transform.position.y + cc.radius, cc.transform.position.z);
-
-        return Physics.CheckCapsule(GetBottomOfCapsuleSpherePosition(), GetBottomOfCapsuleSpherePosition() + DistanceToCheckGrounded * Vector3.down, cc.radius);
+        return cc.isGrounded;
     }
 
     //Checks if the player is grounded, checking only on a layer with a given name
