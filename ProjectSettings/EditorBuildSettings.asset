@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mole House.unity
     guid: 78a4301c10eb7c1418e253ba06b4225e
+  - enabled: 1
+    path: Assets/Scenes/Storage.unity
+    guid: 563f7e935509dc44a85c48e2ed27c054
   m_configObjects: {}
