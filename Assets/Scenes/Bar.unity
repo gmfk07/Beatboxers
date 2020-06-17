@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 8359369477482265738, guid: 60e9bdb085e15074995df15696c1f015,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 37.11
+      value: 37.28
       objectReference: {fileID: 0}
     - target: {fileID: 8359369477482265738, guid: 60e9bdb085e15074995df15696c1f015,
         type: 3}
@@ -381,6 +381,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359369477482265738, guid: 60e9bdb085e15074995df15696c1f015,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359369477482265738, guid: 60e9bdb085e15074995df15696c1f015,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359369477482265738, guid: 60e9bdb085e15074995df15696c1f015,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517878437887879895, guid: 60e9bdb085e15074995df15696c1f015,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517878437887879895, guid: 60e9bdb085e15074995df15696c1f015,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: '...I left my plank on the other end of the, uh, dance.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517878437887879895, guid: 60e9bdb085e15074995df15696c1f015,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: You go to the bathroom for just a second, and before you know it, this
+        happens...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60e9bdb085e15074995df15696c1f015, type: 3}
@@ -611,7 +642,7 @@ PrefabInstance:
     - target: {fileID: 563267597715488079, guid: 9fcda2595bdafed4ab50716717c82121,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.395611
+      value: 11.38
       objectReference: {fileID: 0}
     - target: {fileID: 563267597715488079, guid: 9fcda2595bdafed4ab50716717c82121,
         type: 3}
@@ -621,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 563267597715488079, guid: 9fcda2595bdafed4ab50716717c82121,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 141.72806
+      value: 139.33
       objectReference: {fileID: 0}
     - target: {fileID: 563267597715488079, guid: 9fcda2595bdafed4ab50716717c82121,
         type: 3}
@@ -662,6 +693,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804096343461598801, guid: 9fcda2595bdafed4ab50716717c82121,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804096343461598801, guid: 9fcda2595bdafed4ab50716717c82121,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: That dancing guy is making it impossible for me to leave.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804096343461598801, guid: 9fcda2595bdafed4ab50716717c82121,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: However, the dancing is powerful enough to generate a forcefield that
+        stops people from jumping onto the counter.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804096343461598801, guid: 9fcda2595bdafed4ab50716717c82121,
+        type: 3}
+      propertyPath: Dialog.Array.data[2]
+      value: So it's a nuanced subject, not just "good" or "bad."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804096342652952727, guid: 9fcda2595bdafed4ab50716717c82121,
+        type: 3}
+      propertyPath: m_Radius
+      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fcda2595bdafed4ab50716717c82121, type: 3}
@@ -1101,7 +1158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208562895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.86, y: 40.14, z: 141.42}
+  m_LocalPosition: {x: 3.48, y: 40.14, z: 141.42}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1337,7 +1394,7 @@ PrefabInstance:
     - target: {fileID: 2601427069523322533, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.61
+      value: 7.75
       objectReference: {fileID: 0}
     - target: {fileID: 2601427069523322533, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
         type: 3}
@@ -1388,6 +1445,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: Ah, I used to dance like that dragonkin in my youth...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5c5f4b08ce9884cb82f702b5554e8b, type: 3}
@@ -1497,6 +1564,43 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: RepeatDialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: '"In your youth?!" Mallory, you''re one year old!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: Ducks like us don't reach old age until we're at LEAST 4 years old.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: HasRepeatDialog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[0]
+      value: Maybe the whole "short duck lifespan" thing was just a story my mom told
+        me to get me to behave, though.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016771967313006011, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[1]
+      value: Y'know those fake stories, like the haunted pond or the lemonade stand
+        man.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5c5f4b08ce9884cb82f702b5554e8b, type: 3}
@@ -1639,6 +1743,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2913553718481323899, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913553718481323899, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913553718481323899, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553252554888674102, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: RepeatDialog.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553252554888674102, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553252554888674102, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: HasRepeatDialog
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553252554888674102, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: That guy has been dancing far too violently for far too long.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553252554888674102, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: He doesn't even live here!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae72264f0e0b95f4291056124b0547f5, type: 3}
 --- !u!114 &1980772456 stripped
@@ -1673,7 +1817,7 @@ PrefabInstance:
     - target: {fileID: 5151031222023819555, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36.53
+      value: 36.59
       objectReference: {fileID: 0}
     - target: {fileID: 5151031222023819555, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
@@ -1719,6 +1863,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: HasRepeatDialog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[0]
+      value: Be careful! I think that guy's vision is based on movement.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[1]
+      value: If you stay as still as a rock, he can't notice you. Probably.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[2]
+      value: <r>...are you feeling alright? You're starting to erode.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: Dialog.Array.data[3]
+      value: '...I need... t-to resist... the need to... bounce to the rhythm...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[0]
+      value: <r>You can bounce if you want. I think he can see you anyways.
+      objectReference: {fileID: 0}
+    - target: {fileID: 145970425000063478, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: RepeatDialog.Array.data[1]
+      value: '...no... bounce control is what separates us... from the pop punk rocks...'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c, type: 3}
