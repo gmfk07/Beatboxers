@@ -26,27 +26,27 @@ public class QuestgiverNPC : NPC
         }
     }
 
-    public override void HandleButtonPress()
+    public override void HandleDialogBegin()
     {
         if (!TalkedTo)
         {
-            DialogController.Instance.HandleDialogPress(startDialog, null);
+            DialogController.Instance.HandleDialogBegin(startDialog, null);
             PlayerStats.StartQuest(quest);
             TalkedTo = true;
         }
         else if (TalkedTo && PlayerStats.QuestCounter[quest] < tasksNeeded && !HasTurnedInQuest)
         {
-            DialogController.Instance.HandleDialogPress(ongoingDialog, null);
+            DialogController.Instance.HandleDialogBegin(ongoingDialog, null);
         }
         else if (TalkedTo && PlayerStats.QuestCounter[quest] >= tasksNeeded && !HasTurnedInQuest)
         {
-            DialogController.Instance.HandleDialogPress(completionDialog, null);
+            DialogController.Instance.HandleDialogBegin(completionDialog, null);
             HasTurnedInQuest = true;
             GiveQuestRewards();
         }
         else if (HasTurnedInQuest)
         {
-            DialogController.Instance.HandleDialogPress(finishedDialog, null);
+            DialogController.Instance.HandleDialogBegin(finishedDialog, null);
         }
     }
 

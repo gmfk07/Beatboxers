@@ -7,7 +7,7 @@ public class SceneChangeNPC : NPC
 {
     [SerializeField] string nextSceneName;
 
-    public override void HandleButtonPress()
+    public override void HandleDialogBegin()
     {
         if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Frozen)
         {

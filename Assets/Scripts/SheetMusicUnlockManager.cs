@@ -31,7 +31,7 @@ public class SheetMusicUnlockManager : Singleton<SheetMusicUnlockManager>
             {
                 if (Input.GetButtonDown("Interact"))
                 {
-                    DialogController.Instance.HandleDialogPress(null, null);
+                    DialogController.Instance.HandleDialogBegin(null, null);
                 }
             }
         }
@@ -49,7 +49,7 @@ public class SheetMusicUnlockManager : Singleton<SheetMusicUnlockManager>
         if (newSheetMusicCount == plantGrowCost)
         {
             PlantGrowUnlocked = true;
-            DialogController.Instance.HandleDialogPress(plantGrowDialog, null);
+            DialogController.Instance.HandleDialogBegin(plantGrowDialog, null);
             inSheetMusicDialog = true;
         }
     }

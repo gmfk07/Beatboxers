@@ -315,6 +315,141 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39048874}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &98420613
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 526261757}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_Name
+      value: dragondancer_defeated
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5975033157549033438, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -5975033157549033438, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -5975033157549033438, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.243637
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5763853
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.58587307
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.39638174
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.409163
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -69.411
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -176.33202
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -273.476
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 236b2f36ca746ec4e87c621418025860, type: 3}
+--- !u!4 &98420614 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 236b2f36ca746ec4e87c621418025860,
+    type: 3}
+  m_PrefabInstance: {fileID: 98420613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &98420615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 236b2f36ca746ec4e87c621418025860,
+    type: 3}
+  m_PrefabInstance: {fileID: 98420613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &98420616
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98420615}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64acc8b1338da8349908565cd344558a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &264355605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -480,6 +615,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: duckman_post_battle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315466689064932534, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2601427069523322533, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
         type: 3}
@@ -781,6 +921,7 @@ Transform:
   - {fileID: 1468904915}
   - {fileID: 448106690}
   - {fileID: 910062973}
+  - {fileID: 98420614}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1117,6 +1258,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: villagefarmer_post_battle
       objectReference: {fileID: 0}
+    - target: {fileID: 2176466170923709800, guid: ae72264f0e0b95f4291056124b0547f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2913553718481323899, guid: ae72264f0e0b95f4291056124b0547f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1130,7 +1276,7 @@ PrefabInstance:
     - target: {fileID: 2913553718481323899, guid: ae72264f0e0b95f4291056124b0547f5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2400055
+      value: 4.38
       objectReference: {fileID: 0}
     - target: {fileID: 2913553718481323899, guid: ae72264f0e0b95f4291056124b0547f5,
         type: 3}
@@ -1399,6 +1545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rock_post_battle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153620074402145072, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5151031222023819555, guid: 25cb32a9f48eb9a4ca7985fe1ce3cc9c,
         type: 3}
@@ -1947,6 +2098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: duckman_post_battle
       objectReference: {fileID: 0}
+    - target: {fileID: 1315466689064932534, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2601427069523322533, guid: ff5c5f4b08ce9884cb82f702b5554e8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2405,6 +2561,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: villagesmith_post_battle
       objectReference: {fileID: 0}
+    - target: {fileID: 4780900750903758489, guid: 60e9bdb085e15074995df15696c1f015,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8359369477482265738, guid: 60e9bdb085e15074995df15696c1f015,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2549,7 +2710,7 @@ MonoBehaviour:
     - <r>...well, here goes nothing...
   transforms:
   - {fileID: 4949270781715393618}
-  transitions: 
+  transitions: 01000000
   panTimes:
   - 0.5
   dialogController: {fileID: 1681347491}
@@ -4455,6 +4616,7 @@ MonoBehaviour:
     type: 3}
   maxPlantGrowths: 2
   growthPerPress: 0.75
+  NPCNearbyList: []
 --- !u!143 &8296172667686591415
 CharacterController:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     private int currentPlantGrowths = 0;
     private GameObject currentPlant;
 
+    public List<NPC> NPCNearbyList = new List<NPC>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,31 @@ public class Player : MonoBehaviour
             {
                 Destroy(currentPlant);
             }
+        }
+
+        if (Input.GetButtonDown("Interact"))
+        {
+            InteractWithClosestInteractableNPC();
+        }
+    }
+
+    //Triggers the HandleDialogBegin function on the closest NPC within interactive range.
+    private void InteractWithClosestInteractableNPC()
+    {
+        float minDistance = Mathf.Infinity;
+        NPC toInteractWith = null;
+        foreach (NPC npc in NPCNearbyList)
+        {
+            float distance = (npc.transform.position - transform.position).magnitude;
+            if (distance < minDistance)
+            {
+                toInteractWith = npc;
+                minDistance = distance;
+            }
+        }
+        if (NPCNearbyList.Count > 0)
+        {
+            toInteractWith.HandleDialogBegin();
         }
     }
 

@@ -5,7 +5,6 @@ using UnityEngine;
 public class NPCTrigger : MonoBehaviour
 {
     private NPC parent;
-    private bool playerNear = false;
 
     // Start is called before the first frame update
     void Start()
@@ -13,25 +12,21 @@ public class NPCTrigger : MonoBehaviour
         parent = gameObject.GetComponentInParent<NPC>();
     }
 
-    private void Update()
-    {
-        if (Input.GetButtonDown("Interact") && playerNear)
-        {
-            parent.HandleButtonPress();
-        }
-    }
-
     //Check for player getting close
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-            playerNear = true;
+        {
+            other.gameObject.GetComponent<Player>().NPCNearbyList.Add(parent);
+        }
     }
 
     //Check for player leaving
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
-            playerNear = false;
+        {
+            other.gameObject.GetComponent<Player>().NPCNearbyList.Remove(parent);
+        }
     }
 }

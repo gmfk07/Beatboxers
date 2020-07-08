@@ -9,15 +9,15 @@ public class DialogNPC : NPC
     public bool HasRepeatDialog;
     public List<string> RepeatDialog = new List<string>();
 
-    public override void HandleButtonPress()
+    public override void HandleDialogBegin()
     {
         if (HasRepeatDialog && TalkedTo)
         {
-            DialogController.Instance.HandleDialogPress(RepeatDialog, null);
+            DialogController.Instance.HandleDialogBegin(RepeatDialog, null);
         }
         else
         {
-            DialogController.Instance.HandleDialogPress(Dialog, ItemToGive);
+            DialogController.Instance.HandleDialogBegin(Dialog, ItemToGive);
             TalkedTo = true;
         }
     }

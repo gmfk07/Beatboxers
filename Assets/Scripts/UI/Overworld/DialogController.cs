@@ -41,7 +41,7 @@ public class DialogController : Singleton<DialogController>
 
     //Handle dialog button being pressed in response to a dialog with dialog dialog and giving item toGet.
     //If no dialog is currently being displayed, this starts the dialog and sets up the item to receive at the end. Otherwise, this merely continues it.
-    public void HandleDialogPress(List<string> dialog, Item toGet = null)
+    public void HandleDialogBegin(List<string> dialog, Item toGet = null)
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
@@ -189,7 +189,7 @@ public class DialogController : Singleton<DialogController>
     //Display an item image and the item's name and description.
     private void DisplayItemGetUI(Item item)
     {
-        HandleDialogPress(new List<string>() { item.itemName + ": " + item.itemDescription });
+        HandleDialogBegin(new List<string>() { item.itemName + ": " + item.itemDescription });
 
         newItemImage.GetComponent<Image>().sprite = item.itemSprite;
         newItemImage.SetActive(true);

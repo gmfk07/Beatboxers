@@ -7,5 +7,5 @@ public abstract class NPC : MonoBehaviour
     [HideInInspector] public bool TalkedTo;
 
     //What should be done when the E button is pressed near the NPC?
-    public abstract void HandleButtonPress();
+    public abstract void HandleDialogBegin();
 }

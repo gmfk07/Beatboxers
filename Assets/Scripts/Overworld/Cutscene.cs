@@ -64,7 +64,7 @@ public class Cutscene : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                dialogController.HandleDialogPress(dialogs[currentShotIndex].dialog);
+                dialogController.HandleDialogBegin(dialogs[currentShotIndex].dialog);
             }
         }
     }
@@ -128,7 +128,7 @@ public class Cutscene : MonoBehaviour
             {
                 toGive = itemGiveDialogValues[itemGiveDialogKeys.IndexOf(shotIndex)];
             }
-            dialogController.HandleDialogPress(dialogs[shotIndex].dialog, toGive);
+            dialogController.HandleDialogBegin(dialogs[shotIndex].dialog, toGive);
             inDialog = true;
         }
         else

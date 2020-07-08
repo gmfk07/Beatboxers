@@ -9,19 +9,19 @@ public class QuestTaskNPC : NPC
     public List<string> QuestRepeatDialog = new List<string>();
     [SerializeField] private string quest;
 
-    public override void HandleButtonPress()
+    public override void HandleDialogBegin()
     {
         if (!PlayerStats.CheckQuestStarted(quest))
         {
-            DialogController.Instance.HandleDialogPress(InactiveQuestDialog, null);
+            DialogController.Instance.HandleDialogBegin(InactiveQuestDialog, null);
         }
         else if (TalkedTo)
         {
-            DialogController.Instance.HandleDialogPress(QuestRepeatDialog, null);
+            DialogController.Instance.HandleDialogBegin(QuestRepeatDialog, null);
         }
         else
         {
-            DialogController.Instance.HandleDialogPress(QuestDialog, null);
+            DialogController.Instance.HandleDialogBegin(QuestDialog, null);
             CompleteTask();
         }
     }
