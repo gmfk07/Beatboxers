@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Trashpile
   m_EditorClassIdentifier: 
   _name: Trashpile
-  health: 10
+  health: 1
   attackDictKeys:
   - 0.4
   attackDictValues:

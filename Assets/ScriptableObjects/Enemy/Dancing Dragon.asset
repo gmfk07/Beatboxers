@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dancing Dragon
   m_EditorClassIdentifier: 
   _name: Dancing Dragon
-  health: 15
+  health: 1
   attackDictKeys:
   - 0.25
   attackDictValues:
