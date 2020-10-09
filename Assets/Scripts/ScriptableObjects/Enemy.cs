@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies : MonoBehaviour
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Enemy", order = 1)]
+public class Enemy : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string _name;
+    public int health;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //Round beat potential down to the nearest key, the corresponding EnemyAttack is the EnemyAttack that will be executed
+    public Dictionary<float, EnemyAttack> attackDict = new Dictionary<float, EnemyAttack>();
+
+    //The keys and values that'll go into attackDict
+    public List<float> attackDictKeys = new List<float>();
+    public List<EnemyAttack> attackDictValues = new List<EnemyAttack>();
 }

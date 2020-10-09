@@ -4,32 +4,37 @@ using UnityEngine;
 
 public class Beat : MonoBehaviour
 {
-    public float distancePerSecond = 0;
-    public bool isAttackBeat;
-    public EnemyAttack attack;
-    public GlobalStats.Shape shape;
+    public float DistancePerSecond = 0;
+    public bool IsAttackBeat;
+    public EnemyAttack Attack;
+    public Shape Shape;
+    public float Redness;
+    public HealthDisplay HealthDisplay;
+    public bool Triggered = false;
 
     private void Start()
     {
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
 
-        if (isAttackBeat)
-            sr.color = new Color(1, 1 - attack.danger, 1 - attack.danger, 1);
-        switch (shape)
+        if (IsAttackBeat)
         {
-            case GlobalStats.Shape.CIRCLE:
+            sr.color = new Color(1, 1 - Redness, 1 - Redness, 1);
+        }
+        switch (Shape)
+        {
+            case Shape.Circle:
                 sr.sprite = GlobalStats.circleBeat;
                 break;
 
-            case GlobalStats.Shape.SQUARE:
+            case Shape.Square:
                 sr.sprite = GlobalStats.squareBeat;
                 break;
 
-            case GlobalStats.Shape.TRIANGLE:
+            case Shape.Triangle:
                 sr.sprite = GlobalStats.triangleBeat;
                 break;
 
-            case GlobalStats.Shape.DIAMOND:
+            case Shape.Diamond:
                 sr.sprite = GlobalStats.diamondBeat;
                 break;
         }
@@ -37,14 +42,19 @@ public class Beat : MonoBehaviour
 
     void Update()
     {
-        float movement = distancePerSecond * Time.deltaTime;
+        float movement = DistancePerSecond * Time.deltaTime;
         gameObject.transform.position += new Vector3(-movement, 0);
     }
 
     void OnDestroy()
     {
-        //Attack the player
-        if (isAttackBeat)
-            PlayerStats.Damage(attack.damage);
+        //Attack the player IF this beat was not destroyed as a result of a scene change, playing the right sound
+        if (IsAttackBeat && Triggered)
+        {
+            Debug.Log("bro you just got attacked");
+            PlayerStats.Damage(Attack.Damage, HealthDisplay);
+            MusicMaster.Instance.PlayBeatMissSound();
+            AttackAnimationController.Instance.PlayEnemyAttackAnimation(Attack.AttackName);
+        }
     }
 }

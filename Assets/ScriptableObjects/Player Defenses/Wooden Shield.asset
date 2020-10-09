@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Wooden Shield
   m_EditorClassIdentifier: 
   manaCost: 1
-  constantProtection: 1
-  relativeProtection: 0
+  itemName: Wooden Shield
+  itemDescription: Blocks 1 Damage for 1 Mana
+  itemSprite: {fileID: 21300000, guid: 6a820f89f59ddb8428b65b9a78449803, type: 3}
+  ConstantProtection: 1
+  RelativeProtection: 0
+  Shape: 0

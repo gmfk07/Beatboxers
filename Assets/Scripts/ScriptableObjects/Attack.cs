@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Attack", order = 1)]
-public class Attack : ScriptableObject
+public class Attack : Item
 {
-    public int manaCost;
-    public int damage;
+    public int Damage;
+    public Shape Shape;
 }

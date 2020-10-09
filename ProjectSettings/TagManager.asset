@@ -4,7 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - EnemyParent
   - Enemy
+  - Pickup
+  - NPC
+  - BattleStart
+  - Cutscene
+  - Questgiver
+  - SheetMusic
   layers:
   - Default
   - TransparentFX
@@ -14,9 +21,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Plant
+  - PlantPlatform
+  - BouncePad
   - 
   - 
   - 

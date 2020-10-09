@@ -5,11 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class OverworldSave
 {
-    public List<string> names = new List<string>();
-    public List<float> enemyXPos = new List<float>();
-    public List<float> enemyYPos = new List<float>();
-    public List<float> enemyZPos = new List<float>();
-    public float playerXPos;
-    public float playerYPos;
-    public float playerZPos;
+    public List<string> PickupNameList;
+    public List<string> EnemyNameList;
+    public List<string> NPCsSpokenTo;
+    public List<string> CutscenesPlayed;
+    public List<string> QuestsCompleted;
+    public float PlayerXPos;
+    public float PlayerYPos;
+    public float PlayerZPos;
 }
