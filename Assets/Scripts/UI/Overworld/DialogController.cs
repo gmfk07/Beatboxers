@@ -14,7 +14,7 @@ public class DialogController : Singleton<DialogController>
     [SerializeField] private List<string> colorCodeKeys;
     [SerializeField] private List<Color> colorCodeValues;
 
-    private bool isDisplayingDialog = false;
+    [SerializeField] private bool isDisplayingDialog = false;
     private bool isRevealingChars = false;
     private bool isGettingNewItem = false;
     private Item newItem;
@@ -44,6 +44,9 @@ public class DialogController : Singleton<DialogController>
     public void HandleDialogBegin(List<string> dialog, Item toGet = null)
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        Debug.Log("isDisplayingDialog " + isDisplayingDialog);
+        Debug.Log("isRevealingChars " + isRevealingChars);
 
         //Leave if player is in inventory
         if (!isDisplayingDialog && player.Frozen)
